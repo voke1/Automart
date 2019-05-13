@@ -146,6 +146,25 @@ nav ul li a.active{
     color: #fff;
     border-radius: 6px;
 }
+
+.scroll-arrow {
+position: absolute;
+top: 90%;
+left: 90%;
+transform: translate(-50%, -50%);
+z-index: 10;
+
+}
+
+.scroll-arrow span{
+display: block;
+width: 20px;
+height: 20px;
+border-bottom: 1px solid #fff;
+border-right: 1px solid #fff;
+transform: rotate(45deg);
+margin: -10px;
+}
 ._3Svez .jHsNf:after,.Nt0Jl:after{
     content:"";
     display:block;
