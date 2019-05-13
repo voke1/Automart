@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Auto Mart</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="UI/sign-up.css" />
 
 </head>
 
@@ -26,40 +25,48 @@
                 </ul>
             </nav>
         </div>
-        <div class="fullscreen-video-wrap">
-            <video src="vehicle.webm" autoplay="true" loop="true" muted='false'>
-
-            </video>
-        </div>
-        <div class="header-overlay"></div>
-        <div class="header-content text-md-center">
-            <h1>Driven by passion</h1>
-            <p>Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
-                Auto Mart, you can sell your car or buy from trusted dealerships or private sellers.
-            </p>
-            <a class="btn">Find Out More</a>
-        </div>
+        <div></div>
+        <form class="form">
+            <h1>Sign Up</h1>
+            <div class="form-group">
+                <input type="text" placeholder=" " id="name" required>
+                <label for="name">Name</label>
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Error encountered!
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder=" " id="email" required>
+                <label for="email">Email</label>
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder=" " id="password" required>
+                <label for="password">Password</label>
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder=" " id="confirm" required>
+                <label for="confirm">Confirm</label>
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+            </div>
+            <input type="submit" value="Sign Up">
+            <div class="form-bottom">
+                <a href="#">Forgot Password?</a> <br>
+                <a href="#">Already have an account? Sign in</a>
+            </div>
+        </form>
     </header>
-
-    <section class="section section-a">
-        <div class="container">
-            <h2>Section A</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et
-                maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod
-                quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur
-                ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
-        </div>
-    </section>
-
-    <section class="section section-b">
-        <div class="container">
-            <h2>Section B</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et
-                maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod
-                quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur
-                ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
-        </div>
-    </section>
+    <div></div>
+   
+    
     <footer class="_3Svez">
         <div class="jHsNf">
             <div class="DXDPn"><input type="checkbox" id="footer-our-company" class="U_ihu"><label
