@@ -59,17 +59,19 @@
   .header-content h1{
     font-size:50px;
     margin-bottom:0;
+    color: #F2D0AB;
   }
   
   .header-content p{
     font-size:1.5rem;
     display:block;
     padding-bottom:2rem;
+    color: #F2D0AB;
   }
   
   .btn{
     background: #532380;
-    color:#fff;
+    color: #F2D0AB;
     font-size:1.2rem;
     padding: 1rem 2rem;
     text-decoration: none;
@@ -78,6 +80,9 @@
   
   .section{
     padding:20px 0;
+  }
+  .section-a{
+    background: #F6EFE7;
   }
   
   .section-b{
@@ -114,7 +119,7 @@ nav .logo{
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff;
+    color: #F2D0AB;;
 
 }
 
@@ -129,7 +134,7 @@ nav ul{
 
 nav ul li a{
     line-height: 80px;
-    color: #fff;
+    color: #F2D0AB;
     padding: 5px 20px;
     text-decoration: none;
     text-transform: uppercase;
@@ -146,7 +151,7 @@ nav ul li a:hover{
 
 nav ul li a.active{
     
-    color: #fff;
+  color: #F2D0AB;
     border-radius: 6px;
 }
 
