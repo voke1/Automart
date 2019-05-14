@@ -303,5 +303,65 @@ margin: -10px;
           -o-transition: color 400ms ease-in-out 0s;
           transition: color 400ms ease-in-out 0s;
         }
+
+         .container-post_ad{
+           max-width: 1000px;
+           margin-left: auto;
+           margin-right: auto;
+           padding: 1em;
+           margin-top: -40%;
+           margin-bottom: 5%;
+         }
+
+         .post_ad-wrapper{
+           box-shadow: 0 0 20px 0 #0000;
+
+         }
+
+         .post_ad-wrapper > *{
+           padding: 1em;
+         }
+
+         .car-details{
+           text-align: center;
+           position: absolute;
+           margin-top: 10%;
+
+         }
+         .details{
+          background-color: pink;
+
+        }
+        .details form{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 10px;
+        }
+
+        .details form label{
+
+          display: block;
+        }
+        .details form p{
+          grid-column: 1/3;
+        }
+        .details form button, .details form input, .details form textarea{
+          width: 100%;
+          padding: 1em;
+          border: 1px solid pink;
+        }
         
+        .details form button{
+          background: pink;
+          border: 10%;
+          text-transform: uppercase;
+
+        }
         
+        .details form button:hover, .details form button :focus{
+          background: yellow;
+          color: #0000;
+          outline: 0;
+          transition: background-color 2s ease-out;
+
+        }
