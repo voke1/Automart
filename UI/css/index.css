@@ -161,7 +161,6 @@ top: 90%;
 left: 90%;
 transform: translate(-50%, -50%);
 z-index: 10;
-
 }
 
 .scroll-arrow span{
@@ -185,4 +184,124 @@ margin: -10px;
 
 
 
+        #products {
+          width: 100%;
+        }
+        
+        #products .container-products {
+          display: block;
+          width: 80%;
+          margin: 0 auto;
+          font-size: 0;
+        }
+        
+        #products .container-products .products-header {
+          font-size: 16px;
+          text-align: center;
+          margin-bottom: -5rem;
+        }
+        
+        #products .container-products .products-header h2 {
+          padding: 2rem 1rem;
+          text-transform: uppercase;
+          font-family: "Franklin Gothic Medium";
+          color: #000000;
+          font-size: 1.875rem;
+          font-weight: 400;
+          letter-spacing: 0.2rem;
+          line-height: 1;
+          text-align: center;
+        }
+        
+        #products .container-products .product {
+          width: 50%;
+          display: inline-block;
+          font-size: 16px;
+          text-align: center;
+          padding: 1rem;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          opacity: 1;
+        }
+        
+        #products .container-products .product:hover {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+          opacity: 0.8;
+          -webkit-transition: opacity 800ms ease-in-out 0s;
+          transition: opacity 800ms ease-in-out 0s;
+          -webkit-transition: -webkit-transform 1s ease-in-out 0s;
+          transition: -webkit-transform 1s ease-in-out 0s;
+          transition: transform 1s ease-in-out 0s;
+          transition: transform 1s ease-in-out 0s, -webkit-transform 1s ease-in-out 0s;
+          cursor: pointer;
+        }
+        
+        #products .container-products .product figure img {
+          width: 100%;
+          height: auto;
+        }
+        
+        #products .container-products .product figure figcaption {
+          font-family: "Franklin Gothic Medium";
+          color: rgba(89, 89, 89, 1);
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.02rem;
+          text-align: center;
+          padding: 1rem 0rem 0rem;
+          text-transform: uppercase;
+        }
+        
+        @media only screen and (max-width: 1024px) {
+          #products .container-products .product {
+            width: 50%;
+            padding: 3rem;
+          }
+        }
+        
+        @media only screen and (max-width: 768px) {
+          #products .container-products .product {
+            width: 50%;
+            padding: 2rem;
+          }
+        }
+        
+        @media only screen and (max-width: 480px) {
+          #products .container-products .product {
+            width: 100%;
+          }
+        }
 
+        #products .container-products p.button {
+          background-color: #e6b58f;
+          -webkit-box-shadow: 0px 1px 3.92px 0.08px rgba(204, 204, 153, 0.35);
+          box-shadow: 0px 1px 3.92px 0.08px rgba(204, 204, 153, 0.35);
+          width: 45%;
+          text-align: center;
+          padding: 0.8rem 0.2rem;
+          color: #ffffff;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          width: 60%;
+          padding: 0.8rem 2rem;
+          margin-bottom: 2%;
+          margin-left: 22%;
+          
+          font-weight: 600;
+          letter-spacing: 0.1rem;
+        }
+        
+        #products .container-products p.button:hover {
+          cursor: pointer;
+          background-color: #ffffff;
+          color: #ff981f;
+          -webkit-transition: background-color 1s ease-in-out 0s;
+          -o-transition: background-color 1s ease-in-out 0s;
+          transition: background-color 1s ease-in-out 0s;
+          -webkit-transition: color 400ms ease-in-out 0s;
+          -o-transition: color 400ms ease-in-out 0s;
+          transition: color 400ms ease-in-out 0s;
+        }
+        
+        
