@@ -13,7 +13,6 @@
   }
   
   .v-header{
-    height:100vh;
     display:flex;
     align-items:center;
     color:#fff;
@@ -53,25 +52,40 @@
   }
   
   .header-content{
-    z-index:2;
+    z-index: 3;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center
+  }
+
+  .head-content{
+    z-index: 4;
+    text-align: center;
   }
   
-  .header-content h1{
+  .head-content h1{
+    z-index:4;
     font-size:50px;
     margin-bottom:0;
-    color: #F2D0AB;
+    color:  #F2D0AB; 
   }
   
-  .header-content p{
+  .head-content p{
+    z-index:4;
     font-size:1.5rem;
     display:block;
     padding-bottom:2rem;
     color: #F2D0AB;
+    position: center;
+    margin-left: 15%;
+    margin-right: 15%;
   }
   
   .btn{
+    z-index:3;
     background: #532380;
-    color: #F2D0AB;
+    color: #FFAF30;
     font-size:1.2rem;
     padding: 1rem 2rem;
     text-decoration: none;
@@ -83,6 +97,7 @@
   }
   .section-a{
     background: #F6EFE7;
+    
   }
   
   .section-b{
@@ -119,28 +134,31 @@ nav .logo{
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #F2D0AB;;
+    color: #FFAF30;
+    
 
 }
 
 nav ul{
     list-style:  none;
     float: right;
-    margin: 0;
+    margin: auto;
     padding: 0;
     display: flex;
-
+   
+  
 }
 
 nav ul li a{
     line-height: 80px;
-    color: #F2D0AB;
+    color: #FFAF30;
     padding: 5px 20px;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 15px;
     font-weight: bold;
-
+    
+    
 }
 
 nav ul li a:hover{
@@ -151,7 +169,7 @@ nav ul li a:hover{
 
 nav ul li a.active{
     
-  color: #F2D0AB;
+  color: #FFAF30;
     border-radius: 6px;
 }
 
@@ -304,32 +322,46 @@ margin: -10px;
           transition: color 400ms ease-in-out 0s;
         }
 
-         .container-post_ad{
+        .container1{
+          min-height: 400px;
+          text-align: center;
+          background: #ffffff;
+        }
+
+        .container1 .container-post_ad{
            max-width: 1000px;
            margin-left: auto;
            margin-right: auto;
            padding: 1em;
-           margin-top: -40%;
-           margin-bottom: 5%;
+           min-height: 400px;
+           text-align: center;
+           border: #F2D0AB;
+           margin-top: 60px;
          }
 
-         .post_ad-wrapper{
+         .container1.post_ad-wrapper{
            box-shadow: 0 0 20px 0 #0000;
+           background-color: red;
 
          }
 
-         .post_ad-wrapper > *{
+         .container1 .post_ad-wrapper > *{
            padding: 1em;
+           color: black;
+          border-width: 2px;
+           border-color: #FFAF30;
          }
 
-         .car-details{
+          .car-details{
            text-align: center;
            position: absolute;
            margin-top: 10%;
+           color: black;
+         
 
          }
          .details{
-          background-color: pink;
+          background-color: #F0F0F0;
 
         }
         .details form{
@@ -345,20 +377,24 @@ margin: -10px;
         .details form p{
           grid-column: 1/3;
         }
-        .details form button, .details form input, .details form textarea{
-          width: 100%;
+         .details form input, .details form textarea{
+          width: 90%;
           padding: 1em;
-          border: 1px solid pink;
+          
         }
         
-        .details form button{
-          background: pink;
-          border: 10%;
+         .submit-btn{
+          background: #FFAF30;
+          width: 20%;
+          padding: 1em;
           text-transform: uppercase;
+          margin-left: 40%;
+          
+          
 
         }
         
-        .details form button:hover, .details form button :focus{
+        .details form .submit-btn:hover, .details form .submit-btn :focus{
           background: yellow;
           color: #0000;
           outline: 0;
