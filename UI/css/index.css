@@ -13,12 +13,11 @@
   }
   
   .v-header{
-    height:100vh;
     display:flex;
     align-items:center;
     color:#fff;
   }
-  
+
   .container{
     max-width:960px;
     padding-left:1rem;
@@ -53,25 +52,40 @@
   }
   
   .header-content{
-    z-index:2;
+    z-index: 3;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center
+  }
+
+  .head-content{
+    z-index: 4;
+    text-align: center;
   }
   
-  .header-content h1{
+  .head-content h1{
+    z-index:4;
     font-size:50px;
     margin-bottom:0;
-    color: #F2D0AB;
+    color:  #F2D0AB; 
   }
   
-  .header-content p{
+  .head-content p{
+    z-index:4;
     font-size:1.5rem;
     display:block;
     padding-bottom:2rem;
     color: #F2D0AB;
+    position: center;
+    margin-left: 15%;
+    margin-right: 15%;
   }
   
   .btn{
+    z-index:3;
     background: #532380;
-    color: #F2D0AB;
+    color: #FFAF30;
     font-size:1.2rem;
     padding: 1rem 2rem;
     text-decoration: none;
@@ -83,6 +97,7 @@
   }
   .section-a{
     background: #F6EFE7;
+    
   }
   
   .section-b{
@@ -111,7 +126,6 @@ nav{
 }
 
 
-
 nav .logo{
     padding: 9px 20px;
     height:  1=80px;
@@ -119,28 +133,32 @@ nav .logo{
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #F2D0AB;;
+    color: #FFAF30;
+    
 
 }
 
 nav ul{
     list-style:  none;
     float: right;
-    margin: 0;
-    padding: 0;
-    display: flex;
 
+    margin: auto;
+    padding: 0;
+    display: flex
+   
+  
 }
 
 nav ul li a{
     line-height: 80px;
-    color: #F2D0AB;
+    color: #FFAF30;
     padding: 5px 20px;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 15px;
     font-weight: bold;
-
+    
+    
 }
 
 nav ul li a:hover{
@@ -151,7 +169,7 @@ nav ul li a:hover{
 
 nav ul li a.active{
     
-  color: #F2D0AB;
+  color: #FFAF30;
     border-radius: 6px;
 }
 
@@ -187,7 +205,7 @@ margin: -10px;
         #products {
           width: 100%;
         }
-        
+      
         #products .container-products {
           display: block;
           width: 80%;
@@ -266,7 +284,8 @@ margin: -10px;
             padding: 2rem;
           }
         }
-        
+    
+
         @media only screen and (max-width: 480px) {
           #products .container-products .product {
             width: 100%;
@@ -303,5 +322,3 @@ margin: -10px;
           -o-transition: color 400ms ease-in-out 0s;
           transition: color 400ms ease-in-out 0s;
         }
-        
-        
