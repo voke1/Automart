@@ -322,3 +322,85 @@ margin: -10px;
           -o-transition: color 400ms ease-in-out 0s;
           transition: color 400ms ease-in-out 0s;
         }
+
+
+
+        
+        .ss-form-container {
+          border-color: #FFAF30;
+          background-color: white;
+          margin-top: 100px;
+          background-color: white;
+          width: 55%;
+          margin-left: 5%;
+          border: 2px, #FFAF30;
+          
+
+        }
+        .ss-form-container{
+          background: #F2F2F2;
+        }
+
+        .ss-form-heading h1{
+          color: #FFAF30;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+      
+        .ss-form-title {
+          text-align: left;
+          background-color:#532380;
+          color: #FFAF30;
+        }
+        
+        .ss-form-desc {
+          text-align: left;
+        }
+        
+        .ss-form-desc {
+          font-family: "Roboto";
+          color: rgb(140,140,140);
+          font-weight: 400;
+          font-size: 1.080rem;
+          font-style: normal;
+          margin-left: 10px;
+        }
+      
+        
+        .ss-q-title {
+          font-family: "Roboto";
+          color: rgb(80,80,80);
+          font-weight: 700;
+          font-size: 1.080rem;
+          font-style: normal;
+        
+          margin-left: 10px;
+          margin-top: 5px;
+          
+        }
+        
+        .ss-embeddable-object-container .ss-q-title {
+          font-family: "Roboto";
+          color: rgb(80,80,80);
+          font-weight: 700;
+          font-size: 1.845rem;
+          font-style: normal;
+        }
+            
+      input[type='text'], input:not([type]){
+          font-size: 1.000rem;
+          width: 80%;
+          height: 30px;
+          margin-left: 10px;
+        }
+        textarea {
+          font-size: 1.000rem;
+          width: 80%;
+          height: 200px;
+          margin-left: 10px;
+        }
+        
+        .report-ad{
+  margin-top: 60px;
+  height: 900px;
+}
