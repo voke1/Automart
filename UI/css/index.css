@@ -322,3 +322,138 @@ margin: -10px;
           -o-transition: color 400ms ease-in-out 0s;
           transition: color 400ms ease-in-out 0s;
         }
+
+
+
+
+
+        
+
+
+.specific-car{
+  margin-top: 60px;
+  height: 750px;
+ 
+}
+.car  img{
+  
+    max-width: 100%;
+    height: auto;
+  
+}
+
+.product--title {
+  color: purple;
+  font-weight: bold;
+  font-size: 1.5em;
+  font-family: serif;
+  padding: 20px 0;
+  text-align: center;
+  
+}
+
+.product--title h2{
+  display: inline-block;
+    border-bottom: 2px dashed;
+}
+.product--image, .product--details {
+  float: left;
+  width: 45%;
+}
+.product--image {
+  padding-right: 3%;
+  
+}
+.product--image .icon-images  img{
+  height: 80px;
+  margin: 0 10px;
+  cursor: pointer;
+  border: 1px solid purple;
+}
+
+.product--price .product--price_price {
+    color: purple;
+    font-size: 1.2em;
+    padding-right: 10px;
+  
+}
+
+.product--price .product--price_offer{
+  color: purple;
+  border: 1px solid darken(indianred, 20%);
+  border-radius: 5px 5px;
+  padding: 1px 3px;
+  font-size: .7em;
+}
+
+.product--desc {
+  font-family: sans;
+}
+  .product--desc p {
+    margin: 20px 0px;
+  }
+
+
+.product--size {
+  margin: 20px 0;
+}
+  
+
+
+.product--quantity 
+  input {
+    border: 0;
+    outline: 0;
+    border-left: 1px dotted;
+    border-right: 1px dotted;
+    border-bottom: 1px dashed;
+    padding: 1px 3px;
+    text-align: center;}
+    .product--quantity::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  
+
+
+.add-to-cart {
+  margin: 10px 10px 10px 0;
+}
+
+.btn {
+  background: none;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;}
+
+  .btn .btn--cart {
+    border: 1px solid indianred;
+    border-radius: 4px;
+    padding: 3px 30px 3px 5px;
+    box-shadow: 0px 0px 3px 0px indianred;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    font-size: 1.5em;}
+
+    .btn :after {
+      content: "⇨";
+      padding-left: 2px;
+      position: absolute;
+      right: 150%;
+      transition: all .4s;
+      color: #fff;
+    }
+    .btn :hover, .btn:focus {
+      background: indianred;
+      color: #fff;
+      box-shadow: 0px 0px 4px 2px indianred;
+      text-shadow: 2px 2px 3px #666;
+      transition: all .4s;}
+      .btn :after {
+        right: 2%;
+      }
+    
+  
+
+
