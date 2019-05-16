@@ -141,10 +141,9 @@ nav .logo{
 nav ul{
     list-style:  none;
     float: right;
-
     margin: auto;
     padding: 0;
-    display: flex
+    display: flex;
    
   
 }
@@ -831,3 +830,83 @@ span.price {
 
       
        
+/*post-ads styles starts here*/
+        .container1{
+          min-height: 400px;
+          text-align: center;
+          background: #ffffff;
+        }
+
+        .container1 .container-post_ad{
+           max-width: 1000px;
+           margin-left: auto;
+           margin-right: auto;
+           padding: 1em;
+           min-height: 400px;
+           text-align: center;
+           border: #F2D0AB;
+           margin-top: 60px;
+         }
+
+         .container1.post_ad-wrapper{
+           box-shadow: 0 0 20px 0 #0000;
+           background-color: red;
+
+         }
+
+         .container1 .post_ad-wrapper > *{
+           padding: 1em;
+           color: black;
+          border-width: 2px;
+           border-color: #FFAF30;
+         }
+
+          .car-details{
+           text-align: center;
+           position: absolute;
+           margin-top: 10%;
+           color: black;
+         
+
+         }
+         .details{
+          background-color: #F0F0F0;
+
+        }
+        .details form{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 10px;
+        }
+
+        .details form label{
+
+          display: block;
+        }
+        .details form p{
+          grid-column: 1/3;
+        }
+         .details form input, .details form textarea{
+          width: 90%;
+          padding: 1em;
+          
+        }
+        
+         .submit-btn{
+          background: #FFAF30;
+          width: 20%;
+          padding: 1em;
+          text-transform: uppercase;
+          margin-left: 40%;
+          
+          
+
+        }
+        
+        .details form .submit-btn:hover, .details form .submit-btn :focus{
+          background: yellow;
+          color: #0000;
+          outline: 0;
+          transition: background-color 2s ease-out;
+
+        }
