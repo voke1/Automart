@@ -11,25 +11,21 @@
 
 <body>
     <script type="text/javascript" src="index.js"></script>
-    <header class="v-header container-purchase">
-        <div class="wrap">
-            <nav>
-                <div class="logo" href="index.html">AUTOMART</div>
-                <ul>
-                    <li><a class="active" href="#">Home</a></li>
-                    <li><a href="#">SELL A CAR</a></li>
-                    <li><a href="#">FIND A CAR</a></li>
-                    
-                    <li><a href="#">SIGN OUT</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="header">
+        <a href="" class="logo">AUTOMART</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="post_ad.html">SELL A CAR</a></li>
+            <li><a href="view-all-ads.html">FIND A CAR</a></li>
+            <li><a href="sign-up.html">Register</a></li>
+            <li><a href="sign-in.html">Login</a></li>
+
+        </ul>
     </header>
+    <div class="down"></div>
     <section class="purchase-car">
-
-
-
-
         <div class="row">
             <div class="col-75">
                 <div class="container-purchase">
@@ -63,10 +59,10 @@
                                 <h3>Payment</h3>
                                 <label for="fname">Accepted Cards</label>
                                 <div class="icon-container">
-                                    <i class="fa fa-cc-visa" ></i>
+                                    <i class="fa fa-cc-visa"></i>
                                     <i class="fa fa-cc-amex"></i>
-                                    <i class="fa fa-cc-mastercard" ></i>
-                                    <i class="fa fa-cc-discover" ></i>
+                                    <i class="fa fa-cc-mastercard"></i>
+                                    <i class="fa fa-cc-discover"></i>
                                 </div>
                                 <label for="cname">Name on Card</label>
                                 <input type="text" id="cname" name="cardname" placeholder="Voke Olomu">
@@ -94,7 +90,7 @@
                     </form>
                 </div>
             </div>
-            
+
         </div>
 
     </section>

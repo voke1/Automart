@@ -102,7 +102,7 @@
     position: fixed;
     width: 100%;
     z-index: 5;
-    opacity: 1;
+    opacity: 0.8;
   }
   
   .header ul {
@@ -314,21 +314,6 @@ input#search-bar:focus:-ms-placeholder {
 
 
 
-  
-
-    
-    
-    
-
-
-
-
-  
-    
-
-}
-
-
 
 nav ul li a{
     line-height: 80px;
@@ -343,17 +328,8 @@ nav ul li a{
     
 }
 
-nav ul li a:hover{
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 6px;
 
-}
 
-nav ul li a.active{
-    
-  color: #FFAF30;
-    border-radius: 6px;
-}
 
 .scroll-arrow {
 position: absolute;
@@ -507,8 +483,8 @@ margin: -10px;
 
         /*purchase order styles starts here*/
 .purchase-car{
-  height: 700px;
-  margin-top: 60px;
+  height: 600px;
+  
 }
 
 .purchase-car h2{
@@ -575,7 +551,7 @@ label {
 }
 
 .butn {
-  background-color: #4CAF50;
+  background-color: purple;
   color: white;
   padding: 12px;
   margin: 10px 0;
@@ -613,10 +589,6 @@ span.price {
   }
 }
 /*reports ad styles*/
-
-
-
-
         
         .ss-form-container {
           border-color: #FFAF30;
@@ -693,8 +665,8 @@ span.price {
         }
         
         .report-ad{
-  margin-top: 60px;
-  height: 900px;
+  
+  height: 1100px;
 }
 
 
@@ -707,9 +679,13 @@ span.price {
 
 
 .specific-car{
-  margin-top: 60px;
+  
   height: 750px;
  
+}
+.down{
+  height: 60px;
+  
 }
 .car  img{
   
@@ -726,6 +702,7 @@ span.price {
   padding: 20px 0;
   text-align: center;
   
+  
 }
 
 .product--title h2{
@@ -739,6 +716,10 @@ span.price {
 .product--image {
   padding-right: 3%;
   
+}
+.details h3{
+  font-size: 40px;
+  text-transform: uppercase;
 }
 .product--image .icon-images  img{
   height: 80px;
@@ -842,6 +823,9 @@ span.price {
           background-color:white;
           display: inline-block;
         }
+        .dow{
+          height: 16px;
+        }
         .container-view-ads .view-ads{
           width: 80%;
           height: 1195px;
@@ -858,9 +842,9 @@ span.price {
           width: 100%;
           text-align:left;
           padding:0;
-          margin-right: 10%;
+          margin-left: 10px;
           border-right:2px solid #efefef;
-          height: 99%;
+          height: 70%;
           background-color: #F2F2F2;
           float: left;
         }
@@ -925,6 +909,8 @@ span.price {
         .desc-i{
           display:table-cell;
           vertical-align:middle;
+          text-decoration: none;
+          color: black;
         }
         .column title{
           text-align:left;
@@ -939,6 +925,7 @@ span.price {
         }
         .price .new-price,.price .old-price{
           display:inline-block;
+          margin-left: 10px;
         }
         .price{
           display:inline-block;
@@ -967,8 +954,9 @@ span.price {
         }
         .title{
           font-size:.85em;
-          color:#4183D7;
+          color:black;
           display: block;
+          margin-left: 10px;
           /* Fallback for non-webkit */
           display: -webkit-box;
           /* Fallback for non-webkit */
@@ -1028,7 +1016,7 @@ span.price {
            min-height: 400px;
            text-align: center;
            border: #F2D0AB;
-           margin-top: 60px;
+           
          }
 
          .container1.post_ad-wrapper{
@@ -1060,6 +1048,10 @@ span.price {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-gap: 10px;
+        }
+
+        .down-sign{
+          height: 400px;
         }
 
         .details form label{
