@@ -326,8 +326,9 @@ input#search-bar:focus:-ms-placeholder {
 .footer .main:after,
 .label:after {
 	content: "";
-	display: block;
-	clear: both
+	display: inline-block;
+  clear: both
+  
 }
 
 .input {
@@ -354,7 +355,7 @@ input#search-bar:focus:-ms-placeholder {
 
 @media (min-width:504px) {
 	.list {
-		display: block!important;
+		display: inline-block!important;
 		margin: 0
 	}
 }
@@ -962,7 +963,8 @@ textarea {
 }
 
 .dow {
-	height: 16px;
+  height: 16px;
+  background-color: #F6F8FA;
 }
 
 .container-view-ads .view-ads {
@@ -1052,7 +1054,32 @@ li .img-i {
 	display: table-cell;
 	vertical-align: middle;
 	text-decoration: none;
-	color: black;
+  color: black;
+  display: inline-block;
+  width: 68%;
+}
+
+.desc-i .title{
+  padding: 2px; 
+  margin-top: 5px;
+  font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  display: inline-block;
+  width: 100%;
+
+}
+
+.delete-btn a{
+  background-color: purple;
+  color: pink;
+  width: 7em;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-left: 15px;
+  text-decoration: none;
+  
 }
 
 .column title {
@@ -1070,12 +1097,13 @@ li .img-i {
 .price .new-price,
 .price .old-price {
 	display: inline-block;
-	margin-left: 10px;
+  margin-left: 10px;
+  margin: 5px;
 }
 
 .price {
-	display: inline-block;
-	font-family: Helvetica, Arial;
+	display: inline;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 .price .new-price {
@@ -1119,16 +1147,16 @@ li .img-i {
 	height: 2rem;
 }
 
-.next-btn {
+.view-ads .next-btn {
 	background: #532380;
 	color: #FFAF30;
 	font-size: 1.2rem;
 	padding: 1rem 2rem;
 	text-decoration: none;
 	border-radius: 12px;
-	margin-top: 50%;
+	margin-top: 26%;
 	margin-left: 45%;
-	position: center;
+	display: inline-block;
 }
 
 .mixitup .mix {

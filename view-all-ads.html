@@ -15,15 +15,14 @@
 
 <body>
     <header class="header">
-        <a href="" class="logo">AUTOMART</a>
+        <a href="index.html" class="logo">AUTOMART</a>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
             <li><a href="index.html">HOME</a></li>
             <li><a href="post_ad.html">SELL A CAR</a></li>
             <li><a href="view-all-ads.html">FIND A CAR</a></li>
-            <li><a href="sign-up.html">Register</a></li>
-            <li><a href="sign-in.html">Login</a></li>
+            <li><a href="admin-delete-ad.html">Admin</a></li>
 
         </ul>
     </header>
@@ -44,7 +43,7 @@
 
                         <button class="button small js-reset">Reset Filters</button>
 
-                        <!-- Pagination buttons will be generated here -->
+
                         <div class="pager-list"></div>
 
                     </div>
@@ -124,10 +123,6 @@
                                                     <select id="minPrice" name="minPrice" title="Minimum Price"
                                                         class="filter filterPrice fancySelect">
                                                         <option value="price-0" selected>No Minimum Price</option>
-                                                        <option value="price-100000">&pound;100,000</option>
-                                                        <option value="price-200000">&pound;200,000</option>
-                                                        <option value="price-300000">&pound;300,000</option>
-                                                        <option value="price-400000">&pound;400,000</option>
                                                         <option value="price-500000">&pound;500,000</option>
                                                         <option value="price-750000">&pound;750,000</option>
                                                         <option value="price-1000000">&pound;1,000,000</option>
@@ -148,12 +143,7 @@
                                                         title="Maximum Price" class="filter filterPrice fancySelect">
                                                         <option value="price-10000000" selected>No Maximium Price
                                                         </option>
-                                                        <option value="price-100000">&pound;100,000</option>
-                                                        <option value="price-200000">&pound;200,000</option>
-                                                        <option value="price-300000">&pound;300,000</option>
-                                                        <option value="price-400000">&pound;400,000</option>
-                                                        <option value="price-500000">&pound;500,000</option>
-                                                        <option value="price-750000">&pound;750,000</option>
+
                                                         <option value="price-1000000">&pound;1,000,000</option>
                                                         <option value="price-1500000">&pound;1,500,000</option>
                                                         <option value="price-2000000">&pound;2,000,000</option>
@@ -304,11 +294,11 @@
                 <h3><svg viewBox="0 0 24 24">
                         <path fill="#013243"
                             d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
-                    </svg>ALL CARS
+                    </svg>ALL CARS AVAILABLE
                 </h3>
                 <li>
                     <div class="img-i">
-                        <a href="#"><img src="./UI/img/Benz.png" alt="product1"></a>
+                        <a href="car-details.html"><img src="./UI/img/Benz.png" alt="product1"></a>
                     </div>
 
                     <div class="desc-i">
@@ -318,28 +308,17 @@
                             completely new and will make the user experience even more exciting.</a>
                         <div class="price">
                             <div class="new-price">
+                                    
                                 <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
-                            <div class="old-price">
-                                <s class="curr">$</s><s class="num">450</s>
-                            </div>
+
+                                <h3 class="delete-btn"><a href="report-ad.html">REPORT AD</a></h3>
                         </div>
-                        <div class="react">
-                            <span class="cart"><svg viewBox="0 0 24 24">
-                                    <path fill="#4daf7c"
-                                        d="M11,9H13V6H16V4H13V1H11V4H8V6H11M7,18A2,2 0 0,0 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0 7,18M17,18A2,2 0 0,0 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20A2,2 0 0,0 17,18M7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L21.16,4.96L19.42,4H19.41L18.31,6L15.55,11H8.53L8.4,10.73L6.16,6L5.21,4L4.27,2H1V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.29,15 7.17,14.89 7.17,14.75Z" />
-                                </svg></span><span class="quick-view"><svg viewBox="0 0 24 24">
-                                    <path fill="#013243"
-                                        d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
-                                </svg></span><span class="wishlist"><svg viewBox="0 0 24 24">
-                                    <path fill="#ff9999"
-                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                                </svg></span>
-                        </div>
+
                     </div>
                 </li>
                 <li>
                     <div class="img-i">
-                        <a href="#"><img src="./UI/img/Gwagon.jpg" alt="product1"></a>
+                        <a href="car-details.html"><img src="./UI/img/Gwagon.jpg" alt="product1"></a>
                     </div>
 
                     <div class="desc-i">
@@ -350,61 +329,38 @@
                         <div class="desc-b">
                             <div class="price">
                                 <div class="new-price">
-                                    <span class="curr">$</span><span class="num">34,234,230.00</span></div>
-                                <div class="old-price">
-                                    <s class="curr">$</s><s class="num">450</s>
-                                </div>
+                                       
+                                    <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
+                                    <h3 class="delete-btn"><a href="report-ad.html">REPORT AD</a></h3>
+
                             </div>
-                            <div class="react">
-                                <span class="cart"><svg viewBox="0 0 24 24">
-                                        <path fill="#4daf7c"
-                                            d="M11,9H13V6H16V4H13V1H11V4H8V6H11M7,18A2,2 0 0,0 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0 7,18M17,18A2,2 0 0,0 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20A2,2 0 0,0 17,18M7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L21.16,4.96L19.42,4H19.41L18.31,6L15.55,11H8.53L8.4,10.73L6.16,6L5.21,4L4.27,2H1V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.29,15 7.17,14.89 7.17,14.75Z" />
-                                    </svg></span><span class="quick-view"><svg viewBox="0 0 24 24">
-                                        <path fill="#013243"
-                                            d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
-                                    </svg></span><span class="wishlist"><svg viewBox="0 0 24 24">
-                                        <path fill="#ff9999"
-                                            d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                                    </svg></span>
-                            </div>
+
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="img-i">
-                        <a href="#"><img src="./UI/img/Range rover.jpg" alt="product3"></a>
+                        <a href="car-details.html"><img src="./UI/img/Range rover.jpg" alt="product3"></a>
                     </div>
 
                     <div class="desc-i">
-                        <a class="title">PERFORMANCE. Top speed (mph) 130. Acceleration 0-60mph (secs) 7.1.
+                        <a class="title">PERFORMANCE. Top speed (mph) 130. <br> 0-60mph (secs) 7.1.
                             EPA - ESTIMATED FUEL ECONOMY. <br> City (mpg) Highway (mpg) Combined (mpg) ...
-                            ENGINE. Maximum Power (hp @ rpm) 340 @ 6,500. <br> Torque (lb-ft @ rpm) ...
-                            WEIGHT. Curb weight (from - lbs) 4,974. Gross Vehicle Weight (lbs)</a>
-
+                            ENGINE. <br>Maximum Power (hp @ rpm) 340 @ 6,500. <br> Torque (lb-ft @ rpm) ...
+                            WEIGHT. <br>Curb weight (from - lbs) 4,974. Gross Vehicle Weight (lbs)</a>
+                            
                         <div class="price">
                             <div class="new-price">
-                                <span class="curr">$</span><span class="num">34,234,230.00</span></div>
-                            <div class="old-price">
-                                <s class="curr">$</s><s class="num">80</s>
-                            </div>
+                               
+                                <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
+                                <h3 class="delete-btn"><a href="report-ad.html">REPORT AD</a></h3>
                         </div>
-                        <div class="react">
-                            <span class="cart"><svg viewBox="0 0 24 24">
-                                    <path fill="#4daf7c"
-                                        d="M11,9H13V6H16V4H13V1H11V4H8V6H11M7,18A2,2 0 0,0 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0 7,18M17,18A2,2 0 0,0 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20A2,2 0 0,0 17,18M7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L21.16,4.96L19.42,4H19.41L18.31,6L15.55,11H8.53L8.4,10.73L6.16,6L5.21,4L4.27,2H1V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.29,15 7.17,14.89 7.17,14.75Z" />
-                                </svg></span><span class="quick-view"><svg viewBox="0 0 24 24">
-                                    <path fill="#013243"
-                                        d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
-                                </svg></span><span class="wishlist"><svg viewBox="0 0 24 24">
-                                    <path fill="#ff9999"
-                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                                </svg></span>
-                        </div>
+
                     </div>
                 </li>
                 <li>
                     <div class="img-i">
-                        <a href="#"><img src="./UI/img/lamborghini-urus.jpg" alt="product1"></a>
+                        <a href="car-details.html"><img src="./UI/img/lamborghini-urus.jpg" alt="product1"></a>
                     </div>
 
                     <div class="desc-i">
@@ -415,32 +371,22 @@
                         <div class="desc-b">
                             <div class="price">
                                 <div class="new-price">
-                                    <span class="curr">$</span><span class="num">34,234,230.00</span></div>
-                                <div class="old-price">
-                                    <s class="curr">$</s><s class="num">450</s>
-                                </div>
+                                    
+                                    <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
+                                    <h3 class="delete-btn"><a href="report-ad.html">REPORT AD</a></h3>
                             </div>
-                            <div class="react">
-                                <span class="cart"><svg viewBox="0 0 24 24">
-                                        <path fill="#4daf7c"
-                                            d="M11,9H13V6H16V4H13V1H11V4H8V6H11M7,18A2,2 0 0,0 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20A2,2 0 0,0 7,18M17,18A2,2 0 0,0 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20A2,2 0 0,0 17,18M7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L21.16,4.96L19.42,4H19.41L18.31,6L15.55,11H8.53L8.4,10.73L6.16,6L5.21,4L4.27,2H1V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.29,15 7.17,14.89 7.17,14.75Z" />
-                                    </svg></span><span class="quick-view"><svg viewBox="0 0 24 24">
-                                        <path fill="#013243"
-                                            d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
-                                    </svg></span><span class="wishlist"><svg viewBox="0 0 24 24">
-                                        <path fill="#ff9999"
-                                            d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                                    </svg></span>
-                            </div>
+
                         </div>
                     </div>
                 </li>
-                <a class="next-btn" href="#">NEXT</a>
+                
             </ul>
 
-
+            <a class="next-btn" href="#">NEXT</a>
         </div>
     </section>
+
+    <!--page footer begins here-->
     <footer class="footer">
         <div class="main">
             <div class="submain"><input type="checkbox" id="footer-our-company" class="input"><label
@@ -473,4 +419,5 @@
         </div>
     </footer>
 </body>
+
 </html>
