@@ -315,21 +315,6 @@ input#search-bar:focus:-ms-placeholder {
 
 
 
-nav ul li a{
-    line-height: 80px;
-    color: #FFAF30;
-    padding: 5px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
-    background-color: blue;
-    
-    
-}
-
-
-
 
 .scroll-arrow {
 position: absolute;
