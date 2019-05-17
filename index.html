@@ -10,21 +10,21 @@
 </head>
 
 <body>
-    <script type="text/javascript" src="index.js"></script>
-    <header class="v-header container">
-        <div class="wrap">
-            <nav>
-                <div class="logo" href="index.html">AUTOMART</div>
-                <ul>
-                    <li><a class="active" href="#">Home</a></li>
-                    <li><a href="#">SELL A CAR</a></li>
-                    <li><a href="#">FIND A CAR</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    
+    <header class="header">
+            <a href="" class="logo">AUTOMART</a>
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <ul class="menu">
+              <li><a href="index.html">HOME</a></li>
+              <li><a href="post_ad.html">SELL A CAR</a></li>
+              <li><a href="view-all-ads.html">FIND A CAR</a></li>
+              <li><a href="sign-up.html">Register</a></li>
+              <li><a href="sign-in.html">Login</a></li>
+              
+            </ul>
+          </header>
+    
     <div class="fullscreen-video-wrap">
         <video src="UI/video/movie.webm" autoplay="true" loop="true" muted='false'> </video>
     </div>
@@ -35,9 +35,10 @@
             <p>Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
                 Auto Mart, you can sell your car or buy from trusted dealerships or private sellers.
             </p>
-            <a class="btn" href="#">Find my Car</a>
+            <a class="btn-car" href="view-all-ads.html">Find my Car</a>
         </div>
     </div>
+    <!--drop down arrow indicator in showcase area-->
     <div class="scroll-arrow">
         <span></span>
         <span></span>
@@ -45,17 +46,16 @@
     </div>
     <section class="section section-a">
         <div class="container">
-            <h2>Featured Cars</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et
-                maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod
-                quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur
-                ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
+            <form class="search-container">
+                    <input type="text" id="search-bar" placeholder="Search with keyword">
+                    <a href="#"><img class="search-icon" src="UI/img/search-icon.png"></a>
+                  </form>
         </div>
     </section>
     <section id="products">
         <div class="container-products">
             <div class="products-header">
-                <h2>popular Cars</h2>
+                <h2>Featured Cars</h2>
             </div>
             <div class="product product-1">
                 <figure> <img src="UI/img/Benz.png" alt="product-image">
@@ -88,15 +88,7 @@
             <p class="button">view all</p>
         </div>
     </section>
-    <section class="section section-b">
-        <div class="container">
-            <h2>Section B</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et
-                maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod
-                quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur
-                ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
-        </div>
-    </section>
+    
     <footer class="footer">
         <div class="main">
             <div class="submain"><input type="checkbox" id="footer-our-company" class="input"><label
