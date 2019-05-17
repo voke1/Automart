@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="automobiles online marketplace">
+    <meta name="keywords" content="Automobile online marketplace">
+    <meta name="author" content="Voke Olomu">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Auto Mart</title>
+    <link rel="stylesheet" type="text/css" href="UI/css/style.css" />
+</head>
+
+
+<body>
+    <header class="header">
+        <a href="" class="logo">AUTOMART</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="post_ad.html">SELL A CAR</a></li>
+            <li><a href="view-all-ads.html">FIND A CAR</a></li>
+            <li><a href="admin-delete-ad.html">Admin</a></li>
+
+        </ul>
+    </header>
+    <div class="dow"></div>
+    <section class="container-view-ads">
+        <div class="search-filter">
+
+            <div class="row bglight mastfilter">
+
+                <div class="column medium-4 large-3">
+
+                    <div class="masthead_title">
+
+                        <h1>Cars For Sale</h1>
+
+                        <h5 class="">Showing <span class="mixCount"><i class="fa fa-cog fa-spin"></i></span> properties
+                        </h5>
+
+                        <button class="button small js-reset">Reset Filters</button>
+
+
+                        <div class="pager-list"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="column medium-8 fr">
+
+                    <div class="mixitup_filter accordian" id="js-filters">
+
+                        <div class="dropdown">
+                            <div class="row">
+
+                                <div class="column medium-4">
+                                    <div class="search_type filter">
+                                        <fieldset>
+                                            <label for="filter-county">Search by Manufacturer</label>
+                                            <select id="filter-county" name="filter-county"
+                                                class="filter filterDropdown fancySelect">
+                                                <option value="">All</option>
+                                                <option value=".cheshire">G-wagon</option>
+                                                <option value=".gloucestershire">Mercedes-Benz</option>
+                                                <option value=".herefordshire">Toyota</option>
+                                                <option value=".shropshire">Volvo</option>
+                                                <option value=".staffordshire">lamborghini</option>
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="column medium-4">
+                                    <div class="search_type sort">
+                                        <label>Sort by</label>
+                                        <select id="sort-price" name="sort-price"
+                                            class="fancySelect sort mixSortSelect">
+
+                                            <option selected value="price:desc">Price (High to Low)</option>
+                                            <option value="price:asc">Price (Low to High)</option>
+                                            <option value="name:asc">Property Name (A-Z)</option>
+                                            <option value="name:desc">Property Name (Z-A)</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="column medium-4">
+                                    <div class="search_type filter">
+                                        <fieldset>
+                                            <label for="filter--text">Search by Car state</label>
+                                            <div id="filter_name">
+                                                <label for="filter--text"><i class="fa fa-search"></i></label>
+                                                <input id="filter--text" name="filter_name" type="text" class="full"
+                                                    placeholder="Quick search..." value="" autocomplete="off"
+                                                    data-filter="">
+                                                <button name="filter_name_reset" id="filter_name_reset"
+                                                    class="tipped js-clear" title="Clear" type="submit"
+                                                    value="Reset"><i>&times;</i></button>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+
+                                <div class="column medium-8">
+                                    <div class="row">
+                                        <div class="column medium-6">
+
+                                            <div class="search_type filter">
+                                                <fieldset>
+                                                    <label for="minPrice">Price Min</label>
+                                                    <select id="minPrice" name="minPrice" title="Minimum Price"
+                                                        class="filter filterPrice fancySelect">
+                                                        <option value="price-0" selected>No Minimum Price</option>
+                                                        <option value="price-500000">&pound;500,000</option>
+                                                        <option value="price-750000">&pound;750,000</option>
+                                                        <option value="price-1000000">&pound;1,000,000</option>
+                                                        <option value="price-1500000">&pound;1,500,000</option>
+                                                        <option value="price-2000000">&pound;2,000,000</option>
+                                                        <option value="price-3000000">&pound;3,000,000</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+
+                                        </div>
+                                        <div class="column medium-6">
+
+                                            <div class="search_type filter">
+                                                <fieldset>
+                                                    <label for="maxPrice">Price Max</label>
+                                                    <select data-mix-filter="true" id="maxPrice" name="maxPrice"
+                                                        title="Maximum Price" class="filter filterPrice fancySelect">
+                                                        <option value="price-10000000" selected>No Maximium Price
+                                                        </option>
+
+                                                        <option value="price-1000000">&pound;1,000,000</option>
+                                                        <option value="price-1500000">&pound;1,500,000</option>
+                                                        <option value="price-2000000">&pound;2,000,000</option>
+                                                        <option value="price-3000000">&pound;3,000,000</option>
+                                                        <option value="price-5000000">&pound;5,000,000</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <input class="range-values">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="row">
+                <div class="column">
+
+                    <div id="js-results" class="container">
+                        <div class="search_results mixitup pagination">
+
+                            <br>
+                            <hr>
+                            <br>
+
+                            <div id="326" class="row result mix price-5000000 farm-house gloucestershire"
+                                data-price="4500000">
+                                <div class="column">
+
+                                    <div class="row">
+                                        <div class="column medium-8 title">
+                                            <h3>Property 1 Farm House</h3>
+                                            <h5>Gloucestershire</h5>
+                                        </div>
+
+                                        <div class="column medium-4 saleType">
+                                            <h4 class="property_price">&pound;4,500,000</h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div id="464" class="row result mix price-3000000 country-farm herefordshire"
+                                data-price="2500000">
+                                <div class="column">
+
+                                    <div class="row">
+                                        <div class="column medium-8 title">
+                                            <h3>Property 2 Country Farm</h3>
+                                            <h5>Herefordshire</h5>
+                                        </div>
+                                        <div class="column medium-4 saleType">
+                                            <h4 class="property_price">&pound;2,500,000</h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div id="467" class="row result mix price-3000000 small-house market-drayton staffordshire "
+                                data-price="2300000">
+                                <div class="column">
+
+                                    <div class="row">
+                                        <div class="column medium-8 title">
+                                            <h3>Property 3 Small House</h3>
+                                            <h5>Market Drayton, Staffordshire</h5>
+                                        </div>
+
+                                        <div class="column medium-4 saleType">
+                                            <h4 class="property_price">&pound;2,300,000</h4>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div id="513"
+                                class="row result mix price-2000000 mansion cheshire equestrian landfarm countryhouse development commercial"
+                                data-price="1950000">
+                                <div class="column">
+
+                                    <div class="row">
+                                        <div class="column medium-8 title">
+                                            <h3>Property 4 Mansion</h3>
+                                            <h5>Cheshire</h5>
+                                        </div>
+                                        <div class="column medium-4 saleType">
+                                            <h4 class="property_price">&pound;1,950,000</h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div id="146"
+                                class="row result mix price-2000000 lake-house warrington cheshire landfarm commercial"
+                                data-price="1700000">
+                                <div class="column">
+
+                                    <div class="row">
+                                        <div class="column medium-8 title">
+                                            <h3>Property 5 Lake House</h3>
+                                            <h5>Warrington, Cheshire</h5>
+                                        </div>
+                                        <div class="column medium-4 saleType">
+                                            <h4 class="property_price">&pound;1,700,000</h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="view-ads">
+            <ul class="column">
+                <h3><svg viewBox="0 0 24 24">
+                        <path fill="#013243"
+                            d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
+                    </svg>ALL CARS
+                </h3>
+                
+                <li>
+                    <div class="img-i">
+                        <a href="#"><img src="./UI/img/Gwagon.jpg" alt="product1"></a>
+                    </div>
+
+                    <div class="desc-i">
+                        <a class="title">Both G 550 models share a 4.0L turbo V8 engine that makes 416 hp and
+                            450 lb-ft of torque. <br>
+                            The G 63 gets a 5.5L turbo V8 good for 563 hp and 560 lb-ft and the G65 uses a 6.0L V12 that
+                            cranks out 621 hp and 738 lb-ft.</a>
+                        <div class="desc-b">
+                            <div class="price">
+                                <div class="new-price">
+                                        <span class="state-condition"><a class="conditions">SOLD: &nbsp;</a></span>
+                                    <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
+                                    <h3 class="delete-btn"><a href="ad-deleted.html">DELETE AD</a></h3>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-i">
+                        <a href="#"><img src="./UI/img/Range rover.jpg" alt="product3"></a>
+                    </div>
+
+                    <div class="desc-i">
+                        <a class="title">PERFORMANCE. Top speed (mph) 130. <br> 0-60mph (secs) 7.1.
+                            EPA - ESTIMATED FUEL ECONOMY. <br> City (mpg) Highway (mpg) Combined (mpg) ...
+                            ENGINE. <br>Maximum Power (hp @ rpm) 340 @ 6,500. <br> Torque (lb-ft @ rpm) ...
+                            WEIGHT. <br>Curb weight (from - lbs) 4,974. Gross Vehicle Weight (lbs)</a>
+                            
+                        <div class="price">
+                            <div class="new-price">
+                                <span class="state-condition"><a class="conditions">SOLD: &nbsp;</a></span>
+                                <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
+                                <h3 class="delete-btn"><a href="ad-deleted.html">DELETE AD</a></h3>
+                        </div>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="img-i">
+                        <a href="#"><img src="./UI/img/lamborghini-urus.jpg" alt="product1"></a>
+                    </div>
+
+                    <div class="desc-i">
+                        <a class="title">The engine is rated at a maximum power output of 478 kW (641 hp; 650
+                            PS) at 6,000 rpm and maximum torque of 850 N⋅m (627 lb⋅ft) at 2,250–4,500 rpm. The Urus has
+                            a front-engine, all-wheel-drive layout, <br>
+                            a top speed of 305 km/h (190 mph) making it one of the world's fastest production SUVs.</a>
+                        <div class="desc-b">
+                            <div class="price">
+                                <div class="new-price">
+                                    <span class="state-condition"><a class="conditions">UNSOLD: &nbsp;</a></span>
+                                    <span class="curr">NGN</span><span class="num">34,234,230.00</span></div>
+                                    <h3 class="delete-btn"><a href="ad-deleted.html">DELETE AD</a></h3>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+
+            <a class="next-btn" href="#">NEXT</a>
+        </div>
+    </section>
+
+    <!--page footer begins here-->
+    <footer class="footer">
+        <div class="main">
+            <div class="submain"><input type="checkbox" id="footer-our-company" class="input"><label
+                    for="footer-our-company" class="label"><span class="_34Lkm">AUTOMART</span><svg class="svg">
+                        <use xlink:href="#chevron"></use>
+                    </svg></label>
+                <ul class="list">
+                    <li><a>About </a></li>
+                    <li><a>Dealers</a></li>
+                    <li><a>Contact </a></li>
+                </ul>
+            </div>
+            <div class="submain"><input type="checkbox" id="footer-buying" class="input"><label for="footer-buying"
+                    class="label"><span class="_34Lkm">Buying &amp; Selling</span><svg class="svg">
+                        <use xlink:href="#chevron"></use>
+                    </svg></label>
+                <ul class="list">
+                    <li><a>Find a Car</a></li>
+                    <li><a>Sell Your Car</a></li>
+                    <li><a>Car Dealers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="_1lul1">
+            <div class="main">
+                <div class="_2N4Iz"><a>Terms of Service</a><a>Privacy Statement</a><a>Ad Choices</a><span
+                        id="signal-link-container-footer" class="_270kB"></span></div>
+                <div class="_19tgC">© <span>2019</span> AUTOMART<span> All rights reserved.</span></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
