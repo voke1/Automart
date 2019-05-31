@@ -1,25 +1,20 @@
-import express from "express";
-import logger from "morgan";
-import bodyParser from "body-parser";
-import { parse } from "querystring";
+const express = require("express");
+const logger = require("morgan");
+const bodyParser = require("body-parser");
 
-//set up the express app
 
-const app = express;
-const port =  parseInt(process.env.PORT, 10 || 3000);
+const app = express();
 
-//log request to console.
-app.request(logger("dev"));
+app.use(logger("dev"));
 
-//Parse incoming request data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-//setup default cache-all route 
 
-app.get("", (req, res) => res.status(200).send({
-    message: "Welcome to Automart"
-}));
+app.use((req, res, next) => {
+    res.status(200).json({
+        message: "Welcome to Automart, an online marketplace for automobile"
+    });
+})
 
-//start the express server
-app.listen(port, () => console.log(`server running on port ${port}`));
+module.exports = app;

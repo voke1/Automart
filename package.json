@@ -4,9 +4,9 @@
   "description": "an online marketplace for automobile",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon --exec babel-node ./SERVER/app",
+    "start:dev": "nodemon --exec babel-node ./SERVER/server",
     "test": "echo \"Error: no test specified\" && exit 1"
-      },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/voke1/Atmrt.git"
