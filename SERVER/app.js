@@ -1,20 +1,20 @@
+
+//app.js
 const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 
-
 const app = express();
+const orderRoutes =  require("./routes/cars");
 
-app.use(logger("dev"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(logger("dev"));
 
 
-app.use((req, res, next) => {
-    res.status(200).json({
-        message: "Welcome to Automart, an online marketplace for automobile"
-    });
-})
+app.use(("/car", orderRoutes));
 
 module.exports = app;
+
+
