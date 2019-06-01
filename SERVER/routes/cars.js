@@ -13,16 +13,28 @@ router.get("/car", (req, res, next) => {
     res.status(200).json({
 
         status: 200,
-        data: {
+        data: [
+            {
             id: id,
-            email: 'String',
             created_on: 'DateTime',
             manufacturer: 'String',
             model: 'String',
             price: 'Float',
             state: 'String',
             status: "String",
+            body_type: "string"
         },
+        {
+            id: id,
+            created_on: 'DateTime',
+            manufacturer: 'String',
+            model: 'String',
+            price: 'Float',
+            state: 'String',
+            status: "String",
+            body_type: "string"
+        }
+    ]
 
     })
 });
