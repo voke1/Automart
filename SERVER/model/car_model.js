@@ -15,25 +15,17 @@ class Car {
    */
   create(data) {
     const newCar = {
+        status: 200,
+        data:{
       id: uuid.v4(),
-      success: data.success || '',
-      lowPoint: data.lowPoint || '',
-      takeAway: data.takeAway || '',
+      manufacturer: data.manufacturer || '',
+      model: data.model || '',
+      price: data.price || '',
+      status: data.status || '',
+      state: data.state || '',
+      body_type: data.body_type || '',
       createdDate: moment.now(),
       modifiedDate: moment.now()
-    };
-    const newCari = {
-        status: 200,
-        data: 
-            {
-            id: uuid.v4(),
-            created_on: moment.now(),
-            manufacturer: 'String',
-            model: 'String',
-            price: 'Float',
-            state: 'String',
-            status: "String",
-            body_type: "string",
         }
     };
 
