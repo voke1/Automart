@@ -1,19 +1,19 @@
-import CarModel from '../model/car_model';
+import UserModel from '../model/user_model';
 
-const Car = {
+const User = {
   /**
    * 
    * @param {object} req 
    * @param {object} res
-   * @returns {object} car object 
+   * @returns {object} user object 
    */
   create(req, res) {
-    if (!req.body.password && !req.body.price && !req.body.model) {
+    if (!req.body.password && !req.body.email && !req.body.firstname) {
       return res.status(400).send({'message': 'All fields are required'})
     }
-    const car = CarModel.create(req.body);
-    return res.status(201).send(car);
+    const user = UserModel.create(req.body);
+    return res.status(201).send(user);
   }
 }
 
-export default Car;
+export default User;

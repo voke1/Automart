@@ -22,12 +22,8 @@ class User {
       email: data.email || '',
       firstname: data.firstname || '',
       lastname: data.lastname || '',
-      password: bcrypt.hash(data.password, 10, (err, hash) => {
-        if(err){
-            return res.status(500).json({error: err})
-            
-        }else{}
-      }),
+      password: data.password,
+       
       isAdmin: data.state || '',
       createdDate: moment.now(),
       modifiedDate: moment.now()
@@ -39,4 +35,4 @@ class User {
   }
   
 }
-export default new Car();
+export default new User();
