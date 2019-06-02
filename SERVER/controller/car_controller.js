@@ -1,4 +1,4 @@
-import CarModel from '../model/car_model';
+import CarModel from '../user_model.js/car_model';
 
 const Car = {
   /**
