@@ -1,10 +1,12 @@
+
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
-import Car from '../controller/car_controller';
+import User from '../controller/user_controller';
 
-router.get('/cars', Car.getAll);
-router.post('/cars', Car.create);
+
+router.post('/signin', User.create);
 
 
 
