@@ -22,10 +22,11 @@ class User {
         status: 200,
         data:{
       id: uuid.v4(),
+      token: data.token,
       email: data.email || '',
       firstname: data.firstname || '',
       lastname: data.lastname || '',
-      password: bcrypt.hash(data.password, 10, function(error, hash){
+      password: bcrypt.hashSync(data.password, 10, function(error, hash){
           if(error){
               console.log(error)
           }else{

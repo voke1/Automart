@@ -3,8 +3,8 @@ const router = express.Router();
 
 import Car from '../controller/car_controller';
 
-router.get('/cars', Car.getAll);
-router.post('/cars', Car.create);
+router.get('/api/v1/cars', Car.getAll);
+router.post('/api/v1/cars', Car.create);
 
 
 

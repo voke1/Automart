@@ -1,5 +1,7 @@
 import UserModel from '../model/user_model';
 import bcrypt from  "bcrypt";
+import jwt from "jsonwebtoken";
+require ('dotenv').config();
 
 
 const User = {
@@ -14,7 +16,9 @@ const User = {
       return res.status(400).send({'message': 'All fields are required'})
     }
 
-    const user = UserModel.create(req.body);
+    req.body.token = jwt.sign(req.body.email, process.env.TOKEN)
+      
+      const user = UserModel.create(req.body);
     return res.status(201).send(user);
   },
   /**
@@ -38,15 +42,21 @@ const User = {
     if (!user) {
       return res.status(404).send({'message': 'user not found'});
     }
+    
     bcrypt.compare(req.body.password, UserModel.password, (error, result) => {
         if(error){
-            return res.status(404).send({"message": "Auth failed"})
-        }else{
+            return res.status(401).send({"message": "Auth failed"})
+            
+        }if(result){
             return res.status(200).send({" message": "Auth successful"})
         }
+        
     })
-    return res.status(200).send(user);
+      
+      return res.status(200).send(user);
 }
+  
+  
     
   
 }
