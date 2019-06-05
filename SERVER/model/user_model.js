@@ -25,11 +25,13 @@ class User {
       email: data.email || '',
       firstname: data.firstname || '',
       lastname: data.lastname || '',
-      password: bcrypt.hash(data.password, 10, (error, hash) =>{
+      password: bcrypt.hash(data.password, 10, function(error, hash){
           if(error){
               console.log(error)
-          }else{}
-      }),  
+          }else{
+
+          }
+      }),       
       isAdmin: data.state || '',
       createdDate: moment.now(),
       modifiedDate: moment.now()

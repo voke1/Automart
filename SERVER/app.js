@@ -14,6 +14,7 @@ app.use(logger("dev"));
 
 
 app.use(("/login", userRoutes));
+app.use(("/signup", userRoutes));
 
 module.exports = app;
 
