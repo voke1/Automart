@@ -1,7 +1,9 @@
 
 import moment from 'moment';
 import uuid from 'uuid';
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
+
+
 
 class User {
   /**
@@ -23,8 +25,7 @@ class User {
       email: data.email || '',
       firstname: data.firstname || '',
       lastname: data.lastname || '',
-      password: data.password,
-       
+      password: bcrypt.hash(data.password),  
       isAdmin: data.state || '',
       createdDate: moment.now(),
       modifiedDate: moment.now()
@@ -33,6 +34,21 @@ class User {
 
     this.users.push(newUser);
     return newUser;
+  }
+
+  /**
+   * 
+   * @param {uuid} id
+   * @returns {object} user object
+   */
+  findOne(id) {
+    return this.users.find(reflect => reflect.id === id);
+  }
+  /**
+   * @returns {object} returns all users
+   */
+  findAll() {
+    return this.users;
   }
   
 }

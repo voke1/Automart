@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger("dev"));
 
 
-app.use(("/signin", userRoutes));
+app.use(("/login", userRoutes));
 
 module.exports = app;
 
