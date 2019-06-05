@@ -1,6 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
-const bcrypt = require("bcrypt");
+
 
 class User {
   /**
