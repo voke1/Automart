@@ -6,7 +6,7 @@ const router = express.Router();
 import User from '../controller/user_controller';
 
 
-router.get('/login', User.getOne);
+router.post('/login', User.getOne);
 
 
 

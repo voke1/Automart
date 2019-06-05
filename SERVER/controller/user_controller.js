@@ -1,5 +1,6 @@
 import UserModel from '../model/user_model';
-import bcrypt from " bcrypt";
+import bcrypt from  "bcrypt";
+
 
 const User = {
   /**
@@ -37,6 +38,13 @@ const User = {
     if (!user) {
       return res.status(404).send({'message': 'user not found'});
     }
+    bcrypt.compare(req.body.password, UserModel.password, (error, result) => {
+        if(error){
+            return res.status(404).send({"message": "Auth failed"})
+        }else{
+            return res.status(200).send({" message": "Auth successful"})
+        }
+    })
     return res.status(200).send(user);
   },
 }
