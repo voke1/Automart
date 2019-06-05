@@ -1,5 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
+import bcrypt from "bcrypt";
 
 
 class User {
@@ -17,13 +18,18 @@ class User {
   create(data) {
     const newUser = {
         status: 200,
-        data:{
+        datas:{
       id: uuid.v4(),
       email: data.email || '',
       firstname: data.firstname || '',
       lastname: data.lastname || '',
-      password: data.password,
-       
+      password: bcrypt.hash(data.password, 10, function(error, hash){
+          if(error){
+              console.log(error)
+          }else{
+
+          }
+      }),       
       isAdmin: data.state || '',
       createdDate: moment.now(),
       modifiedDate: moment.now()
@@ -32,6 +38,15 @@ class User {
 
     this.users.push(newUser);
     return newUser;
+  }
+  /**
+   * 
+   * @param {uuid} id
+   * @returns {object} user object
+   */   
+
+  findOne(id) {
+   return this.users.find(reflect => reflect.id == id);
   }
   
 }
