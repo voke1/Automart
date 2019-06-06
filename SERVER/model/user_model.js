@@ -1,7 +1,7 @@
 
-import moment from 'moment';
-import uuid from 'uuid';
-import bcrypt from "bcrypt";
+
+ var uuid = require("uuid");
+ var bcrypt = require('bcrypt');
 
 
 
@@ -21,8 +21,8 @@ class User {
     const newUser = {
         status: 200,
         data:{
-      id: uuid.v4(),
-      token: data.token,
+      id: uuid.v4() || '',
+      token: data.token || '',
       email: data.email || '',
       firstname: data.firstname || '',
       lastname: data.lastname || '',
@@ -32,10 +32,8 @@ class User {
           }else{
 
           }
-      }),       
+      }) || '',       
       isAdmin: data.state || '',
-      createdDate: moment.now(),
-      modifiedDate: moment.now()
         }
     };
 
@@ -59,4 +57,4 @@ class User {
   }
   
 }
-export default new User();
+exports.default = new User();
