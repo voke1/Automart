@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)
+
 # AutoMart
 
 Automart
