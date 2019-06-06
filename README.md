@@ -2,7 +2,7 @@
 
 # AutoMart
 
-[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Coverage Status](https://coveralls.io/repos/github/voke1/AutoMart/badge.svg?branch=develop)](https://coveralls.io/github/voke1/AutoMart?branch=develop)    <a href="https://codeclimate.com/github/voke1/AutoMart/maintainability"><img src="https://api.codeclimate.com/v1/badges/ef3a5a387002a1bff028/maintainability" /></a>
+[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Coverage Status](https://coveralls.io/repos/github/voke1/Automart/badge.svg?branch=develop)](https://coveralls.io/github/voke1/Automart?branch=develop)     <a href="https://codeclimate.com/github/voke1/AutoMart/maintainability"><img src="https://api.codeclimate.com/v1/badges/ef3a5a387002a1bff028/maintainability" /></a>
 
 Automart
 
