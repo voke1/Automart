@@ -2,8 +2,7 @@
 
 # AutoMart
 
-[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Coverage Status](https://coveralls.io/repos/github/voke1/Automart/badge.svg?branch=develop)](https://coveralls.io/github/voke1/Automart?branch=develop)     <a href="https://codeclimate.com/github/voke1/AutoMart/maintainability"><img src="https://api.codeclimate.com/v1/badges/ef3a5a387002a1bff028/maintainability" /></a>
-
+[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Coverage Status](https://coveralls.io/repos/github/voke1/Automart/badge.svg?branch=develop)](https://coveralls.io/github/voke1/Automart?branch=develop)     [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 Automart
 
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
