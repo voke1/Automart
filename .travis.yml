@@ -9,4 +9,4 @@ cache:
 
 script: 
 
-  - server/test/user
+  - /server/test/user
