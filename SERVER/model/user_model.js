@@ -38,6 +38,7 @@ class User {
     };
 
     this.users.push(newUser);
+    console.log(newUser);
     return newUser;
   }
 
