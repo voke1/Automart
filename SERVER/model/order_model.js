@@ -20,9 +20,9 @@ class Order {
         status: 200,
         data:{
       id: uuid.v4(),
-      car_id: data.car_id || '',
-      status: data.status || '',
-      price: data.price || '',
+      car_id: data.car_id,
+      status: data.status,
+      price: data.price ,
       price_offered: data.price_offered,
       created_on: moment.now(),
       modifiedDate: moment.now()

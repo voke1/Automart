@@ -1,6 +1,6 @@
 import orderModel from '../model/order_model';
 
-const Car = {
+const Order = {
   /**
    * 
    * @param {object} req 
