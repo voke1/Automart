@@ -3,7 +3,7 @@ const router = express.Router();
 
 import Car from '../controller/car_controller';
 
-router.get('/cars/:carId/', Car.getOne);
+router.get('/api/v1/car/:carId/', Car.getOne);
 
 
 
