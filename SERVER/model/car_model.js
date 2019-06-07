@@ -34,54 +34,69 @@ class Car {
     this.cars.push(newCar);
     return newCar;
   }
-  
-   /**
-   * 
-   * @param {uuid} id
-   * @returns {object} car object
-   */
+
+  /**
+  * 
+  * @param {uuid} id
+  * @returns {object} car object
+  */
   findOne(id) {
     return this.cars.find(reflect => reflect.id === id);
   }
 
-  
-  findAvailableCars(cars) {
 
-    ;
+  findAvailableCars(cars) {
     var availableCars = [];
 
-    for (var i=0; i< cars.length; i++) {
-  
-      if (cars[i].status == 'available'){
-        availableCars.push(cars[i])
+    for (var i = 0; i < cars.length; i++) {
 
-      } 
-      
+      if (cars[i].status == 'available') {
+        availableCars.push(cars[i])
+      }
+
     }
     return availableCars;
   }
-  
+
+  findFilterCars(minPrice, maxPrice) {
+    unsoldCars = findAvailableCars();
+    carRange = []
+
+    for (var i = 0; i < unsoldCars.length; i++) {
+
+      if (unsoldCars[i].price <= maxPrice && unsoldCars[i].price >= minPrice) {
+        carsRange.push(availableCars[i])
+
+      }
+
+    }
+    return carsRange;
+  }
+
   findOne(id) {
     return this.cars.find(reflect => reflect.id === id);
   }
-  
-    /**
-   * 
-   * @param {uuid} id 
-   */
+
+  /**
+ * 
+ * @param {uuid} id 
+ */
   delete(id) {
     const car = this.findOne(id);
     const index = this.cars.indexOf(car);
     this.cars.splice(index, 1);
     return {};
   }
+
+
+
   /**
    * @returns {object} returns all cars
    */
   findAll() {
     return this.cars;
   }
-  
+
 }
 export default new Car();
 

@@ -1,4 +1,3 @@
-
 import CarModel from '../model/car_model';
 
 const Car = {
@@ -30,6 +29,18 @@ const Car = {
     CarModel.delete(req.params.id);
     return res.status(204).send({"message": "Car Ad successfully deleted"});
   },
+  
+  getFilterCars(req, res){
+    const cars = CarModel.findFilterCars(req.params.min_price,  req.params.max_price);
+    return res.status(200).send(cars)
+
+  },
+  /**
+   * 
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} car array
+   */
   getAll(req, res) {
     const cars = CarModel.findAll();
     return res.status(200).send(cars);
