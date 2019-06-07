@@ -16,6 +16,12 @@ const Car = {
     const car = CarModel.create(req.body);
     return res.status(201).send(car);
   },
+
+  getFilterCars(req, res){
+    const cars = CarModel.findFilterCars(req.params.min_price,  req.params.max_price);
+    return res.status(200).send(cars)
+
+  },
   /**
    * 
    * @param {object} req 

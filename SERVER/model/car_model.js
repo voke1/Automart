@@ -32,6 +32,23 @@ class Car {
     this.cars.push(newCar);
     return newCar;
   }
+  findFilterCars(minPrice, maxPrice){
+    unsoldCars = findAvailableCars();
+    carRange = []
+
+    for (var i=0; i< unsoldCars.length; i++) {
+  
+      if (unsoldCars[i].price <= maxPrice && unsoldCars[i].price >= minPrice ){
+        carsRange.push(availableCars[i])
+
+      } 
+      
+    }
+
+    return carsRange;
+
+  }
+  
   
   /**
    * @returns {object} returns all cars
