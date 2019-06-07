@@ -29,7 +29,13 @@ const Car = {
     CarModel.delete(req.params.id);
     return res.status(204).send({"message": "Car Ad successfully deleted"});
   },
-  
+
+  getUpdateStatus(){
+    const specifiedCar = CarModel.updateStatus(req.params.id)
+    return res.status(200).send(specifiedCar);
+
+  },
+
   getFilterCars(req, res){
     const cars = CarModel.findFilterCars(req.params.min_price,  req.params.max_price);
     return res.status(200).send(cars)

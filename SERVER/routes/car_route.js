@@ -9,7 +9,8 @@ router.post('/api/v1/car', Car.create);
 router.get('/api/v1/car/:carId/', Car.getOne);
 router.get('/api/v1/car?status=available', Car.getAvailableCars);
 router.get('/api/v1/car/:carId', Car.delete);
-router.get("/api/v1/car?status=available&min_price=XXXValue &max_price= XXXValue", Car.getFilterCars);
+router.get('/api/v1/car?status=available&min_price=XXXValue &max_price= XXXValue', Car.getFilterCars);
+router.patch('/api/v1/:carId/status', Car.getUpdateStatus)
 
 
 
