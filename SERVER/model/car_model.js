@@ -15,18 +15,20 @@ class Car {
    */
   create(data) {
     const newCar = {
-        status: 200,
-        data:{
-      id: uuid.v4(),
-      manufacturer: data.manufacturer,
-      model: data.model,
-      price: data.price,
-      status: data.status,
-      state: data.state,
-      body_type: data.body_type,
-      createdDate: moment.now(),
-      modifiedDate: moment.now()
-        }
+      status: 200,
+      data:
+      {
+        id: uuid.v4(),
+        created_on: moment.now(),
+        manufacturer: data.manufacturer,
+        model: data.model,
+        price: data.price,
+        state: data.state,
+        status: data.status,
+        body_type: data.body_type,
+        createdDate: moment.now(),
+        modifiedDate: moment.now()
+      }
     };
 
     this.cars.push(newCar);
@@ -41,6 +43,23 @@ class Car {
   findOne(id) {
     return this.cars.find(reflect => reflect.id === id);
   }
+
   
+  findAvailableCars(cars, stringAvailable) {
+
+    var stringAvailable = 'available';
+    var availableCars = [];
+
+    for (var i=0; i< cars.length; i++) {
+  
+      if (cars[i].status == stringAvailable){
+        availableCars.push(cars[i])
+
+      } 
+      
+    }
+    return availableCars;
+  }
+
 }
 export default new Car();

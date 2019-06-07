@@ -21,6 +21,11 @@ const Car = {
       return res.status(404).send({'message': 'car not found'});
     }
     return res.status(200).send(car);
+  },
+  getAvailableCars(req, res){
+    const cars = CarModel.findAvailableCars();
+    return res.status(200).send(cars)
+    
   }
 }
 
