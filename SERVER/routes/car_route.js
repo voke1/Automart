@@ -3,7 +3,7 @@ const router = express.Router();
 
 import Car from '../controller/car_controller';
 
-router.get('/cars', Car.getAll);
+router.get('/car/', Car.getAll);
 
 
 
