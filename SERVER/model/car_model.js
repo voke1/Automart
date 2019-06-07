@@ -59,10 +59,9 @@ class Car {
   }
 
   updateStatus(id){
-    var specificCar = findOne(id);
-    specificCar.status = "sold";
-
-    
+    const specificCar = this.findOne(id);
+    const index = this.cars.indexOf(specificCar);
+    this.cars[index].status =  "sold"; 
   }
 
   findFilterCars(minPrice, maxPrice) {
