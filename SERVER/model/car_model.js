@@ -58,6 +58,13 @@ class Car {
     return availableCars;
   }
 
+  updateStatus(id){
+    var specificCar = findOne(id);
+    specificCar.status = "sold";
+
+    
+  }
+
   findFilterCars(minPrice, maxPrice) {
     unsoldCars = findAvailableCars();
     carRange = []
