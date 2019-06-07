@@ -25,6 +25,12 @@ const Car = {
     const cars = CarModel.findAvailableCars();
     return res.status(200).send(cars)
   },
+
+  getUpdatePrice(req, res){
+    const car = CarModel.updateCarPrice(req.params.id, req.params.price);
+    return res.status(200).send(car);
+  
+  },
   delete(req, res){
     CarModel.delete(req.params.id);
     return res.status(204).send({"message": "Car Ad successfully deleted"});
