@@ -75,6 +75,13 @@ class Car {
     this.cars.splice(index, 1);
     return {};
   }
-}
+  /**
+   * @returns {object} returns all cars
+   */
+  findAll() {
+    return this.cars;
+  }
   
+}
 export default new Car();
+

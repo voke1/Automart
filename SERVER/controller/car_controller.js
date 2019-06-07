@@ -29,6 +29,10 @@ const Car = {
   delete(req, res){
     CarModel.delete(req.params.id);
     return res.status(204).send({"message": "Car Ad successfully deleted"});
+  },
+  getAll(req, res) {
+    const cars = CarModel.findAll();
+    return res.status(200).send(cars);
   }
 }
 
