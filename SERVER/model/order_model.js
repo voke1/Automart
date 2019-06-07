@@ -47,10 +47,12 @@ class Order {
    * @param {uuid} id
    * @param {object} data 
    */
-  edit(id, new_price_offered) {
+  updateOrderPrice(id, new_price_offered) {
     const order = this.findOne(id);
     const index = this.orders.indexOf(order);
+    const updatedPrice = this.orders[index].old_price_offered + this.orders[index].new_price_offered
     this.orders[index].old_price_offered = new_price_offered;
+    this.orders[index].new_price_offered = updatedPrice;
     this.orders[index].modifiedDate = moment.now()
     return this.orders[index];
   }

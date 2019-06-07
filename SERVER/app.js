@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger("dev"));
 
 
-app.use("/order/:orderID/price", orderRoutes);
+app.use('/', orderRoutes);
 
 module.exports = app;
 

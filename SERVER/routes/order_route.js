@@ -4,7 +4,7 @@ const router = express.Router();
 import Order from '../controller/order_controller';
 
 
-router.patch('/order/:orderID/price', Order.edit);
+router.patch('api/v1/order/:orderId/price', Order.getUpdateOrderPrice);
 
 
 
