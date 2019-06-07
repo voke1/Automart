@@ -13,8 +13,8 @@ const Car = {
     if (!car) {
       return res.status(404).send({'message': 'car not found'});
     }
-    const ref = CarModel.delete(req.params.id);
-    return res.status(204).send(ref);
+    CarModel.delete(req.params.id);
+    return res.status(204).send({"message": "Car Ad successfully deleted"});
   }
 }
 
