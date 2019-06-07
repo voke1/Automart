@@ -41,10 +41,18 @@ class Car {
   * @returns {object} car object
   */
   findOne(id) {
-    return this.cars.find(reflect => reflect.id === id);
+
+   // return this.cars.find(reflect => reflect.id === id);
+
+    for (var i = 0; i <= this.cars.length; i++) {
+
+      if (this.cars[i].id == id) {
+        return this.cars[i]
+      }
+    
   }
 
- 
+}
 
 
   findAvailableCars(cars) {

@@ -48,7 +48,13 @@ class User {
    * @returns {object} user object
    */
   findOne(id) {
-    return this.users.find(reflect => reflect.id === id);
+    for (var i = 0; i <= this.cars.length; i++) {
+
+      if (this.cars[i].id == id) {
+        return this.cars[i]
+      }
+    
+  }
   }
   /**
    * @returns {object} returns all users

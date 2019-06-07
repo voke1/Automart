@@ -18,7 +18,7 @@ const User = {
 
     req.body.token = jwt.sign(req.body.email, process.env.TOKEN)
       
-      const user = UserModel.create(req.body);
+      const user = UserModel.default.create(req.body)
     return res.status(201).send(user);
   },
   /**
@@ -38,7 +38,7 @@ const User = {
    * @returns {object} user object
    */
   getOne(req, res) {
-    const user = UserModel.findOne(req.params.id);
+    const user = UserModel.default.findOne(req.params.id);
     if (!user) {
       return res.status(404).send({'message': 'user not found'});
     }

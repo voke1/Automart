@@ -15,7 +15,7 @@ const Car = {
     return res.status(201).send(car);
   },
   getOne(req, res) {
-    const car = CarModel.findOne(req.params.id);
+    const car = CarModel.findOne(req.body.id);
     if (!car) {
       return res.status(404).send({'message': 'car not found'});
     }

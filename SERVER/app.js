@@ -16,7 +16,7 @@ app.use(logger("dev"));
 
 
 app.use(('/', userRoutes));
-app.use(('/', carRoutes));
+app.use('/', carRoutes);
 app.use('/', orderRoutes);
 
 module.exports = app;
