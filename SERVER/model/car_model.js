@@ -45,14 +45,14 @@ class Car {
   }
 
   
-  findAvailableCars(cars, stringAvailable) {
+  findAvailableCars(cars) {
 
-    var stringAvailable = 'available';
+    ;
     var availableCars = [];
 
     for (var i=0; i< cars.length; i++) {
   
-      if (cars[i].status == stringAvailable){
+      if (cars[i].status == 'available'){
         availableCars.push(cars[i])
 
       } 
