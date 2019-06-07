@@ -1,3 +1,4 @@
+
 import CarModel from '../model/car_model';
 
 const Car = {
@@ -14,16 +15,14 @@ const Car = {
     const car = CarModel.create(req.body);
     return res.status(201).send(car);
   },
-  /**
-   * 
-   * @param {object} req 
-   * @param {object} res 
-   * @returns {object} car array
-   */
-  getAll(req, res) {
-    const cars = CarModel.findAll();
-    return res.status(200).send(cars);
+  getOne(req, res) {
+    const car = CarModel.findOne(req.params.id);
+    if (!car) {
+      return res.status(404).send({'message': 'car not found'});
+    }
+    return res.status(200).send(car);
   }
 }
 
 export default Car;
+

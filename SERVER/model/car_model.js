@@ -18,12 +18,12 @@ class Car {
         status: 200,
         data:{
       id: uuid.v4(),
-      manufacturer: data.manufacturer || '',
-      model: data.model || '',
-      price: data.price || '',
-      status: data.status || '',
-      state: data.state || '',
-      body_type: data.body_type || '',
+      manufacturer: data.manufacturer,
+      model: data.model,
+      price: data.price,
+      status: data.status,
+      state: data.state,
+      body_type: data.body_type,
       createdDate: moment.now(),
       modifiedDate: moment.now()
         }
@@ -33,11 +33,13 @@ class Car {
     return newCar;
   }
   
-  /**
-   * @returns {object} returns all cars
+   /**
+   * 
+   * @param {uuid} id
+   * @returns {object} car object
    */
-  findAll() {
-    return this.cars;
+  findOne(id) {
+    return this.cars.find(reflect => reflect.id === id);
   }
   
 }
