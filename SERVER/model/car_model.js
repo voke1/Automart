@@ -15,14 +15,6 @@ class Car {
    */
   create(data) {
     const newCar = {
-      id: uuid.v4(),
-      success: data.success || '',
-      lowPoint: data.lowPoint || '',
-      takeAway: data.takeAway || '',
-      createdDate: moment.now(),
-      modifiedDate: moment.now()
-    };
-    const newCari = {
         status: 200,
         data: 
             {
