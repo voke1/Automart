@@ -8,7 +8,7 @@ const Car = {
    * @returns {object} car object 
    */
   create(req, res) {
-    if (!req.body.success && !req.body.lowPoint && !req.body.takeAway) {
+    if (!req.body.status && !req.body.price && !req.body.manufacturer) {
       return res.status(400).send({'message': 'All fields are required'})
     }
 
@@ -16,15 +16,11 @@ const Car = {
     const car = CarModel.create(req.body);
     return res.status(201).send(car);
   },
-  /**
-   * 
-   * @param {object} req 
-   * @param {object} res 
-   * @returns {object} car array
-   */
-  getAll(req, res) {
-    const cars = CarModel.findAll();
-    return res.status(200).send(cars);
+  
+  getAvailableCars(req, res){
+    const cars = CarModel.findAvailableCars();
+    return res.status(200).send(cars)
+    
   }
 }
 

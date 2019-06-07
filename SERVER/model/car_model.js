@@ -15,38 +15,49 @@ class Car {
    */
   create(data) {
     const newCar = {
-      id: uuid.v4(),
-      success: data.success || '',
-      lowPoint: data.lowPoint || '',
-      takeAway: data.takeAway || '',
-      createdDate: moment.now(),
-      modifiedDate: moment.now()
-    };
-    const newCari = {
-        status: 200,
-        data: 
-            {
-            id: uuid.v4(),
-            created_on: moment.now(),
-            manufacturer: 'String',
-            model: 'String',
-            price: 'Float',
-            state: 'String',
-            status: "String",
-            body_type: "string",
-        }
+      status: 200,
+      data:
+      {
+        id: uuid.v4(),
+        created_on: moment.now(),
+        manufacturer: data.manufacturer,
+        model: data.model,
+        price: data.price,
+        state: data.state,
+        status: data.status,
+        body_type: data.body_type,
+        createdDate: moment.now(),
+        modifiedDate: moment.now()
+      }
     };
 
     this.cars.push(newCar);
     return newCar;
   }
-  
+
   /**
    * @returns {object} returns all cars
    */
   findAll() {
     return this.cars;
   }
+
   
+  findAvailableCars(cars, stringAvailable) {
+
+    var stringAvailable = 'available';
+    var availableCars = [];
+
+    for (var i=0; i< cars.length; i++) {
+  
+      if (cars[i].status == stringAvailable){
+        availableCars.push(cars[i])
+
+      } 
+      
+    }
+    return availableCars;
+  }
+
 }
 export default new Car();
