@@ -1,7 +1,6 @@
 
 import moment from 'moment';
 import uuid from 'uuid';
-const bcrypt = require("bcrypt");
 
 class Order {
   /**
@@ -16,21 +15,45 @@ class Order {
    * @returns {object} car object
    */
   create(data) {
-    const newOrder = {
+    const newUser = {
         status: 200,
         data:{
       id: uuid.v4(),
-      car_id: data.car_id,
-      status: data.status,
-      price: data.price ,
-      price_offered: data.price_offered,
-      created_on: moment.now(),
-      modifiedDate: moment.now()
+      car_id: data.car_id || '',
+      status: data.status || '',
+      old_price_offered: data.old_price_offered || '',
+      new_price_offered: data.new_price_offered,
+      modifiedDate: moment.now(),
         }
-    };
+    }
 
-    this.users.push(newOrder);
+    
+
+    this.orders.push(newOrder);
     return newOrder;
+  }
+   /**
+   * 
+   * @param {uuid} id
+   * @returns {object} order object
+   */
+  findOne(id) {
+    return this.orders.find(reflect => reflect.id === id);
+  }
+
+  /**
+   * 
+   * @param {uuid} id
+   * @param {object} data 
+   */
+  updateOrderPrice(id, new_price_offered) {
+    const order = this.findOne(id);
+    const index = this.orders.indexOf(order);
+    const updatedPrice = this.orders[index].old_price_offered + this.orders[index].new_price_offered
+    this.orders[index].old_price_offered = new_price_offered;
+    this.orders[index].new_price_offered = updatedPrice;
+    this.orders[index].modifiedDate = moment.now()
+    return this.orders[index];
   }
   
 }
