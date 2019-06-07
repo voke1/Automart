@@ -44,6 +44,8 @@ class Car {
     return this.cars.find(reflect => reflect.id === id);
   }
 
+ 
+
 
   findAvailableCars(cars) {
     var availableCars = [];
@@ -73,10 +75,6 @@ class Car {
     return carsRange;
   }
 
-  findOne(id) {
-    return this.cars.find(reflect => reflect.id === id);
-  }
-
   /**
  * 
  * @param {uuid} id 
@@ -86,6 +84,11 @@ class Car {
     const index = this.cars.indexOf(car);
     this.cars.splice(index, 1);
     return {};
+  }
+  updateCarPrice(id, newPrice){
+    const car = this.findOne(id);
+    const index = this.cars.indexOf(car);
+    this.cars[index].status = newPrice;
   }
 
 
