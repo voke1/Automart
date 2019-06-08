@@ -3,8 +3,8 @@ var mocha = require("mocha");
 var OrderModel  = require('../model/order_model');
 
 
-describe('create', function() {
-  it('create(data) should return {} if no items are passed in', function() {
+describe('create', () => {
+  it('create(data) should return {} if no items are passed in', () => {
     assert.isObject(OrderModel.default)
   });
 });
