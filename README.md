@@ -2,7 +2,7 @@
 
 # AutoMart
 
-[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Coverage Status](https://coveralls.io/repos/github/voke1/Automart/badge.svg?branch=develop)](https://coveralls.io/github/voke1/Automart?branch=develop)     [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)     [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
 Automart
 
@@ -35,3 +35,38 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
  5. User can view all unsold cars of a specific make (manufacturer).
  6. User can view all used unsold cars.
  7. User can view all new unsold cars.
+
+
+ 
+## Technologies utilised
+
+- Node js
+- Express
+- Mocha, chai, 
+- Babel, 
+- Eslint
+
+
+
+## API Endpoints
+
+| Verb     | Endpoint                                                           | Action
+| :------- | :---------------------------------------------------------------   | :---------------------------------------------
+| POST     | /api/v1/auth/signup                                                | Create a user
+| POST     | /api/v1/auth/signin                                                | Sign a user in
+| POST     | /api/v1/car                                                        | Create a car AD
+| GET      | /api/v1/car                                                        | View all posted ADs whether sold or available
+| GET      | /api/v1/car/:carId                                                  | View a specific car AD
+| GET      | /api/v1/car?status=available                                       | View all unsold cars
+| GET      | /api/v1/car?status=available&minPrice=XXXValue&maxPrice=XXXValue | View all unsold cars within a price range
+| PATCH    | /api/v1/car/:carId/price                                            | Update a specific car AD price
+| PATCH    | /api/v1/car/:carId/status                                           | Update a specific car AD status (sold)
+| DELETE   | /api/v1/car/:carId/                                                 | Delete a specific car AD (only Admin)
+| POST     | /api/v1/order                                                      | Create an order
+| POST     | /api/v1/order/:orderId/price                                          | Update price of an order
+
+
+
+## Author
+
+Voke Olomu

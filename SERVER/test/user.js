@@ -1,6 +1,5 @@
-var assert = require('chai').assert;
-var mocha = require("mocha");
-var UserModel  = require('../model/user_model');
+import assert from ('chai').assert;
+import UserModel  from '../model/user_model';
 
 
 describe('create', () => {

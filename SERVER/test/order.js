@@ -1,5 +1,4 @@
 var assert = require('chai').assert;
-var mocha = require("mocha");
 var OrderModel  = require('../model/order_model');
 
 

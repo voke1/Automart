@@ -1,6 +1,5 @@
-var assert = require('chai').assert;
-var mocha = require("mocha");
-var CarModel  = require('../model/car_model');
+import assert from ('chai').assert;
+import CarModel  from '../model/car_model';
 
 
 describe('create', () => {
