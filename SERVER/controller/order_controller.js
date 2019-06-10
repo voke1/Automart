@@ -7,6 +7,7 @@ const Order = {
    * @param {object} res
    * @returns {object} order object
    */
+  //post order to array (as database)
   create(req, res) {
     if (!req.body.price && !req.body.price_offered && !req.body.status) {
       return res.status(400).send({ message: 'All fields are required' });
@@ -19,8 +20,9 @@ const Order = {
    *
    * @param {object} req
    * @param {object} res
-   * @returns {object} updated reflection
+   * @returns {object} 
    */
+  //update price of order already posted
   getUpdateOrderPrice(req, res) {
     const order = OrderModel.findOne(req.params.orderId);
     if (!order) {

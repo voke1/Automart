@@ -12,6 +12,7 @@ const User = {
    * @param {object} res
    * @returns {object} user object
    */
+  //sign up a single user
   create(req, res) {
     try {
       req.body.token = jwt.sign(req.body.email, process.env.TOKEN);
@@ -28,6 +29,7 @@ const User = {
    * @param {object} res
    * @returns {object} Users array
    */
+  //get all users
   getAll(req, res) {
     const users = UserModel.findAll();
     return res.status(200).send(users);
@@ -38,6 +40,7 @@ const User = {
    * @param {object} res
    * @returns {object} user object
    */
+  //sign in a specific user
   getOne(req, res) {
     const user = UserModel.default.findOne(req.body.email);
 

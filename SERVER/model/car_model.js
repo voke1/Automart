@@ -16,6 +16,7 @@ class Car {
    *
    * @returns {object} car object
    */
+  //create a car ad
   create(data) {
     const newCar = {
       status: 200,
@@ -32,7 +33,7 @@ class Car {
         modifiedDate: moment.now(),
       },
     };
-
+    //push car to cars array
     this.cars.push(newCar);
     return newCar;
   }
@@ -43,6 +44,7 @@ class Car {
   * @param {uuid} id
   * @returns {object} car object
   */
+ //search for a single car
   findOne(id) {
     for (let i = 0; i < this.cars.length; i++) {
       if (this.cars[i].data.id === id) {
@@ -51,7 +53,7 @@ class Car {
     }
     return null;
   }
-
+  //find cars available based on status
   findAvailableCars(status) {
     const availableCars = [];
 
@@ -62,13 +64,13 @@ class Car {
     }
     return availableCars;
   }
-
+  //Update status of car ad as "sold"
   updateStatus(id) {
     const specificCar = this.findOne(id);
     specificCar.data.status = 'sold';
     return specificCar;
   }
-
+  //filter cars based on status, minimum price and maximum price provided
   findFilterCars(status, minPrice, maxPrice) {
     const unsoldCars = findAvailableCars(status);
     const carRange = [];
@@ -86,6 +88,7 @@ class Car {
   * @param {uuid} id
   * @returns {object} car object
   */
+ //delete car ad
   deleteCar(id) {
     for (let i = 0; i < this.cars.length; i++) {
       if (this.cars[i].data.id === id) {
@@ -95,7 +98,7 @@ class Car {
     }
     return null;
   }
-
+//update price of car 
   updateCarPrice(id, newPrice) {
     for (let i = 0; i < this.cars.length; i++) {
       if (this.cars[i].data.id === id) {
@@ -109,6 +112,7 @@ class Car {
   /**
    * @returns {object} returns all cars
    */
+  //return all cars available
   findAll() {
     return this.cars;
   }

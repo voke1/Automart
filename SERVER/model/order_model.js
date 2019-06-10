@@ -14,6 +14,7 @@ class Order {
    *
    * @returns {object} car object
    */
+  //create order
   create(data) {
     const newOrder = {
       status: 200,
@@ -27,7 +28,7 @@ class Order {
       },
     };
 
-
+    //push order to orders array
     this.orders.push(newOrder);
     return newOrder;
   }
@@ -37,6 +38,7 @@ class Order {
   * @param {uuid} id
   * @returns {object} order object
   */
+ //find a single order
   findOne(id) {
     try {
       for (let i = 0; i < this.orders.length; i++) {
@@ -54,6 +56,7 @@ class Order {
    * @param {uuid} id
    * @param {object} data
    */
+  //Update price of order still pending
   updateOrderPrice(id, newPriceOffered) {
     const order = this.findOne(id);
     const index = this.orders.indexOf(order);

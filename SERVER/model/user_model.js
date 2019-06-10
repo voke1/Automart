@@ -17,6 +17,7 @@ class User {
    *
    * @returns {object} car object
    */
+  //create user
   create(data) {
     const newUser = {
       status: 200,
@@ -44,6 +45,7 @@ class User {
    * @param {uuid} id
    * @returns {object} user object
    */
+  //find a single user
   // eslint-disable-next-line consistent-return
   findOne(id) {
     // eslint-disable-next-line no-plusplus
