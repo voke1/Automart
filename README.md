@@ -47,8 +47,17 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 - Eslint
 
 
+## Deployment
+Automart is deployed to Heroku. Use this link https://voke-automart.herokuapp.com/ to view project
 
-## API Endpoints
+
+## API Endpoints: Usage
+
+To post and get data from app, use https://voke-automart.herokuapp.com/ together with the following
+endpoint e.g. https://voke-automart.herokuapp.com/api/v1/auth/signup
+
+A testing tool such as POSTMAN will be required.
+
 
 | Verb     | Endpoint                                                           | Action
 | :------- | :---------------------------------------------------------------   | :---------------------------------------------
