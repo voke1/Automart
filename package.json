@@ -4,12 +4,15 @@
   "description": "an online marketplace for automobile",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon --exec babel-node ./SERVER/server",
+    "start": "nodemon --exec babel-node ./SERVER/server",
     "test": "mocha './server/test/*.js'  --recursive || true"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/voke1/Atmrt.git"
+  },
+  "engines": {
+    "node": "v10.15.3"
   },
   "keywords": [
     "online",
