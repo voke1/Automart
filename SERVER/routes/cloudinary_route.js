@@ -1,10 +1,9 @@
-const express = require("express");
-const router = express.Router();
-var cloudinary = require ("cloudinary"); 
-var multipart = require ("connect-multiparty");
-var multipartMiddleware = multipart();
+import express from "express";
+import cloudinary from "cloudinary"; 
+import multipart from "connect-multiparty";
 
-var Template = require("../model/cloudinary_model");
+const router = express.Router();
+const multipartMiddleware = multipart();
 
 
 //Enter credentials below                                              
@@ -20,7 +19,7 @@ router.post("/car/upload", multipartMiddleware, function (req, res) {
         .then(function (file) {
             console.log("Public id of the file is  " + file.public_id);
             console.log("Url of the file is  " + file.url);
-           // template.dataFile = file.url;  //save the url to your model 
+           // template.dataFile = file.url;  
            // template.save()
             res.redirect("./model/cloudinary_model")
         })

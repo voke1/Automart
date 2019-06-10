@@ -1,6 +1,6 @@
 import User from '../controller/user_controller';
 
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
 
