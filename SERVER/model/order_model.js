@@ -17,15 +17,12 @@ class Order {
   //create order
   create(data) {
     const newOrder = {
-      status: 200,
-      data: {
         id: uuid.v4(),
         car_id: data.car_id || '',
         status: data.status || '',
         price_offered: data.price_offered,
         price: data.price,
         modifiedDate: moment.now(),
-      },
     };
 
     //push order to orders array

@@ -10,19 +10,20 @@ const Car = {
   //post car to car array (as database)
   create(req, res) {
     if (!req.body.manufacturer && !req.body.price && !req.body.model) {
-      return res.status(400).send({ message: 'All fields are required' });
+      return res.status(400).send({ status: 400, error: 'All fields are required' });
     }
-    const car = CarModel.create(req.body);
-    car.data.email = req.body.email;
-    return res.status(201).send(car);
+    const data = CarModel.create(req.body);
+    data.email = req.body.email;
+    return res.status(201).send({status: 201, data});
   },
   //view a specific car
   getOne(req, res) {
     const car = CarModel.findOne(req.params.carId);
     if (!car) {
-      return res.status(404).send({ message: 'car not found' });
+      return res.status(404).send({ status: 404, error: 'car not found'});
     }
     car.data.body_type = req.body.body_type || ' ';
+    car.status = 200;
     return res.status(200).send(car);
   },
   //view all available cars posted
@@ -34,44 +35,44 @@ const Car = {
   getUpdatePrice(req, res) {
     const car = CarModel.findOne(req.params.carId);
     if (!car) {
-      return res.status(404).send({ message: 'car not found' });
+      return res.status(404).send({ status: 404, error: 'car not found' });
     }
     try {
-      const car = CarModel.updateCarPrice(req.params.carId, req.body.price);
-      return res.status(200).send(car);
+      const data = CarModel.updateCarPrice(req.params.carId, req.body.price);
+      return res.status(200).send({status: 200, data});
     } catch (error) {
-      return res.status(404).send({ message: 'cannot update price' });
+      return res.status(404).send({ status: 404, error: 'cannot update price' });
     }
   },
   //delete a specific car in array
   delete(req, res) {
     const car = CarModel.findOne(req.params.carId);
     if (!car) {
-      return res.status(404).send({ message: 'no car to delete' });
+      return res.status(404).send({ status: 404, error: 'no car to delete' });
     }
-    const deleted = CarModel.deleteCar(req.params.carId);
-    return res.status(200).send(deleted);
+    const data = CarModel.deleteCar(req.params.carId);
+    return res.status(200).send({status: 404, data});
   },
     //update status of car in array
   getUpdateStatus(req, res) {
     const car = CarModel.findOne(req.params.carId);
     if (!car) {
-      return res.status(404).send({ message: 'car not found' });
+      return res.status(404).send({ status: 404, error: 'car not found' });
     }
     try {
       const specifiedCar = CarModel.updateStatus(req.params.carId);
       return res.status(200).send(specifiedCar);
     } catch (error) {
-      return res.status(404).send({ message: 'cannot update status' });
+      return res.status(404).send({ status: 404, error: 'cannot update status' });
     }
   },
   //search for cars based on price and status
   getFilterCars(req, res) {
     try {
-      const cars = CarModel.findFilterCars(req.query.status, req.query.minPrice, req.query.maxPrice);
-      return res.status(200).send(cars);
+      const data = CarModel.findFilterCars(req.query.status, req.query.minPrice, req.query.maxPrice);
+      return res.status(200).send({status: 200, data});
     } catch (error) {
-      res.status(404).send({ message: 'cannot find cars' });
+      res.status(404).send({ status: 404, error: 'cannot find cars' });
     }
   },
   /**
@@ -82,8 +83,8 @@ const Car = {
    */
   //find all cars
   getAll(req, res) {
-    const cars = CarModel.findAll();
-    return res.status(200).send(cars);
+    const data = CarModel.findAll();
+    return res.status(200).send({status: 200, data});
   },
 };
 

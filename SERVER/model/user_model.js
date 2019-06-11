@@ -19,9 +19,7 @@ class User {
    */
   //create user
   create(data) {
-    const newUser = {
-      status: 200,
-      data: {
+    const newUser = { 
         id: uuid.v4() || '',
         token: data.token || '',
         email: data.email || '',
@@ -33,7 +31,7 @@ class User {
           }
         }) || '',
         isAdmin: data.state || '',
-      },
+      
     };
 
     this.users.push(newUser);

@@ -18,9 +18,9 @@ const User = {
       req.body.token = jwt.sign(req.body.email, process.env.TOKEN);
 
       const user = UserModel.default.create(req.body);
-      return res.status(201).send(user);
+      return res.status(201).send({status: 201, user});
     } catch (error) {
-      return res.status(400).send({ message: 'email and password are required' });
+      return res.status(400).send({status: 400,  error: 'email and password are required' });
     }
   },
   /**
@@ -32,7 +32,7 @@ const User = {
   //get all users
   getAll(req, res) {
     const users = UserModel.findAll();
-    return res.status(200).send(users);
+    return res.status(200).send({status: 200, users});
   },
   /**
    *
@@ -45,20 +45,20 @@ const User = {
     const user = UserModel.default.findOne(req.body.email);
 
     if (!user) {
-      return res.status(404).send({ message: 'user not found' });
+      return res.status(404).send({ status: 404, error: 'user not found' });
     }
     try {
       bcrypt.compare(req.body.password, UserModel.password, (error, result) => {
         if (error) {
-          return res.status(401).send({ message: 'Auth failed' });
+          return res.status(401).send({ status: 401, message: 'Auth failed' });
         } if (result) {
-          return res.status(200).send({ ' message': 'Auth successful' });
+          return res.status(200).send({status: 200,  message: 'Auth successful' });
         }
       });
 
-      return res.status(200).send(user);
+      return res.status(200).send({status: 200, user});
     } catch (error) {
-      return res.status(401).send({ message: 'Enter valid email and password' });
+      return res.status(401).send({status: 401,  error: 'Enter valid email and password' });
     }
   },
 

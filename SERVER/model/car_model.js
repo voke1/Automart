@@ -19,9 +19,6 @@ class Car {
   //create a car ad
   create(data) {
     const newCar = {
-      status: 200,
-      data:
-      {
         id: uuid.v4(),
         created_on: moment.now(),
         manufacturer: data.manufacturer,
@@ -31,7 +28,6 @@ class Car {
         status: data.status,
         createdDate: moment.now(),
         modifiedDate: moment.now(),
-      },
     };
     //push car to cars array
     this.cars.push(newCar);
@@ -93,7 +89,7 @@ class Car {
     for (let i = 0; i < this.cars.length; i++) {
       if (this.cars[i].data.id === id) {
         this.cars.splice(i, 1);
-        return ({ message: 'Car Ad successfull deleted' });
+        return ('Car Ad successfull deleted');
       }
     }
     return null;
