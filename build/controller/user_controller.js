@@ -29,10 +29,14 @@ var User = {
 
       var user = _user_model["default"]["default"].create(req.body);
 
-      return res.status(201).send(user);
+      return res.status(201).send({
+        status: 201,
+        user: user
+      });
     } catch (error) {
       return res.status(400).send({
-        message: 'email and password are required'
+        status: 400,
+        error: 'email and password are required'
       });
     }
   },
@@ -47,7 +51,10 @@ var User = {
   getAll: function getAll(req, res) {
     var users = _user_model["default"].findAll();
 
-    return res.status(200).send(users);
+    return res.status(200).send({
+      status: 200,
+      users: users
+    });
   },
 
   /**
@@ -62,7 +69,8 @@ var User = {
 
     if (!user) {
       return res.status(404).send({
-        message: 'user not found'
+        status: 404,
+        error: 'user not found'
       });
     }
 
@@ -70,21 +78,27 @@ var User = {
       _bcrypt["default"].compare(req.body.password, _user_model["default"].password, function (error, result) {
         if (error) {
           return res.status(401).send({
+            status: 401,
             message: 'Auth failed'
           });
         }
 
         if (result) {
           return res.status(200).send({
-            ' message': 'Auth successful'
+            status: 200,
+            message: 'Auth successful'
           });
         }
       });
 
-      return res.status(200).send(user);
+      return res.status(200).send({
+        status: 200,
+        user: user
+      });
     } catch (error) {
       return res.status(401).send({
-        message: 'Enter valid email and password'
+        status: 401,
+        error: 'Enter valid email and password'
       });
     }
   }

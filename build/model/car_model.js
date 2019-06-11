@@ -40,18 +40,15 @@ function () {
     key: "create",
     value: function create(data) {
       var newCar = {
-        status: 200,
-        data: {
-          id: _uuid["default"].v4(),
-          created_on: _moment["default"].now(),
-          manufacturer: data.manufacturer,
-          model: data.model,
-          price: data.price,
-          state: data.state || 'string',
-          status: data.status,
-          createdDate: _moment["default"].now(),
-          modifiedDate: _moment["default"].now()
-        }
+        id: _uuid["default"].v4(),
+        created_on: _moment["default"].now(),
+        manufacturer: data.manufacturer,
+        model: data.model,
+        price: data.price,
+        state: data.state || 'string',
+        status: data.status,
+        createdDate: _moment["default"].now(),
+        modifiedDate: _moment["default"].now()
       }; //push car to cars array
 
       this.cars.push(newCar);
@@ -125,9 +122,7 @@ function () {
       for (var i = 0; i < this.cars.length; i++) {
         if (this.cars[i].data.id === id) {
           this.cars.splice(i, 1);
-          return {
-            message: 'Car Ad successfull deleted'
-          };
+          return 'Car Ad successfull deleted';
         }
       }
 

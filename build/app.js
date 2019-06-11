@@ -22,7 +22,7 @@ app.use(_bodyParser["default"].urlencoded({
   extended: false
 }));
 app.use((0, _morgan["default"])('dev'));
-app.use("/car/upload", _cloudinary_route["default"]);
+app.use('/', _cloudinary_route["default"]);
 app.use('/', _user_route["default"]);
 app.use('/', _car_route["default"]);
 app.use('/', _order_route["default"]);

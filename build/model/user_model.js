@@ -33,22 +33,19 @@ function () {
     key: "create",
     value: function create(data) {
       var newUser = {
-        status: 200,
-        data: {
-          id: uuid.v4() || '',
-          token: data.token || '',
-          email: data.email || '',
-          firstname: data.firstname || '',
-          lastname: data.lastname || '',
-          password: bcrypt.hashSync(data.password, 10, function (error, hash) {
-            if (error) {
-              return {
-                message: 'error found'
-              };
-            }
-          }) || '',
-          isAdmin: data.state || ''
-        }
+        id: uuid.v4() || '',
+        token: data.token || '',
+        email: data.email || '',
+        firstname: data.firstname || '',
+        lastname: data.lastname || '',
+        password: bcrypt.hashSync(data.password, 10, function (error, hash) {
+          if (error) {
+            return {
+              message: 'error found'
+            };
+          }
+        }) || '',
+        isAdmin: data.state || ''
       };
       this.users.push(newUser);
       return newUser;

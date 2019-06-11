@@ -40,15 +40,12 @@ function () {
     key: "create",
     value: function create(data) {
       var newOrder = {
-        status: 200,
-        data: {
-          id: _uuid["default"].v4(),
-          car_id: data.car_id || '',
-          status: data.status || '',
-          price_offered: data.price_offered,
-          price: data.price,
-          modifiedDate: _moment["default"].now()
-        }
+        id: _uuid["default"].v4(),
+        car_id: data.car_id || '',
+        status: data.status || '',
+        price_offered: data.price_offered,
+        price: data.price,
+        modifiedDate: _moment["default"].now()
       }; //push order to orders array
 
       this.orders.push(newOrder);

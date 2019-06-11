@@ -20,14 +20,18 @@ var Car = {
   create: function create(req, res) {
     if (!req.body.manufacturer && !req.body.price && !req.body.model) {
       return res.status(400).send({
-        message: 'All fields are required'
+        status: 400,
+        error: 'All fields are required'
       });
     }
 
-    var car = _car_model["default"].create(req.body);
+    var data = _car_model["default"].create(req.body);
 
-    car.data.email = req.body.email;
-    return res.status(201).send(car);
+    data.email = req.body.email;
+    return res.status(201).send({
+      status: 201,
+      data: data
+    });
   },
   //view a specific car
   getOne: function getOne(req, res) {
@@ -35,11 +39,13 @@ var Car = {
 
     if (!car) {
       return res.status(404).send({
-        message: 'car not found'
+        status: 404,
+        error: 'car not found'
       });
     }
 
     car.data.body_type = req.body.body_type || ' ';
+    car.status = 200;
     return res.status(200).send(car);
   },
   //view all available cars posted
@@ -54,17 +60,22 @@ var Car = {
 
     if (!car) {
       return res.status(404).send({
-        message: 'car not found'
+        status: 404,
+        error: 'car not found'
       });
     }
 
     try {
-      var _car = _car_model["default"].updateCarPrice(req.params.carId, req.body.price);
+      var data = _car_model["default"].updateCarPrice(req.params.carId, req.body.price);
 
-      return res.status(200).send(_car);
+      return res.status(200).send({
+        status: 200,
+        data: data
+      });
     } catch (error) {
       return res.status(404).send({
-        message: 'cannot update price'
+        status: 404,
+        error: 'cannot update price'
       });
     }
   },
@@ -74,13 +85,17 @@ var Car = {
 
     if (!car) {
       return res.status(404).send({
-        message: 'no car to delete'
+        status: 404,
+        error: 'no car to delete'
       });
     }
 
-    var deleted = _car_model["default"].deleteCar(req.params.carId);
+    var data = _car_model["default"].deleteCar(req.params.carId);
 
-    return res.status(200).send(deleted);
+    return res.status(200).send({
+      status: 404,
+      data: data
+    });
   },
   //update status of car in array
   getUpdateStatus: function getUpdateStatus(req, res) {
@@ -88,7 +103,8 @@ var Car = {
 
     if (!car) {
       return res.status(404).send({
-        message: 'car not found'
+        status: 404,
+        error: 'car not found'
       });
     }
 
@@ -98,19 +114,24 @@ var Car = {
       return res.status(200).send(specifiedCar);
     } catch (error) {
       return res.status(404).send({
-        message: 'cannot update status'
+        status: 404,
+        error: 'cannot update status'
       });
     }
   },
   //search for cars based on price and status
   getFilterCars: function getFilterCars(req, res) {
     try {
-      var cars = _car_model["default"].findFilterCars(req.query.status, req.query.minPrice, req.query.maxPrice);
+      var data = _car_model["default"].findFilterCars(req.query.status, req.query.minPrice, req.query.maxPrice);
 
-      return res.status(200).send(cars);
+      return res.status(200).send({
+        status: 200,
+        data: data
+      });
     } catch (error) {
       res.status(404).send({
-        message: 'cannot find cars'
+        status: 404,
+        error: 'cannot find cars'
       });
     }
   },
@@ -123,9 +144,12 @@ var Car = {
    */
   //find all cars
   getAll: function getAll(req, res) {
-    var cars = _car_model["default"].findAll();
+    var data = _car_model["default"].findAll();
 
-    return res.status(200).send(cars);
+    return res.status(200).send({
+      status: 200,
+      data: data
+    });
   }
 };
 var _default = Car;
