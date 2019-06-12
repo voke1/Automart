@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon --exec babel-node ./SERVER/server",
     "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./server -s",
+    "build-babel": "babel -d ./build ./SERVER -s",
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/server.js",
     "test": "mocha './server/test/*.js'  --recursive || true"
