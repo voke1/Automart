@@ -22,7 +22,7 @@ const Car = {
     if (!car) {
       return res.status(404).send({ status: 404, error: 'car not found'});
     }
-    car.data.body_type = req.body.body_type || ' ';
+    car.body_type = req.body.body_type || ' ';
     car.status = 200;
     return res.status(200).send(car);
   },

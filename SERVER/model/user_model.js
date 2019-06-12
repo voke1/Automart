@@ -48,7 +48,7 @@ class User {
   findOne(id) {
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].data.email === id) {
+      if (this.users[i].email === id) {
         return this.users[i];
       }
     }

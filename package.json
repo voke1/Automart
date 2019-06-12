@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon --exec babel-node ./SERVER/server",
-    "start": "node ./build/server.js",
-    "clean": "del 'build' /s /q && mkdir build",
+    "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js",
     "test": "mocha './server/test/*.js'  --recursive || true"
   },
   "repository": {

@@ -43,7 +43,7 @@ class Car {
  //search for a single car
   findOne(id) {
     for (let i = 0; i < this.cars.length; i++) {
-      if (this.cars[i].data.id === id) {
+      if (this.cars[i].id === id) {
         return this.cars[i];
       }
     }
@@ -54,7 +54,7 @@ class Car {
     const availableCars = [];
 
     for (let i = 0; i < this.cars.length; i++) {
-      if (this.cars[i].data.status === status) {
+      if (this.cars[i].status === status) {
         availableCars.push(this.cars[i]);
       }
     }
@@ -63,7 +63,7 @@ class Car {
   //Update status of car ad as "sold"
   updateStatus(id) {
     const specificCar = this.findOne(id);
-    specificCar.data.status = 'sold';
+    specificCar.status = 'sold';
     return specificCar;
   }
   //filter cars based on status, minimum price and maximum price provided
@@ -72,7 +72,7 @@ class Car {
     const carRange = [];
 
     for (let i = 0; i < unsoldCars.length; i++) {
-      if ((unsoldCars[i].data.price <= maxPrice) && (unsoldCars[i].data.price >= minPrice)) {
+      if ((unsoldCars[i].price <= maxPrice) && (unsoldCars[i].price >= minPrice)) {
         carRange.push(unsoldCars[i]);
       }
     }
@@ -87,7 +87,7 @@ class Car {
  //delete car ad
   deleteCar(id) {
     for (let i = 0; i < this.cars.length; i++) {
-      if (this.cars[i].data.id === id) {
+      if (this.cars[i].id === id) {
         this.cars.splice(i, 1);
         return ('Car Ad successfull deleted');
       }
@@ -97,8 +97,8 @@ class Car {
 //update price of car 
   updateCarPrice(id, newPrice) {
     for (let i = 0; i < this.cars.length; i++) {
-      if (this.cars[i].data.id === id) {
-        this.cars[i].data.price = newPrice;
+      if (this.cars[i].id === id) {
+        this.cars[i].price = newPrice;
         return this.cars[i];
       }
     }

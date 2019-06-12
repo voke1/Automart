@@ -1,4 +1,4 @@
-import assert from ('chai').assert;
+var assert = require ('chai').assert;
 import CarModel  from '../model/car_model';
 
 
