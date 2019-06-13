@@ -65,7 +65,7 @@ function () {
     key: "findOne",
     value: function findOne(id) {
       for (var i = 0; i < this.cars.length; i++) {
-        if (this.cars[i].data.id === id) {
+        if (this.cars[i].id === id) {
           return this.cars[i];
         }
       }
@@ -79,7 +79,7 @@ function () {
       var availableCars = [];
 
       for (var i = 0; i < this.cars.length; i++) {
-        if (this.cars[i].data.status === status) {
+        if (this.cars[i].status === status) {
           availableCars.push(this.cars[i]);
         }
       }
@@ -91,7 +91,7 @@ function () {
     key: "updateStatus",
     value: function updateStatus(id) {
       var specificCar = this.findOne(id);
-      specificCar.data.status = 'sold';
+      specificCar.status = 'sold';
       return specificCar;
     } //filter cars based on status, minimum price and maximum price provided
 
@@ -102,7 +102,7 @@ function () {
       var carRange = [];
 
       for (var i = 0; i < unsoldCars.length; i++) {
-        if (unsoldCars[i].data.price <= maxPrice && unsoldCars[i].data.price >= minPrice) {
+        if (unsoldCars[i].price <= maxPrice && unsoldCars[i].price >= minPrice) {
           carRange.push(unsoldCars[i]);
         }
       }
@@ -120,7 +120,7 @@ function () {
     key: "deleteCar",
     value: function deleteCar(id) {
       for (var i = 0; i < this.cars.length; i++) {
-        if (this.cars[i].data.id === id) {
+        if (this.cars[i].id === id) {
           this.cars.splice(i, 1);
           return 'Car Ad successfull deleted';
         }
@@ -133,8 +133,8 @@ function () {
     key: "updateCarPrice",
     value: function updateCarPrice(id, newPrice) {
       for (var i = 0; i < this.cars.length; i++) {
-        if (this.cars[i].data.id === id) {
-          this.cars[i].data.price = newPrice;
+        if (this.cars[i].id === id) {
+          this.cars[i].price = newPrice;
           return this.cars[i];
         }
       }

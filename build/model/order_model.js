@@ -63,7 +63,7 @@ function () {
     value: function findOne(id) {
       try {
         for (var i = 0; i < this.orders.length; i++) {
-          if (this.orders[i].data.id === id) {
+          if (this.orders[i].id === id) {
             return this.orders[i];
           }
         }
@@ -84,10 +84,10 @@ function () {
       var order = this.findOne(id);
       var index = this.orders.indexOf(order);
 
-      if (this.orders[index].data.status === 'pending') {
-        this.orders[index].data.old_price_offered = this.orders[index].data.price_offered;
-        this.orders[index].data.new_price_offered = newPriceOffered;
-        this.orders[index].data.modifiedDate = _moment["default"].now();
+      if (this.orders[index].status === 'pending') {
+        this.orders[index].old_price_offered = this.orders[index].price_offered;
+        this.orders[index].new_price_offered = newPriceOffered;
+        this.orders[index].modifiedDate = _moment["default"].now();
         return this.orders[index];
       }
 

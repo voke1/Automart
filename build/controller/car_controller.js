@@ -44,15 +44,21 @@ var Car = {
       });
     }
 
-    car.data.body_type = req.body.body_type || ' ';
+    car.body_type = req.body.body_type || ' ';
     car.status = 200;
-    return res.status(200).send(car);
+    return res.status(200).send({
+      status: 200,
+      car: car
+    });
   },
   //view all available cars posted
   getAvailableCars: function getAvailableCars(req, res) {
     var carsArray = _car_model["default"].findAvailableCars(req.query.status);
 
-    return res.status(200).send(carsArray);
+    return res.status(200).send({
+      status: 200,
+      carsArray: carsArray
+    });
   },
   //update price of car ad posted
   getUpdatePrice: function getUpdatePrice(req, res) {

@@ -28,7 +28,7 @@ var Order = {
     var order = _order_model["default"].create(req.body);
 
     return res.status(201).send({
-      status: 404,
+      status: 201,
       order: order
     });
   },
@@ -51,7 +51,7 @@ var Order = {
     }
 
     try {
-      var data = _order_model["default"].updateOrderPrice(req.params.orderId, req.body.new_price_offered);
+      var data = _order_model["default"].updateOrderPrice(req.params.orderId, req.body.price_offered);
 
       return res.status(200).send({
         status: 200,
