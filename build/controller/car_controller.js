@@ -45,7 +45,6 @@ var Car = {
     }
 
     car.body_type = req.body.body_type || ' ';
-    car.status = 200;
     return res.status(200).send({
       status: 200,
       car: car
