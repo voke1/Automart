@@ -14,7 +14,7 @@ const Order = {
     }
 
     const order = OrderModel.create(req.body);
-    return res.status(201).send({status: 404, order});
+    return res.status(201).send({status: 201, order});
   },
   /**
    *
@@ -29,7 +29,7 @@ const Order = {
       return res.status(404).send({ status: 404, error: 'order not found' });
     }
     try {
-      const data = OrderModel.updateOrderPrice(req.params.orderId, req.body.new_price_offered);
+      const data = OrderModel.updateOrderPrice(req.params.orderId, req.body.price_offered);
       return res.status(200).send({status: 200, data});
     } catch (error) {
       return res.status(404).send({ status: 404, error: 'cannot update price' });
