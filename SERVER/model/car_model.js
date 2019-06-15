@@ -1,7 +1,6 @@
 /* eslint-disable no-plusplus */
 import moment from 'moment';
 import uuid from 'uuid';
-import { stat } from 'fs';
 
 class Car {
   /**
@@ -27,6 +26,7 @@ class Car {
         price: data.price,
         state: data.state || 'string',
         status: data.status,
+        body_type: data.body_type,
         createdDate: moment.now(),
         modifiedDate: moment.now(),
     };
@@ -74,6 +74,18 @@ class Car {
     return availableCarsByMake;
   }
 
+//find available cars by body type
+  findCarByBodyType(status, bodyType) {
+    const unsold = findAvailableCars(status);
+    const carsByMake = [];
+
+    for (let i = 0; i < unsoldCars.length; i++) {
+      if (unsold[i].body_type = bodyType) {
+        carsByMake.push(unsold[i]);
+      }
+    }
+    return carsByMake;
+  }
 
   //Update status of car ad as "sold"
   updateStatus(id) {

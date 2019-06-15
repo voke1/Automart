@@ -28,6 +28,10 @@ router.delete('/api/v1/car/:carId', Car.delete);
 //route to view range of car ad available based on price
 router.get('/api/v1/car?status=available&minPrice=XXXValue &maxPrice= XXXValue', Car.getFilterCars);
 
+
+//route to view cars ad by bodyType
+router.get('api/v1/car?body_type=bodyType', Car.getCarByBodyType) 
+
 //update status of a particular ad
 router.patch('/api/v1/car/:carId/status', Car.getUpdateStatus);
 
