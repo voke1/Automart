@@ -16,6 +16,9 @@ router.get('/api/v1/car/:carId/', Car.getOne);
 //View all unsold cars of a specific make
 router.get('/api/v1/car?status=available&state=new', Car.getNewAvailableCars);
 
+//View all unsold cars of a specific make
+router.get('/api/v1/car?status=available&state=used', Car.getUsedAvailableCars);
+
 //view all Ads available
 router.get('/api/v1/car?status=available', Car.getAvailableCars);
 
