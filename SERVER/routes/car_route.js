@@ -1,4 +1,4 @@
-import Car from '../controller/car_controller';
+import Car from '../usingDatastructure/controller/car_controller';
 
 const express = require('express');
 
