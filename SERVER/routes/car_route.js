@@ -31,6 +31,8 @@ router.get('/api/v1/car?status=available&minPrice=XXXValue &maxPrice= XXXValue',
 //update status of a particular ad
 router.patch('/api/v1/car/:carId/status', Car.getUpdateStatus);
 
+router.get('api/v1/car?status=available&manufacturer=XXXValue', Car.getAvailableCarsByMake)
+
 //update price of a particular Ad
 router.patch('/api/v1/car/:carId/price', Car.getUpdatePrice);
 
