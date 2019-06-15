@@ -3,14 +3,14 @@ import db from '../db';
 const Car = {
 
     /**
-   * Create A Reflection
+   * Create A Car
    * @param {object} req 
    * @param {object} res
-   * @returns {object} reflection object 
+   * @returns {object} car object 
    */
   async create(req, res) {
     const text = `INSERT INTO
-      reflections(id, manufacturer, model, price, state, status, body_type, created_on, modified_date)
+      cars(id, manufacturer, model, price, state, status, body_type, created_on, modified_date)
       VALUES($1, $2, $3, $4, $5, $6)
       returning *`;
     const values = [
