@@ -3,6 +3,25 @@ import db from '../db';
 const Car = {
 
     /**
+   * Get A Car
+   * @param {object} req 
+   * @param {object} res
+   * @returns {object} car object
+   */
+  async getOne(req, res) {
+    const text = 'SELECT * FROM cars WHERE id = $1';
+    try {
+      const { rows } = await db.query(text, [req.params.id]);
+      if (!rows[0]) {
+        return res.status(404).send({'message': 'car not found'});
+      }
+      return res.status(200).send(rows[0]);
+    } catch(error) {
+      return res.status(400).send({status: 400, error})
+    }
+  },
+
+    /**
    * Get All Car
    * @param {object} req 
    * @param {object} res 
