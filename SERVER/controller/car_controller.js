@@ -23,6 +23,12 @@ const Car = {
   getAll(req, res) {
     const cars = CarModel.findAll();
     return res.status(200).send(cars);
+  },
+
+  getNewAvailableCars(req, res){
+    const newAvailable = CarModel.findNewAvailableCars(req.query.status, req.query.state, req.body.manufacturer);
+    return res.status(201).send({status: 201, newAvailable});
+
   }
 }
 
