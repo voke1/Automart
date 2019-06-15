@@ -74,6 +74,15 @@ const Car = {
       res.status(404).send({ status: 404, error: 'cannot find cars' });
     }
   },
+   //search for available cars based on bodyType
+   getCarByBodyType(req, res) {
+    try {
+      const data = CarModel.findCarByBodyType(req.query.status, req.query.body_type);
+      return res.status(200).send({status: 200, data});
+    } catch (error) {
+      res.status(404).send({ status: 404, error: 'cannot find cars' });
+    }
+  },
   /**
    *
    * @param {object} req
