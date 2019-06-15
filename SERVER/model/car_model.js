@@ -105,8 +105,25 @@ class Car {
     }
     return null;
   }
-
+//find new Available car by make
   findNewAvailableCars(status, state, manufacturer){
+    try{
+    newAvailableCars = [];
+
+    for(let i = 0; i < this.cars.length; i++){
+      if(this.cars[i].status === status && this.cars[i].state === state && this.cars[i].manufacturer === manufacturer){
+       newAvailableCars.push(this.cars[i])
+      }
+
+    }
+  }catch(error){
+    return ({error: "no car found"})
+  }
+
+    
+  }
+//find used available car by make
+  findUsedAvailableCars(status, state, manufacturer){
     try{
     newAvailableCars = [];
 
