@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 import moment from 'moment';
 import uuid from 'uuid';
+import { stat } from 'fs';
 
 class Car {
   /**
@@ -105,6 +106,23 @@ class Car {
     return null;
   }
 
+  findNewAvailableCars(status, state, manufacturer){
+    try{
+    newAvailableCars = [];
+
+    for(let i = 0; i < this.cars.length; i++){
+      if(this.cars[i].status === status && this.cars[i].state === state && this.cars[i].manufacturer === manufacturer){
+       newAvailableCars.push(this.cars[i])
+      }
+
+    }
+  }catch(error){
+    return ({error: "no car found"})
+  }
+
+    
+  }
+  
   /**
    * @returns {object} returns all cars
    */

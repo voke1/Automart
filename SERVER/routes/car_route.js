@@ -13,6 +13,9 @@ router.post('/api/v1/car', Car.create);
 //View a specific car Ad
 router.get('/api/v1/car/:carId/', Car.getOne);
 
+//View all unsold cars of a specific make
+router.get('/api/v1/car?status=available&state=new', Car.getNewAvailableCars);
+
 //view all Ads available
 router.get('/api/v1/car?status=available', Car.getAvailableCars);
 
