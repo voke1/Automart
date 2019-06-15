@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-import Flag from '../controller/flag_controller';
+import Flag from '../usingDatastructure/controller/flag_controller';
 
 
 router.post('/api/v1/flag', Flag.create);
