@@ -61,6 +61,20 @@ class Car {
     }
     return availableCars;
   }
+//view available cars by manufacturer
+  findAvailableCarsByMake(manufacturer, status) {
+    const availableCars = this.findAvailableCars(status);
+    const availableCarsByMake = []
+
+    for (let i = 0; i < this.cars.length; i++) {
+      if (availableCars[i].manufacturer === manufacturer) {
+        availableCarsByMake.push(this.cars[i]);
+      }
+    }
+    return availableCarsByMake;
+  }
+
+
   //Update status of car ad as "sold"
   updateStatus(id) {
     const specificCar = this.findOne(id);
