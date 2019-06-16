@@ -50,6 +50,35 @@ const Car = {
       return res.status(400).send({status: 400, error})
     }
   },
+   /**
+   * Update price of Car Ad
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} update car price
+   */
+  async update(req, res) {
+    const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
+    const updateOneQuery =`UPDATE orders
+      SET price=$1,,modified_date=$2
+      WHERE id=$3 returning *`;
+    try {
+      const { rows } = await db.query(findOneQuery, [req.params.id]);
+      if(!rows[0]) {
+        return res.status(404).send({'message': 'car not found'});
+      }
+     
+      const values = [
+        req.body.price || rows[0].price,
+        moment(new Date()),
+        req.params.id
+        
+      ];
+      const response = await db.query(updateOneQuery, values);
+      return res.status(200).send(response.rows[0]);
+    } catch(err) {
+      return res.status(400).send(err);
+    }
+  },
 
     /**
    * Get All Car
