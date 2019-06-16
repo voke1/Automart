@@ -11,7 +11,7 @@ const Car = {
   async create(req, res) {
     const text = `INSERT INTO
       cars(id, manufacturer, model, price, state, status, body_type, created_on, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8)
       returning *`;
     const values = [
       uuidv4(),
