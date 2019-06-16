@@ -29,6 +29,38 @@ const Order = {
       return res.status(400).send({status: 400, error});
     }
   },
+  /**
+   * Update A Order
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} updated order
+   */
+  async update(req, res) {
+    const findOneQuery = 'SELECT * FROM orders WHERE id=$1';
+    const updateOneQuery =`UPDATE orders
+      SET car_id=$1,price=$2,price_offered=$3,modified_date=$4, old_price_offered=$5
+      WHERE id=$6 returning *`;
+    try {
+      const { rows } = await db.query(findOneQuery, [req.params.id]);
+      if(!rows[0]) {
+        return res.status(404).send({'message': 'order not found'});
+      }
+      //const oldPriceOffered = 'SELECT price FROM orders WHERE id = $3;'
+      const values = [
+        req.body.car_id || rows[0].success,
+        req.body.low_point || rows[0].low_point,
+        req.body.take_away || rows[0].take_away,
+        moment(new Date()),
+        req.body.price_offered,
+        req.params.id
+        
+      ];
+      const response = await db.query(updateOneQuery, values);
+      return res.status(200).send(response.rows[0]);
+    } catch(err) {
+      return res.status(400).send(err);
+    }
+  },
 }
 
 export default Order;
