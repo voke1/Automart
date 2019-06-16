@@ -66,6 +66,33 @@ const Car = {
       return res.status(400).send({status: 400, error});
     }
   },
+  /**
+   * Mark a Car Ad as sold
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} updated car
+   */
+  async update(req, res) {
+    const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
+    const updateOneQuery =`UPDATE cars
+      SET status=sold, modified_date=$1 ,
+      WHERE id=$2 returning *`;
+    try {
+      const { rows } = await db.query(findOneQuery, [req.params.id]);
+      if(!rows[0]) {
+        return res.status(404).send({'message': 'car not found'});
+      }
+      const values = [
+        moment(new Date()),
+        req.params.id
+        
+      ];
+      const response = await db.query(updateOneQuery, values);
+      return res.status(200).send(response.rows[0]);
+    } catch(err) {
+      return res.status(400).send(err);
+    }
+  },
  /*
    * Delete A Car
    * @param {object} req 
