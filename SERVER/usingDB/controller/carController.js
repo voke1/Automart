@@ -66,6 +66,26 @@ const Car = {
       return res.status(400).send({status: 400, error});
     }
   },
+  
+
+    /**
+   * Get All available Cars
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} cars array
+   */
+  async getAll(req, res) {
+      if('SELECT * FROM cars WHERE status = $1' == 'available'){
+        const findAllQuery = 'SELECT * FROM cars';
+        try {
+          const { rows, rowCount } = await db.query(findAllQuery);
+          return res.status(200).send({ rows, rowCount });
+        } catch(error) {
+          return res.status(400).send({status: 400, error});
+        }
+      }
+      return res.status(400).send({status: 400, error: 'no available car'});
+  },
  /*
    * Delete A Car
    * @param {object} req 
