@@ -1,4 +1,5 @@
 import Car from '../usingDatastructure/controller/car_controller';
+import Auth from '../usingDB/middleware/checkAuth';
 
 const express = require('express');
 
@@ -8,10 +9,10 @@ const router = express.Router();
 router.get('/api/v1/car', Car.getAll);
 
 //post car Ad
-router.post('/api/v1/car', Car.create);
+router.post('/api/v1/car', Auth, Car.create);
 
 //View a specific car Ad
-router.get('/api/v1/car/:carId/', Car.getOne);
+router.get('/api/v1/car/:carId/',  Car.getOne);
 
 //View all unsold cars of a specific make
 router.get('/api/v1/car?status=available&state=new', Car.getNewAvailableCars);
@@ -23,7 +24,7 @@ router.get('/api/v1/car?status=available&state=used', Car.getUsedAvailableCars);
 router.get('/api/v1/car?status=available', Car.getAvailableCars);
 
 //route to delete a specific car ad
-router.delete('/api/v1/car/:carId', Car.delete);
+router.delete('/api/v1/car/:carId', Auth, Car.delete);
 
 //route to view range of car ad available based on price
 router.get('/api/v1/car?status=available&minPrice=XXXValue &maxPrice= XXXValue', Car.getFilterCars);
@@ -33,12 +34,12 @@ router.get('/api/v1/car?status=available&minPrice=XXXValue &maxPrice= XXXValue',
 router.get('api/v1/car?body_type=bodyType', Car.getCarByBodyType) 
 
 //update status of a particular ad
-router.patch('/api/v1/car/:carId/status', Car.getUpdateStatus);
+router.patch('/api/v1/car/:carId/status', Auth, Car.getUpdateStatus);
 
 router.get('api/v1/car?status=available&manufacturer=XXXValue', Car.getAvailableCarsByMake)
 
 //update price of a particular Ad
-router.patch('/api/v1/car/:carId/price', Car.getUpdatePrice);
+router.patch('/api/v1/car/:carId/price', Auth, Car.getUpdatePrice);
 
 
 module.exports = router;

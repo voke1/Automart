@@ -30,7 +30,7 @@ const Car = {
     const carsArray = CarModel.findAvailableCars(req.query.status);
     return res.status(200).send({status: 200, carsArray});
   },
-  //view all available cars posted by manufacturer
+  //filter all available cars posted by manufacturer
   getAvailableCarsByMake(req, res) {
     const carsArray = CarModel.findAvailableCarsByMake(req.params.manufacturer, req.query.status);
     return res.status(200).send({status: 200, carsArray});
