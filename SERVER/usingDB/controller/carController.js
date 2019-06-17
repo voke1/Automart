@@ -113,8 +113,8 @@ const Car = {
   async getAll(req, res) {
     const findAllQuery = 'SELECT * FROM cars';
     try {
-      const { rows, rowCount } = await db.query(findAllQuery);
-      return res.status(200).send({ rows, rowCount });
+      const {rows} = await db.query(findAllQuery);
+      return res.status(200).send({status: 200, rows});
     } catch(error) {
       return res.status(400).send({status: 400, error});
     }
@@ -152,7 +152,7 @@ const Car = {
    * @param {object} res 
    * @returns {object} cars array
    */
-  async getAll(req, res) {
+  async getAvailableCars(req, res) {
       if('SELECT * FROM cars WHERE status = $1' == 'available'){
         const findAllQuery = 'SELECT * FROM cars';
         try {
