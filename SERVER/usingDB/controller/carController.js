@@ -1,3 +1,5 @@
+import moment from 'moment';
+import uuidv4 from 'uuid/v4';
 import db from '../db';
 
 const Car = {
@@ -10,12 +12,13 @@ const Car = {
    */
   async create(req, res) {
     const text = `INSERT INTO
-      cars(id, manufacturer, model, price, state, status, body_type, created_on, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+    cars(id, manufacturer, owner, model, price, state, status, body_type, created_on, modified_date)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *`;
     const values = [
       uuidv4(),
       req.body.manufacturer,
+      req.body.owner,
       req.body.model,
       req.body.price,
       req.body.state,
@@ -26,7 +29,8 @@ const Car = {
     ];
     try {
       const { rows } = await db.query(text, values);
-      return res.status(201).send(rows[0]);
+      const data = rows[0];
+      return res.status(201).send({status: 201, data});
     } catch(error) {
       return res.status(400).send({status: 400, error});
     }
@@ -43,9 +47,10 @@ const Car = {
     try {
       const { rows } = await db.query(text, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).send({'message': 'car not found'});
+        return res.status(404).send({status: 404, message: 'car not found'});
       }
-      return res.status(200).send(rows[0]);
+      const car = rows[0];
+      return res.status(200).send({status: 200, car});
     } catch(error) {
       return res.status(400).send({status: 400, error})
     }
@@ -64,7 +69,7 @@ const Car = {
     try {
       const { rows } = await db.query(findOneQuery, [req.params.id]);
       if(!rows[0]) {
-        return res.status(404).send({'message': 'car not found'});
+        return res.status(404).send({status: 404, message: 'car not found'});
       }
      
       const values = [
