@@ -1,4 +1,5 @@
-import User from '../usingDatastructure/controller/user_controller';
+//import User from '../usingDatastructure/controller/user_controller';
+import User from '../usingDB/controller/userController';
 
 import express from 'express';
 

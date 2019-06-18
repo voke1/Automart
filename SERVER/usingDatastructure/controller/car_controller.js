@@ -27,6 +27,7 @@ const Car = {
   },
   //view all available cars posted
   getAvailableCars(req, res) {
+    console.log("getAvailablecars")
     const carsArray = CarModel.findAvailableCars(req.query.status);
     return res.status(200).send({status: 200, carsArray});
   },

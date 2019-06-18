@@ -1,4 +1,7 @@
 import db from '../db';
+import moment from 'moment';
+import uuidv4 from 'uuid/v4';
+
 
 const Order = {
 
@@ -10,12 +13,13 @@ const Order = {
    */
   async create(req, res) {
     const text = `INSERT INTO
-      orders(id, car_id, price, price_offered, status, created_on, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6, $7)
+      orders(id, car_id, buyer, price, price_offered, status, created_on, modified_date)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8)
       returning *`;
     const values = [
       uuidv4(),
       req.body.car_id,
+      req.body.buyer,
       req.body.price,
       req.body.price_offered,
       req.body.status,
@@ -24,10 +28,11 @@ const Order = {
     ];
     try {
       const { rows } = await db.query(text, values);
-      return res.status(201).send(rows[0]);
-    } catch(error) {
-      return res.status(400).send({status: 400, error});
-    }
+      const order = (rows[0])
+      return res.status(201).send({status: 201, order});
+      } catch(error) {
+        return res.status(400).send({status: 400, error});
+      }
   },
   /**
    * Update A Order
@@ -35,31 +40,47 @@ const Order = {
    * @param {object} res 
    * @returns {object} updated order
    */
-  async update(req, res) {
+  async getUpdateOrderPrice(req, res) {
     const findOneQuery = 'SELECT * FROM orders WHERE id=$1';
+    
     const updateOneQuery =`UPDATE orders
-      SET car_id=$1,price=$2,price_offered=$3,modified_date=$4, old_price_offered=$5
-      WHERE id=$6 returning *`;
+      SET car_id=$1,price=$2,price_offered=$3, old_price_offered=$4, new_price_offered=$5, modified_date=$6
+      WHERE id=$7 returning *`;
     try {
+       req.params.id = req.params.orderId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
+      console.log(rows[0])
+      console.log(req.params.id)
+      
       if(!rows[0]) {
-        return res.status(404).send({'message': 'order not found'});
+        return res.status(404).send({status: 404, error : 'order not found'});
       }
-      //const oldPriceOffered = 'SELECT price FROM orders WHERE id = $3;'
-      const values = [
-        req.body.car_id || rows[0].success,
-        req.body.low_point || rows[0].low_point,
-        req.body.take_away || rows[0].take_away,
-        moment(new Date()),
-        req.body.price_offered,
-        req.params.id
-        
-      ];
-      const response = await db.query(updateOneQuery, values);
-      return res.status(200).send(response.rows[0]);
-    } catch(err) {
-      return res.status(400).send(err);
-    }
+      else if(rows[0].status === 'pending'){
+        req.body.old_price_offered = rows[0].price_offered;
+        req.body.new_price_offered = req.body.price_offered;
+        const values = [
+          req.body.car_id,
+          req.body.price,
+          req.body.price_offered,
+          req.body.old_price_offered,
+          req.body.new_price_offered,
+          moment(new Date()),
+          req.params.id
+          
+        ];
+        const response = await db.query(updateOneQuery, values);
+        const modifiedOrder = response.rows[0]
+        return res.status(200).send({status: 200, modifiedOrder});
+      }
+      else{
+        return res.status(404).send({status: 404, message: `cannot update price, status is ${rows[0].status}`});
+      }
+      
+      
+     
+     } catch(err) {
+       return res.status(400).send(err);
+     }
   },
 }
 

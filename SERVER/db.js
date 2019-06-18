@@ -46,13 +46,16 @@ const createCarTables = () => {
 const createOrderTables = () => {
     const queryText =
       `CREATE TABLE IF NOT EXISTS
-        orders(id UUID PRIMARY KEY,
+        orders(
+            id UUID PRIMARY KEY,
             created_on VARCHAR(128) NOT NULL,
-            car_id VARCHAR(128) NOT NULL,
+            car_id VARCHAR(128),
             price VARCHAR(128) NOT NULL,
             price_offered VARCHAR(128) NOT NULL,
-            buyer VARCHAR(128) NOT NULL,
-            status VARCHAR(128) NOT NULL,
+            old_price_offered VARCHAR(128),
+            new_price_offered VARCHAR(128),
+            buyer VARCHAR(128),
+            status VARCHAR(128)NOT NULL,
             created_date TIMESTAMP,
             modified_date TIMESTAMP
         )`;  
