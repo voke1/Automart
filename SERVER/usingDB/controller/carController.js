@@ -1,3 +1,5 @@
+import moment from 'moment';
+import uuidv4 from 'uuid/v4';
 import db from '../db';
 
 const Car = {
@@ -10,12 +12,13 @@ const Car = {
    */
   async create(req, res) {
     const text = `INSERT INTO
-      cars(id, manufacturer, model, price, state, status, body_type, created_on, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+    cars(id, manufacturer, owner, model, price, state, status, body_type, created_on, modified_date)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *`;
     const values = [
       uuidv4(),
       req.body.manufacturer,
+      req.body.owner,
       req.body.model,
       req.body.price,
       req.body.state,
@@ -26,14 +29,15 @@ const Car = {
     ];
     try {
       const { rows } = await db.query(text, values);
-      return res.status(201).send(rows[0]);
+      const data = rows[0];
+      return res.status(201).send({status: 201, data});
     } catch(error) {
       return res.status(400).send({status: 400, error});
     }
   },
 
     /**
-   * Get A Car
+   * View a specific Car
    * @param {object} req 
    * @param {object} res
    * @returns {object} car object
@@ -41,11 +45,13 @@ const Car = {
   async getOne(req, res) {
     const text = 'SELECT * FROM cars WHERE id = $1';
     try {
+       req.params.id = req.params.carId;
       const { rows } = await db.query(text, [req.params.id]);
       if (!rows[0]) {
-        return res.status(404).send({'message': 'car not found'});
+        return res.status(404).send({status: 404, error: 'car not found'});
       }
-      return res.status(200).send(rows[0]);
+      const car = rows[0];
+      return res.status(200).send({status: 200, car});
     } catch(error) {
       return res.status(400).send({status: 400, error})
     }
@@ -56,28 +62,29 @@ const Car = {
    * @param {object} res 
    * @returns {object} update car price
    */
-  async update(req, res) {
+  async getUpdatePrice(req, res) {
     const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
-    const updateOneQuery =`UPDATE orders
-      SET price=$1,,modified_date=$2
+    const updateOneQuery =`UPDATE cars
+      SET price=$1, modified_date=$2
       WHERE id=$3 returning *`;
     try {
+      req.params.id = req.params.carId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
+      console.log(rows[0])
       if(!rows[0]) {
-        return res.status(404).send({'message': 'car not found'});
+        return res.status(404).send({status: 404, error: 'car not found'});
       }
-     
       const values = [
-        req.body.price || rows[0].price,
+        req.body.price,
         moment(new Date()),
-        req.params.id
-        
+        req.params.id        
       ];
       const response = await db.query(updateOneQuery, values);
-      return res.status(200).send(response.rows[0]);
-    } catch(err) {
-      return res.status(400).send(err);
-    }
+      const updatedAd = response.rows[0];
+      return res.status(200).send({status: 200, updatedAd});
+     } catch(err) {
+       return res.status(400).send({status: 400, err});
+     }
   },
 
    /**
@@ -108,8 +115,8 @@ const Car = {
   async getAll(req, res) {
     const findAllQuery = 'SELECT * FROM cars';
     try {
-      const { rows, rowCount } = await db.query(findAllQuery);
-      return res.status(200).send({ rows, rowCount });
+      const {rows} = await db.query(findAllQuery);
+      return res.status(200).send({status: 200, rows});
     } catch(error) {
       return res.status(400).send({status: 400, error});
     }
@@ -120,44 +127,48 @@ const Car = {
    * @param {object} res 
    * @returns {object} updated car
    */
-  async update(req, res) {
+  async getUpdateStatus(req, res) {
     const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
     const updateOneQuery =`UPDATE cars
-      SET status=sold, modified_date=$1 ,
-      WHERE id=$2 returning *`;
+      SET status=$1, modified_date=$2
+      WHERE id=$3 returning *`;
     try {
+      req.params.id = req.params.carId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
       if(!rows[0]) {
-        return res.status(404).send({'message': 'car not found'});
+        return res.status(404).send({status: 404, error: 'car not found'});
       }
+      
       const values = [
+        req.body.status,
         moment(new Date()),
-        req.params.id
-        
+        req.params.id  
       ];
       const response = await db.query(updateOneQuery, values);
-      return res.status(200).send(response.rows[0]);
-    } catch(err) {
-      return res.status(400).send(err);
-    }
+      const modifiedAdStatus =  response.rows[0];
+      return res.status(200).send({status: 200, modifiedAdStatus});
+     } catch(err) {
+       return res.status(400).send({status: 400, err});
+     }
 },
     /**
-   * Get All available Cars
+   * View All available Cars
    * @param {object} req 
    * @param {object} res 
    * @returns {object} cars array
    */
-  async getAll(req, res) {
-      if('SELECT * FROM cars WHERE status = $1' == 'available'){
-        const findAllQuery = 'SELECT * FROM cars';
-        try {
-          const { rows, rowCount } = await db.query(findAllQuery);
-          return res.status(200).send({ rows, rowCount });
-        } catch(error) {
-          return res.status(400).send({status: 400, error});
-        }
-      }
-      return res.status(400).send({status: 400, error: 'no available car'});
+  async getAvailableCars(req, res) {
+
+        const findAvailableQuery = "SELECT status FROM cars WHERE status = 'available'";
+        //try {
+          try {
+            const {rows} = await db.query(findAvailableQuery);
+            return res.status(200).send({status: 200, rows});
+          } catch(error) {
+            return res.status(400).send({status: 400, error});
+          }
+      
+      //return res.status(400).send({status: 400, error: 'no available car'});
   },
  /*
    * Delete A Car
