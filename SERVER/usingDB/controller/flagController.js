@@ -25,7 +25,8 @@ const Flag = {
 
     try {
       const { rows } = await db.query(text, values);
-      return res.status(201).send(rows[0]);
+      const flag = rows[0];
+      return res.status(201).send({status: 201, flag});
     } catch(error) {
       return res.status(400).send({status: 400, error});
     }
