@@ -1,5 +1,4 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import "@babel/polyfill";
 import db from '../db';
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
