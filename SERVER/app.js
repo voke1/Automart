@@ -19,6 +19,6 @@ app.use('/', cloudinaryRoutes);
 app.use('/', userRoutes);
 app.use('/', carRoutes);
 app.use('/', orderRoutes);
-app.use(("/", flagRoutes));
+app.use('/', flagRoutes);
 
 module.exports = app;
