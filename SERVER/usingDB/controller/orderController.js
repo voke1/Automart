@@ -36,7 +36,7 @@ const Order = {
       }
   },
   /**
-   * Update A Order
+   * Update an Order
    * @param {object} req 
    * @param {object} res 
    * @returns {object} updated order
@@ -50,8 +50,6 @@ const Order = {
     try {
        req.params.id = req.params.orderId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
-      console.log(rows[0])
-      console.log(req.params.id)
       
       if(!rows[0]) {
         return res.status(404).send({status: 404, error : 'order not found'});
