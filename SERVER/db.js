@@ -22,13 +22,13 @@ const createCarTables = () => {
       cars(
         id UUID PRIMARY KEY,
         created_on VARCHAR(128) NOT NULL,
-        manufacturer VARCHAR(128) NOT NULL,
-        price VARCHAR(128) NOT NULL,
-        owner VARCHAR(128) NOT NULL,
-        state VARCHAR(128) NOT NULL,
-        status VARCHAR(128) NOT NULL,
-        body_type VARCHAR(128) NOT NULL,
-        model VARCHAR(128) NOT NULL,
+        manufacturer VARCHAR(128) ,
+        price VARCHAR(128) ,
+        owner VARCHAR(128) ,
+        state VARCHAR(128) ,
+        status VARCHAR(128) ,
+        body_type VARCHAR(128) ,
+        model VARCHAR(128) ,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
       )`;
