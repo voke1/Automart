@@ -54,11 +54,11 @@ const User = {
             const { rows } = await db.query(text, [req.body.email]);
             
             if (!rows[0]) {
-                return res.status(404).send({ status: 404, error: 'user not found' });
+                return res.status(404).send({ status: 404, error: `A user with the specified ${req.body.email} was not found` });
             }
             bcrypt.compare(req.body.password, rows[0].password, (error, result) => {
                 if (error) {
-                    return res.status(401).send({ status: 401, message: 'Auth failed' });
+                    return res.status(401).send({ status: 401, Authentication_failed: 'Authorization information is missing or invalid' });
                 } if (result) {
                     const signedUser = rows[0];
                     return res.status(200).send({status: 200, signedUser});
@@ -66,7 +66,7 @@ const User = {
             });
 
         } catch (error) {
-            return res.status(401).send({ status: 401, error: 'Enter valid email and password' })
+            return res.status(401).send({ status: 401, error: 'Please enter valid email and password' })
         }
     },
 }
