@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/voke1/Atmrt#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cloudinary": "^1.14.0",
@@ -41,6 +42,7 @@
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "pg": "^7.11.0",
+    "swagger-ui-express": "^4.0.6",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -48,7 +50,6 @@
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
