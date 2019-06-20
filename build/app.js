@@ -18,7 +18,7 @@ var _flag_route = _interopRequireDefault(require("./routes/flag_route"));
 
 var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 
-var _swaggerDoc = _interopRequireDefault(require("./swaggerDoc.json"));
+var _swaggerDoc = _interopRequireDefault(require("./swaggerDoc"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
