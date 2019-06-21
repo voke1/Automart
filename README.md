@@ -2,8 +2,7 @@
 
 # AutoMart
 
-[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)   [![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)     [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
-
+[![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)     [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage) https://img.shields.io/coveralls/github/voke1/Automart/develop.svg  [![airbnb-style](https://img.shields.io/badge/eslint-airbnb-4B32C3.svg)](https://github.com/airbnb/javascript)]
 Automart
 
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
@@ -38,25 +37,50 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 
 
  
-## Technologies utilised
+#Technologies utilised
 
-- Node js
-- Express
-- Mocha, chai, 
-- Babel, 
-- Eslint
+- HTML, CSS and Javascript (UI interface),
+- Node js (Server environment),
+- Express (Web framework),
+- Mocha, chai (Testing framework),
+- Babel (Compiler),
+- Eslint; Airbnb (Coding style),
+- Travis CI (Continuous integration),
+- Swagger (API Documentation),
+- Coveralls (test coverage)
 
 
-## Deployment
-Automart API is deployed to Heroku. Use this link https://voke-automart.herokuapp.com/api-docs to view project documentation
+#Deployment
+
+- Automart API is deployed to Heroku. Use this link https://voke-automart.herokuapp.com/ 
+- Automart UI is deployed at https://voke1.github.io/Automart
+- Automart API documentation can be found at https://voke-automart.herokuapp.com/api-docs
 
 
-## API Endpoints: Usage
+
+#API Endpoints: Installation and Usage
+
+Automart application is developed using Node js and Express js. It is required these packages are present prior installation.  To start with;
+
+* Clone this repository:
+```
+    $ git clone https://github.com/voke1/Automart.git
+```
+* Install dependencies
+```
+    $ npm install
+```
+* Start server
+```
+    $ npm start
+```
 
 To post and get data from app, use https://voke-automart.herokuapp.com/ together with the following
 endpoint e.g. https://voke-automart.herokuapp.com/api/v1/auth/signup
 
-A testing tool such as POSTMAN will be required.
+An API testing tool such as POSTMAN will be required.
+
+
 
 
 | Verb     | Endpoint                                                           | Action
@@ -65,16 +89,15 @@ A testing tool such as POSTMAN will be required.
 | POST     | /api/v1/auth/signin                                                | Sign a user in
 | POST     | /api/v1/car                                                        | Create a car AD
 | GET      | /api/v1/car                                                        | View all posted ADs whether sold or available
-| GET      | /api/v1/car/:carId                                                  | View a specific car AD
-
-| PATCH    | /api/v1/car/:carId/price                                            | Update a specific car AD price
-| PATCH    | /api/v1/car/:carId/status                                           | Update a specific car AD status (sold)
-| DELETE   | /api/v1/car/:carId/                                                 | Delete a specific car AD (only Admin)
+| GET      | /api/v1/car/:carId                                                 | View a specific car AD
+| PATCH    | /api/v1/car/:carId/price                                           | Update a specific car AD price
+| PATCH    | /api/v1/car/:carId/status                                          | Update a specific car AD status (sold)
+| DELETE   | /api/v1/car/:carId/                                                | Delete a specific car AD
 | POST     | /api/v1/order                                                      | Create an order
-| PATCH     | /api/v1/order/:orderId/price                                          | Update price of an order
+| PATCH    | /api/v1/order/:orderId/price                                       | Update price of an order
 
 
 
-## Author
+#Author
 
 Voke Olomu
