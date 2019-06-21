@@ -16,6 +16,10 @@ var _cloudinary_route = _interopRequireDefault(require("./routes/cloudinary_rout
 
 var _flag_route = _interopRequireDefault(require("./routes/flag_route"));
 
+var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
+
+var _swaggerDoc = _interopRequireDefault(require("./swaggerDoc"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var app = (0, _express["default"])();
@@ -29,5 +33,6 @@ app.use('/', _user_route["default"]);
 app.use('/', _car_route["default"]);
 app.use('/', _order_route["default"]);
 app.use('/', _flag_route["default"]);
+app.use('/api-docs', _swaggerUiExpress["default"].serve, _swaggerUiExpress["default"].setup(_swaggerDoc["default"]));
 module.exports = app;
 //# sourceMappingURL=app.js.map
