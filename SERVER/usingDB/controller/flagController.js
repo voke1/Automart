@@ -1,4 +1,4 @@
-import "@babel/polyfill";
+import '@babel/polyfill';
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 import db from '../db';
@@ -6,9 +6,9 @@ import db from '../db';
 const Flag = {
   /**
    * Create A Flag
-   * @param {object} req 
+   * @param {object} req
    * @param {object} res
-   * @returns {object} flag object 
+   * @returns {object} flag object
    */
   async create(req, res) {
     const text = `INSERT INTO
@@ -21,18 +21,18 @@ const Flag = {
       req.body.reason,
       req.body.description,
       moment(new Date()),
-      moment(new Date())
+      moment(new Date()),
     ];
 
     try {
       const { rows } = await db.query(text, values);
       const flag = rows[0];
-      return res.status(201).send({status: 201, flag});
-    } catch(error) {
-      return res.status(400).send({status: 400, error});
+      return res.status(201).send({ status: 201, flag });
+    } catch (error) {
+      return res.status(400).send({ status: 400, error });
     }
   },
-  
-}
+
+};
 
 export default Flag;
