@@ -3,6 +3,7 @@
 # AutoMart
 
 [![Build Status](https://travis-ci.org/voke1/Automart.svg?branch=develop)](https://travis-ci.org/voke1/Automart)     [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)  [![airbnb-style](https://img.shields.io/badge/eslint-airbnb-4B32C3.svg)](https://github.com/airbnb/javascript)
+
 Automart
 
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
@@ -37,7 +38,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 
 
  
-#Technologies utilised
+## Technologies utilised
 
 - HTML, CSS and Javascript (UI interface),
 - Node js (Server environment),
@@ -50,7 +51,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 - Coveralls (test coverage)
 
 
-#Deployment
+## Deployment
 
 - Automart API is deployed to Heroku. Use this link https://voke-automart.herokuapp.com/ 
 - Automart UI is deployed at https://voke1.github.io/Automart
@@ -58,7 +59,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 
 
 
-#API Endpoints: Installation and Usage
+## API Endpoints: Installation and Usage
 
 Automart application is developed using Node js and Express js. It is required these packages are present prior installation.  To start with;
 
@@ -98,6 +99,6 @@ An API testing tool such as POSTMAN will be required.
 
 
 
-#Author
+## Author
 
 Voke Olomu
