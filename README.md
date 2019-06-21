@@ -10,7 +10,7 @@ Auto Mart is an online marketplace for automobiles of diverse makes, model or bo
 Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.
 
 
- #Features
+ ## Features
 
 1. User can sign up.
 2. User can sign in.
@@ -26,7 +26,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 12. Admin can view all posted ads whether sold or unsold.
 
 
-#Optional Features
+## Optional Features
 
  1. User can reset password
  2. User can view all cars of a specific body type.
