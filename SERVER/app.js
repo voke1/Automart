@@ -8,7 +8,7 @@ import orderRoutes from './routes/order_route';
 import cloudinaryRoutes from "./routes/cloudinary_route";
 import flagRoutes from "./routes/flag_route";
 import swaggerUi from 'swagger-ui-express';
-import swaggerDoc from './swaggerDoc';
+import swaggerDoc from '../swaggerDoc';
 
 
 const app = express();
