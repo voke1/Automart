@@ -48,7 +48,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 
 
 ## Deployment
-Automart API is deployed to Heroku. Use this link https://voke-automart.herokuapp.com/ to view project
+Automart API is deployed to Heroku. Use this link https://voke-automart.herokuapp.com/api-docs to view project documentation
 
 
 ## API Endpoints: Usage
@@ -66,8 +66,7 @@ A testing tool such as POSTMAN will be required.
 | POST     | /api/v1/car                                                        | Create a car AD
 | GET      | /api/v1/car                                                        | View all posted ADs whether sold or available
 | GET      | /api/v1/car/:carId                                                  | View a specific car AD
-| GET      | /api/v1/car?status=available                                       | View all unsold cars
-| GET      | /api/v1/car?status=available&minPrice=XXXValue&maxPrice=XXXValue | View all unsold cars within a price range
+
 | PATCH    | /api/v1/car/:carId/price                                            | Update a specific car AD price
 | PATCH    | /api/v1/car/:carId/status                                           | Update a specific car AD status (sold)
 | DELETE   | /api/v1/car/:carId/                                                 | Delete a specific car AD (only Admin)
