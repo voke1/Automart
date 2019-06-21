@@ -22,9 +22,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var Car = {
   /**
   * Create A Car Ad
-  * @param {object} req 
+  * @param {object} req
   * @param {object} res
-  * @returns {object} car object 
+  * @returns {object} car object
   */
   create: function () {
     var _create = _asyncToGenerator(
@@ -76,7 +76,7 @@ var Car = {
 
   /**
   * View a specific Car
-  * @param {object} req 
+  * @param {object} req
   * @param {object} res
   * @returns {object} car object
   */
@@ -142,8 +142,8 @@ var Car = {
 
   /**
   * Update price of Car Ad
-  * @param {object} req 
-  * @param {object} res 
+  * @param {object} req
+  * @param {object} res
   * @returns {object} update price of Car Ad
   */
   getUpdatePrice: function () {
@@ -215,8 +215,8 @@ var Car = {
 
   /**
   * Filter Cars by input query
-  * @param {object} req 
-  * @param {object} res 
+  * @param {object} req
+  * @param {object} res
   * @returns {object} cars array
   */
   getAll: function () {
@@ -230,7 +230,7 @@ var Car = {
           switch (_context4.prev = _context4.next) {
             case 0:
               if (!(req.query.status === 'available')) {
-                _context4.next = 63;
+                _context4.next = 62;
                 break;
               }
 
@@ -314,17 +314,16 @@ var Car = {
 
             case 40:
               if (!req.query.min_price) {
-                _context4.next = 49;
+                _context4.next = 48;
                 break;
               }
 
-              console.log('price testing');
-              _findAllQuery5 = "SELECT * FROM cars WHERE status = 'available' AND price BETWEEN '".concat(req.query.min_price, "' AND '").concat(req.query.max_price, "' "); //try {
+              _findAllQuery5 = "SELECT * FROM cars WHERE status = 'available' AND price BETWEEN '".concat(req.query.min_price, "' AND '").concat(req.query.max_price, "' "); // try {
 
-              _context4.next = 45;
+              _context4.next = 44;
               return _db["default"].query(_findAllQuery5);
 
-            case 45:
+            case 44:
               _ref7 = _context4.sent;
               _rows3 = _ref7.rows;
               carRange = _rows3;
@@ -333,19 +332,19 @@ var Car = {
                 carRange: carRange
               }));
 
-            case 49:
-              //Return all available car Ads
+            case 48:
+              // Return all available car Ads
               _findAllQuery = "SELECT * FROM cars WHERE status = 'available'";
-              _context4.prev = 50;
-              _context4.next = 53;
+              _context4.prev = 49;
+              _context4.next = 52;
               return _db["default"].query(_findAllQuery);
 
-            case 53:
+            case 52:
               _ref8 = _context4.sent;
               _rows4 = _ref8.rows;
 
               if (!(_rows4 === [])) {
-                _context4.next = 57;
+                _context4.next = 56;
                 break;
               }
 
@@ -354,32 +353,32 @@ var Car = {
                 message: 'No available Car Ads'
               }));
 
-            case 57:
+            case 56:
               return _context4.abrupt("return", res.status(200).send({
                 status: 200,
                 rows: _rows4
               }));
 
-            case 60:
-              _context4.prev = 60;
-              _context4.t3 = _context4["catch"](50);
+            case 59:
+              _context4.prev = 59;
+              _context4.t3 = _context4["catch"](49);
               return _context4.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context4.t3
               }));
 
-            case 63:
+            case 62:
               if (!req.query.body_type) {
-                _context4.next = 76;
+                _context4.next = 75;
                 break;
               }
 
               _findAllQuery6 = "SELECT * FROM cars WHERE  body_type = '".concat(req.query.body_type, "'");
-              _context4.prev = 65;
-              _context4.next = 68;
+              _context4.prev = 64;
+              _context4.next = 67;
               return _db["default"].query(_findAllQuery6);
 
-            case 68:
+            case 67:
               _ref9 = _context4.sent;
               _rows5 = _ref9.rows;
               return _context4.abrupt("return", res.status(200).send({
@@ -387,21 +386,21 @@ var Car = {
                 rows: _rows5
               }));
 
-            case 73:
-              _context4.prev = 73;
-              _context4.t4 = _context4["catch"](65);
+            case 72:
+              _context4.prev = 72;
+              _context4.t4 = _context4["catch"](64);
               return _context4.abrupt("return", res.status(400).send({
                 status: 400,
                 error: "Cannot find car of ".concat(req.query.body_type, " body type")
               }));
 
-            case 76:
+            case 75:
               findAllQuery = 'SELECT * FROM cars';
-              _context4.prev = 77;
-              _context4.next = 80;
+              _context4.prev = 76;
+              _context4.next = 79;
               return _db["default"].query(findAllQuery);
 
-            case 80:
+            case 79:
               _ref10 = _context4.sent;
               _rows6 = _ref10.rows;
               return _context4.abrupt("return", res.status(200).send({
@@ -409,20 +408,20 @@ var Car = {
                 rows: _rows6
               }));
 
-            case 85:
-              _context4.prev = 85;
-              _context4.t5 = _context4["catch"](77);
+            case 84:
+              _context4.prev = 84;
+              _context4.t5 = _context4["catch"](76);
               return _context4.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context4.t5
               }));
 
-            case 88:
+            case 87:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[3, 11], [16, 24], [29, 37], [50, 60], [65, 73], [77, 85]]);
+      }, _callee4, null, [[3, 11], [16, 24], [29, 37], [49, 59], [64, 72], [76, 84]]);
     }));
 
     function getAll(_x7, _x8) {
@@ -434,8 +433,8 @@ var Car = {
 
   /**
    * Mark a Car Ad as sold
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    * @returns {object} updated car
    */
   getUpdateStatus: function () {
@@ -460,7 +459,7 @@ var Car = {
               rows = _ref11.rows;
 
               if (rows[0]) {
-                _context5.next = 12;
+                _context5.next = 10;
                 break;
               }
 
@@ -469,9 +468,9 @@ var Car = {
                 error: 'car Ad not found'
               }));
 
-            case 12:
+            case 10:
               if (!(rows[0].status === 'sold')) {
-                _context5.next = 14;
+                _context5.next = 12;
                 break;
               }
 
@@ -480,12 +479,12 @@ var Car = {
                 error: "Cannot update. car Ad is already ".concat(rows[0].status)
               }));
 
-            case 14:
+            case 12:
               values = [req.body.status, (0, _moment["default"])(new Date()), req.params.id];
-              _context5.next = 17;
+              _context5.next = 15;
               return _db["default"].query(updateOneQuery, values);
 
-            case 17:
+            case 15:
               response = _context5.sent;
               modifiedAdStatus = response.rows[0];
               return _context5.abrupt("return", res.status(200).send({
@@ -493,20 +492,20 @@ var Car = {
                 modifiedAdStatus: modifiedAdStatus
               }));
 
-            case 22:
-              _context5.prev = 22;
+            case 20:
+              _context5.prev = 20;
               _context5.t0 = _context5["catch"](2);
               return _context5.abrupt("return", res.status(400).send({
                 status: 400,
                 err: _context5.t0
               }));
 
-            case 25:
+            case 23:
             case "end":
               return _context5.stop();
           }
         }
-      }, _callee5, null, [[2, 22]]);
+      }, _callee5, null, [[2, 20]]);
     }));
 
     function getUpdateStatus(_x9, _x10) {
@@ -518,9 +517,9 @@ var Car = {
 
   /*
     * Delete A Car
-    * @param {object} req 
-    * @param {object} res 
-    * @returns {void} return statuc code 204 
+    * @param {object} req
+    * @param {object} res
+    * @returns {void} return statuc code 204
     */
   "delete": function () {
     var _delete2 = _asyncToGenerator(
@@ -555,7 +554,7 @@ var Car = {
             case 9:
               return _context6.abrupt("return", res.status(204).send({
                 status: 204,
-                message: "Car Ad successfully deleted"
+                message: 'Car Ad successfully deleted'
               }));
 
             case 12:

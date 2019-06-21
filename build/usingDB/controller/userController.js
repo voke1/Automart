@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 require("@babel/polyfill");
 
-var _db = _interopRequireDefault(require("../db"));
-
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _moment = _interopRequireDefault(require("moment"));
@@ -16,6 +14,8 @@ var _moment = _interopRequireDefault(require("moment"));
 var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
+
+var _db = _interopRequireDefault(require("../db"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -25,11 +25,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var User = {
   /**
-  * Create A User
-  * @param {object} req 
-  * @param {object} res
-  * @returns {object} user object 
-  */
+   * Create A User
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} user object
+   */
   create: function () {
     var _create = _asyncToGenerator(
     /*#__PURE__*/
@@ -42,12 +42,15 @@ var User = {
             case 0:
               text = "INSERT INTO\n      Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)\n      returning *";
               req.body.token = _jsonwebtoken["default"].sign(req.body.email, process.env.TOKEN);
-              values = [(0, _v["default"])(), req.body.token, req.body.email, req.body.firstname, req.body.lastname, _bcrypt["default"].hashSync(req.body.password, 10, function (error, hash) {
+              values = [(0, _v["default"])(), req.body.token, req.body.email, req.body.firstname, req.body.lastname, // eslint-disable-next-line no-unused-vars
+              _bcrypt["default"].hashSync(req.body.password, 10, function (error, hash) {
                 if (error) {
                   return {
                     message: 'error found'
                   };
                 }
+
+                return null;
               }) || '', req.body.is_admin, (0, _moment["default"])(new Date()), (0, _moment["default"])(new Date())];
               _context.prev = 3;
               _context.next = 6;
@@ -86,11 +89,11 @@ var User = {
   }(),
 
   /**
-     * //sign in a user
-     * @param {object} req 
-     * @param {object} res
-     * @returns {object} return user Object
-     */
+       * //sign in a user
+       * @param {object} req
+       * @param {object} res
+       * @returns {object} return user Object
+       */
   getOne: function () {
     var _getOne = _asyncToGenerator(
     /*#__PURE__*/
@@ -136,6 +139,8 @@ var User = {
                     signedUser: signedUser
                   });
                 }
+
+                return null;
               });
 
               _context2.next = 14;
@@ -150,6 +155,9 @@ var User = {
               }));
 
             case 14:
+              return _context2.abrupt("return", null);
+
+            case 15:
             case "end":
               return _context2.stop();
           }

@@ -2,12 +2,12 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
 import carRoutes from './routes/car_route';
 import userRoutes from './routes/user_route';
 import orderRoutes from './routes/order_route';
-import cloudinaryRoutes from "./routes/cloudinary_route";
-import flagRoutes from "./routes/flag_route";
-import swaggerUi from 'swagger-ui-express';
+import cloudinaryRoutes from './routes/cloudinary_route';
+import flagRoutes from './routes/flag_route';
 import swaggerDoc from '../swaggerDoc';
 
 

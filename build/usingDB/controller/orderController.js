@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 require("@babel/polyfill");
 
-var _db = _interopRequireDefault(require("../db"));
-
 var _moment = _interopRequireDefault(require("moment"));
 
 var _v = _interopRequireDefault(require("uuid/v4"));
+
+var _db = _interopRequireDefault(require("../db"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -21,11 +21,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var Order = {
   /**
-  * Create A Order
-  * @param {object} req 
-  * @param {object} res
-  * @returns {object} order object 
-  */
+   * Create A Order
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} order object
+   */
   create: function () {
     var _create = _asyncToGenerator(
     /*#__PURE__*/
@@ -76,8 +76,8 @@ var Order = {
 
   /**
    * Update an Order
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    * @returns {object} updated order
    */
   getUpdateOrderPrice: function () {
@@ -102,7 +102,7 @@ var Order = {
               rows = _ref2.rows;
 
               if (rows[0]) {
-                _context2.next = 12;
+                _context2.next = 10;
                 break;
               }
 
@@ -111,19 +111,19 @@ var Order = {
                 error: 'order not found'
               }));
 
-            case 12:
+            case 10:
               if (!(rows[0].status === 'pending')) {
-                _context2.next = 23;
+                _context2.next = 19;
                 break;
               }
 
               req.body.old_price_offered = rows[0].price_offered;
               req.body.new_price_offered = req.body.price_offered;
               values = [req.body.car_id, req.body.price, req.body.price_offered, req.body.old_price_offered, req.body.new_price_offered, (0, _moment["default"])(new Date()), req.params.id];
-              _context2.next = 18;
+              _context2.next = 16;
               return _db["default"].query(updateOneQuery, values);
 
-            case 18:
+            case 16:
               response = _context2.sent;
               modifiedOrder = response.rows[0];
               return _context2.abrupt("return", res.status(200).send({
@@ -131,27 +131,23 @@ var Order = {
                 modifiedOrder: modifiedOrder
               }));
 
-            case 23:
+            case 19:
               return _context2.abrupt("return", res.status(404).send({
                 status: 404,
                 message: "cannot update price, status is ".concat(rows[0].status)
               }));
 
-            case 24:
-              _context2.next = 29;
-              break;
-
-            case 26:
-              _context2.prev = 26;
+            case 22:
+              _context2.prev = 22;
               _context2.t0 = _context2["catch"](2);
               return _context2.abrupt("return", res.status(400).send(_context2.t0));
 
-            case 29:
+            case 25:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 26]]);
+      }, _callee2, null, [[2, 22]]);
     }));
 
     function getUpdateOrderPrice(_x3, _x4) {

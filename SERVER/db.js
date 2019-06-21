@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, ssl: true
+  connectionString: process.env.DATABASE_URL, ssl: true,
 });
 
 pool.on('connect', () => {
@@ -17,8 +17,7 @@ pool.on('connect', () => {
  * Create Tables
  */
 const createCarTables = () => {
-  const queryText =
-    `CREATE TABLE IF NOT EXISTS
+  const queryText = `CREATE TABLE IF NOT EXISTS
       cars(
         id UUID PRIMARY KEY,
         created_on VARCHAR(128) NOT NULL,
@@ -41,11 +40,10 @@ const createCarTables = () => {
       console.log(err);
       pool.end();
     });
-}
+};
 
 const createOrderTables = () => {
-    const queryText =
-      `CREATE TABLE IF NOT EXISTS
+  const queryText = `CREATE TABLE IF NOT EXISTS
         orders(
             id UUID PRIMARY KEY,
             created_on VARCHAR(128) NOT NULL,
@@ -58,20 +56,19 @@ const createOrderTables = () => {
             status VARCHAR(128)NOT NULL,
             created_date TIMESTAMP,
             modified_date TIMESTAMP
-        )`;  
-    pool.query(queryText)
-      .then((res) => {
-        console.log(res);
-        pool.end();
-      })
-      .catch((err) => {
-        console.log(err);
-        pool.end();
-      });
-  }
-  const createUserTables = () => {
-    const queryText =
-      `CREATE TABLE IF NOT EXISTS
+        )`;
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
+const createUserTables = () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
         users(
           id UUID PRIMARY KEY,
           token VARCHAR(128) NOT NULL,
@@ -83,19 +80,18 @@ const createOrderTables = () => {
           created_date TIMESTAMP,
           modified_date TIMESTAMP
         )`;
-    pool.query(queryText)
-      .then((res) => {
-        console.log(res);
-        pool.end();
-      })
-      .catch((err) => {
-        console.log(err);
-        pool.end();
-      });
-  }
-  const createFlagTables = () => {
-    const queryText =
-      `CREATE TABLE IF NOT EXISTS
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
+const createFlagTables = () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
         flags(
           id UUID PRIMARY KEY,
           car_id VARCHAR(128) NOT NULL,
@@ -104,17 +100,17 @@ const createOrderTables = () => {
           created_on TIMESTAMP,
           modified_date TIMESTAMP
         )`;
-    pool.query(queryText)
-      .then((res) => {
-        console.log(res);
-        pool.end();
-      })
-      .catch((err) => {
-        console.log(err);
-        pool.end();
-      });
-  }
-      
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
+
 
 /**
  * Drop Tables
@@ -130,56 +126,55 @@ const dropCarTables = () => {
       console.log(err);
       pool.end();
     });
-}
+};
 /**
  * Drop Tables
  */
 const dropOrderTables = () => {
-    const queryText = 'DROP TABLE IF EXISTS orders';
-    pool.query(queryText)
-      .then((res) => {
-        console.log(res);
-        pool.end();
-      })
-      .catch((err) => {
-        console.log(err);
-        pool.end();
-      });
-  }
-  /**
+  const queryText = 'DROP TABLE IF EXISTS orders';
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
+/**
  * Drop Tables
  */
 const dropUserTables = () => {
-    const queryText = 'DROP TABLE IF EXISTS users';
-    pool.query(queryText)
-      .then((res) => {
-        console.log(res);
-        pool.end();
-      })
-      .catch((err) => {
-        console.log(err);
-        pool.end();
-      });
-  }
+  const queryText = 'DROP TABLE IF EXISTS users';
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
 
-  /**
+/**
  * Drop Tables
  */
 const dropFlagTables = () => {
-    const queryText = 'DROP TABLE IF EXISTS flags';
-    pool.query(queryText)
-      .then((res) => {
-        console.log(res);
-        pool.end();
-      })
-      .catch((err) => {
-        console.log(err);
-        pool.end();
-      });
-  }
+  const queryText = 'DROP TABLE IF EXISTS flags';
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
 
 pool.on('remove', () => {
-  console.log('client removed');
   process.exit(0);
 });
 
@@ -191,8 +186,8 @@ module.exports = {
   dropCarTables,
   dropFlagTables,
   dropOrderTables,
-  dropUserTables
+  dropUserTables,
 };
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 require('make-runnable');
-

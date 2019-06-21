@@ -16,7 +16,8 @@
     },
     "rules": {
         "linebreak-style": 0,
-        "eslint.autoFixOnSave": true
+        "eslint.autoFixOnSave": true,
+        "no-console": 0
     }
     
 }

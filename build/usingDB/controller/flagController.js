@@ -22,9 +22,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var Flag = {
   /**
    * Create A Flag
-   * @param {object} req 
+   * @param {object} req
    * @param {object} res
-   * @returns {object} flag object 
+   * @returns {object} flag object
    */
   create: function () {
     var _create = _asyncToGenerator(
