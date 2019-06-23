@@ -20,7 +20,7 @@ const createCarTables = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
       cars(
         id UUID PRIMARY KEY,
-        created_on VARCHAR(128) NOT NULL,
+        created_on VARCHAR(128),
         manufacturer VARCHAR(128) ,
         price VARCHAR(128) ,
         owner VARCHAR(128) ,
@@ -46,14 +46,14 @@ const createOrderTables = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
         orders(
             id UUID PRIMARY KEY,
-            created_on VARCHAR(128) NOT NULL,
+            created_on VARCHAR(128),
             car_id VARCHAR(128),
-            price VARCHAR(128) NOT NULL,
-            price_offered VARCHAR(128) NOT NULL,
+            price VARCHAR(128),
+            price_offered VARCHAR(128),
             old_price_offered VARCHAR(128),
             new_price_offered VARCHAR(128),
             buyer VARCHAR(128),
-            status VARCHAR(128)NOT NULL,
+            status VARCHAR(128),
             created_date TIMESTAMP,
             modified_date TIMESTAMP
         )`;
@@ -71,12 +71,12 @@ const createUserTables = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
         users(
           id UUID PRIMARY KEY,
-          token VARCHAR(128) NOT NULL,
-          email VARCHAR(128) NOT NULL,
-          firstname VARCHAR(128) NOT NULL,
-          lastname VARCHAR(128) NOT NULL,
-          password VARCHAR(128) NOT NULL,
-          is_admin VARCHAR(128) NOT NULL,
+          token VARCHAR(128),
+          email VARCHAR(128),
+          firstname VARCHAR(128),
+          lastname VARCHAR(128),
+          password VARCHAR(128),
+          is_admin VARCHAR(128),
           created_date TIMESTAMP,
           modified_date TIMESTAMP
         )`;
@@ -94,9 +94,9 @@ const createFlagTables = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
         flags(
           id UUID PRIMARY KEY,
-          car_id VARCHAR(128) NOT NULL,
-          reason VARCHAR(128) NOT NULL,
-          description VARCHAR(128) NOT NULL,
+          car_id VARCHAR(128),
+          reason VARCHAR(128),
+          description VARCHAR(128),
           created_on TIMESTAMP,
           modified_date TIMESTAMP
         )`;

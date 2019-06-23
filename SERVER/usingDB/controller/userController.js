@@ -18,6 +18,9 @@ const User = {
       Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
       returning *`;
+    if (!req.body.email || !req.body.password) {
+      return res.status(400).send({ status: 400, error: 'please fill in required fields' });
+    }
     req.body.token = jwt.sign(req.body.email, process.env.TOKEN);
     const values = [
       uuidv4(),
