@@ -1,23 +1,66 @@
 {
   "name": "automart",
   "version": "1.0.0",
-  "description": "Automart",
+  "description": "an online marketplace for automobile",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "nodemon --exec babel-node ./SERVER/server",
+    "create:tables": "node ./SERVER/db createCarTables && node ./SERVER/db createOrderTables && node ./SERVER/db createUserTables",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./SERVER -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": " node ./build/server.js",
+    "test": "mocha './server/test/*.js'  --recursive || true"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/voke1/Atmrt.git"
   },
-  "author": "",
+  "engines": {
+    "node": "v10.15.3"
+  },
+  "keywords": [
+    "online",
+    "marketplace",
+    "automobile"
+  ],
+  "author": "Voke Olomu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/voke1/Atmrt/issues"
   },
   "homepage": "https://github.com/voke1/Atmrt#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.14.0",
+    "connect-multiparty": "^2.2.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "swagger-ui-express": "^4.0.6",
+    "uuid": "^3.3.2"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "coveralls": "^3.0.4",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "make-runnable": "^1.3.6",
+    "mocha": "^6.1.4",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.19.1"
   }
 }

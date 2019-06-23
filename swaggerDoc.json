@@ -1,0 +1,653 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Automart\n Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.",
+    "version": "1",
+    "title": "Auto-Mart",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "vokeolomu@yahoo.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Order",
+      "description": "Access to Automart orders"
+    },
+    {
+      "name": "User",
+      "description": "Operations on Automart User"
+    },
+    {
+      "name": "Flag",
+      "description": "flag/report a posted AD as fraudulent."
+    },
+    {
+      "name": "Car",
+      "description": "Operations on Automart Car Ads"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api/v1/car": {
+      "post": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "Create a car sale Ad",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create a car sale Ad. Post Car Ads on Automart's site",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          },
+          "404": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "View all Car Ads whether sold or unsold",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "View all Car Ads whether sold or unsold",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          },
+          "404": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/car/:carId/status": {
+      "patch": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "Mark a posted car Ad as sold",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "carId",
+            "description": "Mark Car Ad as sold",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operation successful",
+            "schema": {
+              "$ref": "#/definitions/Car"
+            }
+          },
+          "400": {
+            "description": "Invalid Input"
+          },
+          "404": {
+            "description": "Car not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/car/:carId/price": {
+      "patch": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "Update the price of car",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "carId",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "price",
+            "in": "path",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ],
+              "default": "available"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/car/:carId": {
+      "get": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "View a specific car ",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ],
+              "default": "available"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Car"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Car"
+        ],
+        "summary": "Delete a specific Car Ad ",
+        "description": "Signed in user can delete a specific Car Ad",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "type": "integer",
+            "description": "Id of a specific Car for Deletion",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Car Ad successfully deleted"
+          },
+          "404": {
+            "description": "No car found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/flag": {
+      "post": {
+        "tags": [
+          "Flag"
+        ],
+        "summary": "Report or Flag a Car Ad as fraudulent",
+        "description": "post reasons and description of Car Ad as fraudulent",
+        "operationId": "getInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/Flag"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Create a purchase order",
+        "description": "Returns a map of status codes to quantities",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/api/v1/order/:orderId/price": {
+      "patch": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Update the price of a purchase order",
+        "description": "",
+        "operationId": "placeOrder",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "orderId",
+            "description": "order placed for purchasing the pet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "400": {
+            "description": "Invalid Order"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Creates user account",
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "signup",
+            "description": "List of user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/signin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Logs user into the system",
+        "description": "",
+        "operationId": "loginUser",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "signin",
+            "in": "path",
+            "description": "The user name for login",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth",
+            "in": "path",
+            "description": "The password for login in clear text",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Order": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "buyer": {
+          "type": "string",
+          "description": "user id",
+          "example": "John Doe"
+        },
+        "car_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Car ID"
+        },
+        "amount": {
+          "type": "integer",
+          "description": "price offered",
+          "example": "500,000.00"
+        },
+        "created_on": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order Status",
+          "enum": [
+            "pending",
+            "accepted",
+            "rejected"
+          ],
+          "example": "pending"
+        }
+      },
+      "xml": {
+        "name": "Order"
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "John"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "johndoe@company.com"
+        },
+        "password": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of Automart User"
+        },
+        "is_admin": {
+          "type": "string",
+          "description": "confirms if user is an Admin"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Car": {
+      "type": "object",
+      "required": [
+        "name",
+        "photoUrls"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "owner": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "price": {
+          "type": "integer",
+          "example": "230,000.00"
+        },
+        "manufacturer": {
+          "type": "string",
+          "example": "Benz"
+        },
+        "model": {
+          "type": "string",
+          "example": "M-234"
+        },
+        "body_type": {
+          "type": "string",
+          "enum": [
+            "car",
+            "truck",
+            "trailer",
+            "van"
+          ],
+          "example": "car"
+        },
+        "photoUrls": {
+          "type": "array",
+          "xml": {
+            "name": "photoUrl",
+            "wrapped": true
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "whether car is sold or available",
+          "enum": [
+            "available",
+            "sold"
+          ],
+          "example": "sold"
+        },
+        "state": {
+          "type": "string",
+          "description": "whether car is used or new",
+          "enum": [
+            "new",
+            "used"
+          ],
+          "example": "new"
+        }
+      }
+    },
+    "Flag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "car_id": {
+          "type": "integer",
+          "description": "Car ID"
+        },
+        "reason": {
+          "type": "string",
+          "description": "reason for report"
+        },
+        "created on": {
+          "type": "integer",
+          "description": "report date"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Flag"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more on Automart site",
+    "url": "https://voke1.github.io/Automart"
+  }
+}
