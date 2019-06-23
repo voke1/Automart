@@ -1,9 +1,11 @@
-var assert = require ('chai').assert;
-import CarModel  from '../model/car_model';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { assert } from 'chai';
+import car from '../usingDB/controller/carController';
 
 
 describe('create', () => {
   it('create(data) should return {} if no items are passed in', () => {
-    assert.isObject(CarModel.default)
+    const result = car.create;
+    assert.isObject(result, {});
   });
 });

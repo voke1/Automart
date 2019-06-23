@@ -10,7 +10,7 @@
     "build-babel": "babel -d ./build ./SERVER -s",
     "build": "npm run clean && npm run build-babel",
     "start": " node ./build/server.js",
-    "test": "mocha './server/test/*.js'  --recursive || true"
+    "test": "mocha './build/test/*.js'  --recursive || true"
   },
   "repository": {
     "type": "git",
