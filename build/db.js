@@ -18,7 +18,7 @@ pool.on('connect', function () {
  */
 
 var createCarTables = function createCarTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n      cars(\n        id UUID PRIMARY KEY,\n        created_on VARCHAR(128) NOT NULL,\n        manufacturer VARCHAR(128) ,\n        price VARCHAR(128) ,\n        owner VARCHAR(128) ,\n        state VARCHAR(128) ,\n        status VARCHAR(128) ,\n        body_type VARCHAR(128) ,\n        model VARCHAR(128) ,\n        created_date TIMESTAMP,\n        modified_date TIMESTAMP\n      )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n      cars(\n        id UUID PRIMARY KEY,\n        created_on VARCHAR(128),\n        manufacturer VARCHAR(128) ,\n        price VARCHAR(128) ,\n        owner VARCHAR(128) ,\n        state VARCHAR(128) ,\n        status VARCHAR(128) ,\n        body_type VARCHAR(128) ,\n        model VARCHAR(128) ,\n        created_date TIMESTAMP,\n        modified_date TIMESTAMP\n      )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();
@@ -29,7 +29,7 @@ var createCarTables = function createCarTables() {
 };
 
 var createOrderTables = function createOrderTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n        orders(\n            id UUID PRIMARY KEY,\n            created_on VARCHAR(128) NOT NULL,\n            car_id VARCHAR(128),\n            price VARCHAR(128) NOT NULL,\n            price_offered VARCHAR(128) NOT NULL,\n            old_price_offered VARCHAR(128),\n            new_price_offered VARCHAR(128),\n            buyer VARCHAR(128),\n            status VARCHAR(128)NOT NULL,\n            created_date TIMESTAMP,\n            modified_date TIMESTAMP\n        )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n        orders(\n            id UUID PRIMARY KEY,\n            created_on VARCHAR(128),\n            car_id VARCHAR(128),\n            price VARCHAR(128),\n            price_offered VARCHAR(128),\n            old_price_offered VARCHAR(128),\n            new_price_offered VARCHAR(128),\n            buyer VARCHAR(128),\n            status VARCHAR(128),\n            created_date TIMESTAMP,\n            modified_date TIMESTAMP\n        )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();
@@ -40,7 +40,7 @@ var createOrderTables = function createOrderTables() {
 };
 
 var createUserTables = function createUserTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n        users(\n          id UUID PRIMARY KEY,\n          token VARCHAR(128) NOT NULL,\n          email VARCHAR(128) NOT NULL,\n          firstname VARCHAR(128) NOT NULL,\n          lastname VARCHAR(128) NOT NULL,\n          password VARCHAR(128) NOT NULL,\n          is_admin VARCHAR(128) NOT NULL,\n          created_date TIMESTAMP,\n          modified_date TIMESTAMP\n        )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n        users(\n          id UUID PRIMARY KEY,\n          token VARCHAR(128),\n          email VARCHAR(128),\n          firstname VARCHAR(128),\n          lastname VARCHAR(128),\n          password VARCHAR(128),\n          is_admin VARCHAR(128),\n          created_date TIMESTAMP,\n          modified_date TIMESTAMP\n        )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();
@@ -51,7 +51,7 @@ var createUserTables = function createUserTables() {
 };
 
 var createFlagTables = function createFlagTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n        flags(\n          id UUID PRIMARY KEY,\n          car_id VARCHAR(128) NOT NULL,\n          reason VARCHAR(128) NOT NULL,\n          description VARCHAR(128) NOT NULL,\n          created_on TIMESTAMP,\n          modified_date TIMESTAMP\n        )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n        flags(\n          id UUID PRIMARY KEY,\n          car_id VARCHAR(128),\n          reason VARCHAR(128),\n          description VARCHAR(128),\n          created_on TIMESTAMP,\n          modified_date TIMESTAMP\n        )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();
@@ -91,8 +91,8 @@ var dropOrderTables = function dropOrderTables() {
   });
 };
 /**
-* Drop Tables
-*/
+ * Drop Tables
+ */
 
 
 var dropUserTables = function dropUserTables() {
@@ -106,8 +106,8 @@ var dropUserTables = function dropUserTables() {
   });
 };
 /**
-* Drop Tables
-*/
+ * Drop Tables
+ */
 
 
 var dropFlagTables = function dropFlagTables() {
@@ -122,7 +122,6 @@ var dropFlagTables = function dropFlagTables() {
 };
 
 pool.on('remove', function () {
-  console.log('client removed');
   process.exit(0);
 });
 module.exports = {
@@ -134,7 +133,7 @@ module.exports = {
   dropFlagTables: dropFlagTables,
   dropOrderTables: dropOrderTables,
   dropUserTables: dropUserTables
-};
+}; // eslint-disable-next-line import/no-extraneous-dependencies
 
 require('make-runnable');
 //# sourceMappingURL=db.js.map

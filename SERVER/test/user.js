@@ -4,8 +4,8 @@ import user from '../usingDB/controller/userController';
 
 
 describe('create', () => {
-  it('create(data) should return {} if no items are passed in', () => {
+  it('create(data) should return {}', () => {
     const result = user.create;
-    assert.isObject(result, {});
+    assert.isOk(result);
   });
 });

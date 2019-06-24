@@ -2,16 +2,16 @@
 
 var _chai = require("chai");
 
-var _userController = _interopRequireDefault(require("../usingDB/controller/userController"));
+var _flagController = _interopRequireDefault(require("../usingDB/controller/flagController"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 describe('create', function () {
   it('create(data) should return {} if no items are passed in', function () {
-    var result = _userController["default"].create;
+    var result = _flagController["default"].create;
 
     _chai.assert.isOk(result);
   });
 });
-//# sourceMappingURL=user.js.map
+//# sourceMappingURL=flag.js.map

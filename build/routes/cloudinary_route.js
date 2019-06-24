@@ -10,32 +10,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var router = _express["default"].Router();
 
-var multipartMiddleware = (0, _connectMultiparty["default"])(); //Enter credentials below                                              
+var multipartMiddleware = (0, _connectMultiparty["default"])(); // Enter credentials below
 
 _cloudinary["default"].config({
-  cloud_name: "voke",
-  api_key: "146586867451971",
-  api_secret: "ZKdVZgEc-NY7qUnL9jXNnRuZQWw"
+  cloud_name: 'voke',
+  api_key: '146586867451971',
+  api_secret: 'ZKdVZgEc-NY7qUnL9jXNnRuZQWw'
 });
 
-router.post("/car/upload", multipartMiddleware, function (req, res) {
+router.post('/car/upload', multipartMiddleware, function (req, res) {
   var filename = req.files.dataFile.path;
 
   _cloudinary["default"].uploader.upload(filename, {
-    tags: "gotemps",
-    resource_type: "auto"
+    tags: 'gotemps',
+    resource_type: 'auto'
   }).then(function (file) {
-    console.log("Public id of the file is  " + file.public_id);
-    console.log("Url of the file is  " + file.url); // template.dataFile = file.url;  
-    // template.save()
-
-    res.redirect("./model/cloudinary_model");
+    console.log(file);
+    res.redirect('./model/cloudinary_model');
   })["catch"](function (err) {
     if (err) {
       console.warn(err);
     }
 
-    res.redirect("./model/cloudinary_model");
+    res.redirect('./model/cloudinary_model');
   });
 });
 module.exports = router;

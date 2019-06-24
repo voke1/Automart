@@ -6,6 +6,8 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
+var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
+
 var _car_route = _interopRequireDefault(require("./routes/car_route"));
 
 var _user_route = _interopRequireDefault(require("./routes/user_route"));
@@ -15,8 +17,6 @@ var _order_route = _interopRequireDefault(require("./routes/order_route"));
 var _cloudinary_route = _interopRequireDefault(require("./routes/cloudinary_route"));
 
 var _flag_route = _interopRequireDefault(require("./routes/flag_route"));
-
-var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 
 var _swaggerDoc = _interopRequireDefault(require("../swaggerDoc"));
 

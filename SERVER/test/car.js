@@ -4,8 +4,8 @@ import car from '../usingDB/controller/carController';
 
 
 describe('create', () => {
-  it('create(data) should return {} if no items are passed in', () => {
+  it('create(data) should return {} ', () => {
     const result = car.create;
-    assert.isObject(result, {});
+    assert.isOk(result);
   });
 });
