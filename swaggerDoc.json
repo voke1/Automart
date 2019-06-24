@@ -48,16 +48,59 @@
           "application/json"
         ],
         "produces": [
-          "application/xml"
+          "application/json"
         ],
         "parameters": [
           {
             "in": "body",
-            "name": "body",
-            "description": "Create a car sale Ad. Post Car Ads on Automart's site",
-            "required": true,
+            "name": "Required fields",
             "schema": {
-              "$ref": "#/definitions/Car"
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "JohnDoe@email.com"
+                },
+                "price": {
+                  "type": "integer",
+                  "example": "230,000.00"
+                },
+                "manufacturer": {
+                  "type": "string",
+                  "example": "Benz"
+                },
+                "model": {
+                  "type": "string",
+                  "example": "M-234"
+                },
+                "body_type": {
+                  "type": "string",
+                  "enum": [
+                    "car",
+                    "truck",
+                    "trailer",
+                    "van"
+                  ],
+                  "example": "car"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "whether car is sold or available",
+                  "enum": [
+                    "available",
+                    "sold"
+                  ],
+                  "example": "sold"
+                },
+                "state": {
+                  "type": "string",
+                  "description": "whether car is used or new",
+                  "enum": [
+                    "new",
+                    "used"
+                  ],
+                  "example": "new"
+                }
+              }
             }
           }
         ],
@@ -85,28 +128,16 @@
         "summary": "View all Car Ads whether sold or unsold",
         "description": "",
         "consumes": [
-          "application/json",
-          "application/xml"
+          "application/json"
         ],
         "produces": [
-          "application/xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "View all Car Ads whether sold or unsold",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Car"
-            }
-          }
+          "application/json"
         ],
         "responses": {
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/Car"
+              "$ref": "#/definitions/CarArray"
             }
           },
           "404": {
@@ -129,21 +160,18 @@
         "description": "",
         "operationId": "updatePet",
         "consumes": [
-          "application/json",
-          "application/xml"
+          "application/json"
         ],
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "in": "body",
+            "in": "path",
             "name": "carId",
+            "type": "string",
             "description": "Mark Car Ad as sold",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Car"
-            }
+            "required": true
           }
         ],
         "responses": {
@@ -176,24 +204,28 @@
         "description": "Multiple status values can be provided with comma separated strings",
         "operationId": "carId",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "price",
+            "name": "carId",
             "in": "path",
-            "description": "Status values that need to be considered for filter",
+            "description": "id of car Ad to update price",
             "required": true,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "available",
-                "pending",
-                "sold"
-              ],
-              "default": "available"
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Required",
+            "description": "required field",
+            "schema": {
+              "properties": {
+                "price": {
+                  "type": "integer",
+                  "description": "new price of Car Ad",
+                  "example": 2000000
+                }
+              }
             }
           }
         ],
@@ -226,25 +258,15 @@
         "summary": "View a specific car ",
         "description": "Multiple status values can be provided with comma separated strings",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
             "name": "carId",
             "in": "path",
-            "description": "Status values that need to be considered for filter",
+            "description": "id of specific Car Ad",
             "required": true,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "available",
-                "pending",
-                "sold"
-              ],
-              "default": "available"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -274,7 +296,6 @@
         "summary": "Delete a specific Car Ad ",
         "description": "Signed in user can delete a specific Car Ad",
         "produces": [
-          "application/json",
           "application/xml"
         ],
         "parameters": [
@@ -312,16 +333,37 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "flag",
+            "description": "description",
+            "schema": {
+              "properties": {
+                "car_id": {
+                  "type": "integer",
+                  "description": "Car ID"
+                },
+                "reason": {
+                  "type": "string",
+                  "description": "reason for report"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
             "schema": {
-              "type": "object",
-              "items": {
-                "$ref": "#/definitions/Flag"
-              }
+              "$ref": "#/definitions/Flag"
             }
+          },
+          "400": {
+            "description": "Invalid"
           }
         },
         "security": [
@@ -341,13 +383,40 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Required fields",
+            "description": "Required field",
+            "schema": {
+              "type": "object",
+              "required": [
+                "userName"
+              ],
+              "properties": {
+                "car_id": {
+                  "type": "integer"
+                },
+                "price_offered": {
+                  "type": "integer"
+                },
+                "buyer": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
             "schema": {
               "$ref": "#/definitions/Order"
             }
+          },
+          "400": {
+            "description": "Invalid"
           }
         },
         "security": [
@@ -370,26 +439,92 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "orderId",
-            "description": "order placed for purchasing the pet",
+            "in": "path",
             "required": true,
+            "type": "string",
+            "name": "car_id"
+          },
+          {
+            "in": "body",
+            "name": "Required fields",
+            "description": "Required field",
             "schema": {
-              "$ref": "#/definitions/Order"
-            }
+              "type": "object",
+              "properties": {
+                "new_price_offered": {
+                  "type": "integer",
+                  "example": 12000000
+                },
+                "buyer": {
+                  "type": "string",
+                  "example": "John Doe"
+                }
+              }
+            },
+            "required": true
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/Order"
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "buyer": {
+                  "type": "string",
+                  "description": "user id",
+                  "example": "John Doe"
+                },
+                "car_id": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Car ID"
+                },
+                "price": {
+                  "type": "integer",
+                  "description": "price offered",
+                  "example": "500,000.00"
+                },
+                "new_price_offered": {
+                  "type": "integer",
+                  "description": "price offered",
+                  "example": "500,000.00"
+                },
+                "old_price_offered": {
+                  "type": "integer",
+                  "description": "price offered",
+                  "example": "500,000.00"
+                },
+                "created_on": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Order Status",
+                  "enum": [
+                    "pending",
+                    "accepted",
+                    "rejected"
+                  ],
+                  "example": "pending"
+                }
+              }
             }
           },
           "400": {
             "description": "Invalid Order"
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     },
     "/api/v1/auth/signup": {
@@ -401,17 +536,39 @@
         "description": "",
         "operationId": "createUsersWithArrayInput",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
             "in": "body",
             "name": "signup",
-            "description": "Required field",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "type": "object",
+              "properties": {
+                "firstname": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastname": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "johndoe@company.com"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Address of Automart User"
+                },
+                "is_admin": {
+                  "type": "string",
+                  "description": "confirms if user is an Admin"
+                }
+              }
             }
           }
         ],
@@ -421,6 +578,9 @@
             "schema": {
               "$ref": "#/definitions/User"
             }
+          },
+          "400": {
+            "description": "Invalid"
           }
         }
       }
@@ -434,23 +594,25 @@
         "description": "",
         "operationId": "loginUser",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "signin",
-            "in": "path",
-            "description": "The user name for login",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "auth",
-            "in": "path",
-            "description": "The password for login in clear text",
-            "required": true,
-            "type": "string"
+            "in": "body",
+            "name": "signup",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "johndoe@company.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -463,7 +625,12 @@
           "400": {
             "description": "User not found"
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     }
   },
@@ -492,7 +659,12 @@
           "format": "int64",
           "description": "Car ID"
         },
-        "amount": {
+        "price": {
+          "type": "integer",
+          "description": "price offered",
+          "example": "500,000.00"
+        },
+        "price_offered": {
           "type": "integer",
           "description": "price offered",
           "example": "500,000.00"
@@ -523,6 +695,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "token": {
+          "type": "integer",
+          "format": "int64"
+        },
         "firstname": {
           "type": "string",
           "example": "John"
@@ -549,6 +725,19 @@
       },
       "xml": {
         "name": "User"
+      }
+    },
+    "CarArray": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "car": {
+            "$ref": "#/definitions/Car"
+          },
+          "car2": {
+            "$ref": "#/definitions/Car"
+          }
+        }
       }
     },
     "Car": {
@@ -619,7 +808,9 @@
       }
     },
     "Flag": {
-      "type": "object",
+      "items": {
+        "type": "object"
+      },
       "properties": {
         "id": {
           "type": "integer",
