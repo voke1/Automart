@@ -408,7 +408,7 @@
           {
             "in": "body",
             "name": "signup",
-            "description": "List of user object",
+            "description": "Required field",
             "required": true,
             "schema": {
               "$ref": "#/definitions/User"
@@ -523,11 +523,11 @@
           "type": "integer",
           "format": "int64"
         },
-        "firstName": {
+        "firstname": {
           "type": "string",
           "example": "John"
         },
-        "lastName": {
+        "lastname": {
           "type": "string",
           "example": "Doe"
         },
