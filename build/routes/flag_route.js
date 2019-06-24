@@ -6,7 +6,7 @@ var _flagController = _interopRequireDefault(require("../usingDB/controller/flag
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var express = require("express");
+var express = require('express');
 
 var router = express.Router();
 router.post('/api/v1/flag', _checkAuth["default"], _flagController["default"].create);

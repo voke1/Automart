@@ -21,7 +21,7 @@ var _default = {
    * DB Query
    * @param {object} req
    * @param {object} res
-   * @returns {object} object 
+   * @returns {object} object
    */
   query: function query(text, params) {
     return new Promise(function (resolve, reject) {

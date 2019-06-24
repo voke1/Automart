@@ -41,6 +41,18 @@ var User = {
           switch (_context.prev = _context.next) {
             case 0:
               text = "INSERT INTO\n      Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)\n      returning *";
+
+              if (!(!req.body.email || !req.body.password)) {
+                _context.next = 3;
+                break;
+              }
+
+              return _context.abrupt("return", res.status(400).send({
+                status: 400,
+                error: 'please fill in required fields'
+              }));
+
+            case 3:
               req.body.token = _jsonwebtoken["default"].sign(req.body.email, process.env.TOKEN);
               values = [(0, _v["default"])(), req.body.token, req.body.email, req.body.firstname, req.body.lastname, // eslint-disable-next-line no-unused-vars
               _bcrypt["default"].hashSync(req.body.password, 10, function (error, hash) {
@@ -52,11 +64,11 @@ var User = {
 
                 return null;
               }) || '', req.body.is_admin, (0, _moment["default"])(new Date()), (0, _moment["default"])(new Date())];
-              _context.prev = 3;
-              _context.next = 6;
+              _context.prev = 5;
+              _context.next = 8;
               return _db["default"].query(text, values);
 
-            case 6:
+            case 8:
               _ref = _context.sent;
               rows = _ref.rows;
               user = rows[0];
@@ -65,20 +77,20 @@ var User = {
                 user: user
               }));
 
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](3);
+            case 14:
+              _context.prev = 14;
+              _context.t0 = _context["catch"](5);
               return _context.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context.t0
               }));
 
-            case 15:
+            case 17:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[3, 12]]);
+      }, _callee, null, [[5, 14]]);
     }));
 
     function create(_x, _x2) {

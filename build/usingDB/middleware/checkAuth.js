@@ -19,6 +19,6 @@ module.exports = function (req, res, next) {
     });
   }
 
-  ;
+  return null;
 };
 //# sourceMappingURL=checkAuth.js.map

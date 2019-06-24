@@ -1,9 +1,11 @@
-var assert = require('chai').assert;
-var OrderModel  = require('../model/order_model');
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { assert } from 'chai';
+import order from '../usingDB/controller/orderController';
 
 
 describe('create', () => {
-  it('create(data) should return {} if no items are passed in', () => {
-    assert.isObject(OrderModel.default)
+  it('create(data) should return {}', () => {
+    const result = order.create;
+    assert.isOk(result);
   });
 });
