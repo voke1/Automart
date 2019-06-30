@@ -11,6 +11,10 @@ import async from 'async';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import db from '../db';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
 
 const User = {
 
@@ -115,7 +119,7 @@ const User = {
           service: 'Gmail',
           auth: {
             user: 'wisdomvoke@gmail.com',
-            pass: 'voke4christ',
+            pass: process.env.GWP,
           },
         });
         const mailOptions = {
