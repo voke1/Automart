@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
@@ -5,9 +6,19 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, ssl: true,
-});
+let pool = new Pool();
+
+if (process.env.NODE_ENV === 'test') {
+  pool = new Pool({
+
+    connectionString: process.env.TEST_DATABASE_URL, ssl: true,
+  });
+} else {
+  pool = new Pool({
+
+    connectionString: process.env.DATABASE_URL, ssl: true,
+  });
+}
 
 pool.on('connect', () => {
   console.log('connected to the db');
@@ -78,7 +89,9 @@ const createUserTables = () => {
           password VARCHAR(128),
           is_admin VARCHAR(128),
           created_date TIMESTAMP,
-          modified_date TIMESTAMP
+          modified_date TIMESTAMP,
+          resetPasswordToken VARCHAR(128),
+          resetPasswordExpires VARCHAR(128)
         )`;
   pool.query(queryText)
     .then((res) => {

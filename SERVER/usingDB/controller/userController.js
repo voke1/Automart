@@ -1,9 +1,11 @@
+
 import '@babel/polyfill';
 import jwt from 'jsonwebtoken';
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 import bcrypt from 'bcrypt';
 import db from '../db';
+
 
 const User = {
 
@@ -18,9 +20,14 @@ const User = {
       Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
       returning *`;
+    // handling no input value to sign up a user.
     if (!req.body.email || !req.body.password) {
       return res.status(400).send({ status: 400, error: 'please fill in required fields' });
     }
+
+    // eslint-disable-next-line no-unused-expressions
+    // this.findUser;
+
     req.body.token = jwt.sign(req.body.email, process.env.TOKEN);
     const values = [
       uuidv4(),
@@ -30,15 +37,14 @@ const User = {
       req.body.lastname,
       // eslint-disable-next-line no-unused-vars
       bcrypt.hashSync(req.body.password, 10, (error, hash) => {
-        if (error) {
-          return ({ message: 'error found' });
-        }
-        return null;
+        if (error) { return ({ message: 'error found' }); } return null;
       }) || '',
       req.body.is_admin,
       moment(new Date()),
       moment(new Date()),
     ];
+
+
     try {
       const { rows } = await db.query(text, values);
       const user = (rows[0]);
@@ -75,6 +81,8 @@ const User = {
     }
     return null;
   },
+
 };
+
 
 export default User;

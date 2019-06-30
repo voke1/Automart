@@ -8,6 +8,7 @@ var _checkAuth = _interopRequireDefault(require("../usingDB/middleware/checkAuth
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import uploadImage from '../usingDB/middleware/imageUpload'
 var router = _express["default"].Router(); // view Car Ads based on input query
 
 
