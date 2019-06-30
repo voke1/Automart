@@ -1,7 +1,7 @@
 import express from 'express';
 import Car from '../usingDB/controller/carController';
 import Auth from '../usingDB/middleware/checkAuth';
-// import uploadImage from '../usingDB/middleware/imageUpload'
+import uploadImage from '../usingDB/middleware/imageUpload'
 
 
 const router = express.Router();
