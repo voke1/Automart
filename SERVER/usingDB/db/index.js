@@ -1,12 +1,21 @@
 
+/* eslint-disable no-unused-vars */
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
+let pool = new Pool();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+if (process.env.NODE_ENV === 'test') {
+  pool = new Pool({
+
+    connectionString: process.env.TEST_DATABASE_URL, ssl: true,
+  });
+} else {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_URL, ssl: true,
+  });
+}
 
 export default {
   /**

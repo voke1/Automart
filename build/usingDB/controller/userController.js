@@ -40,7 +40,7 @@ var User = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              text = "INSERT INTO\n      Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)\n      returning *";
+              text = "INSERT INTO\n      Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)\n      returning *"; // handling no input value to sign up a user.
 
               if (!(!req.body.email || !req.body.password)) {
                 _context.next = 3;
@@ -53,6 +53,8 @@ var User = {
               }));
 
             case 3:
+              // eslint-disable-next-line no-unused-expressions
+              // this.findUser;
               req.body.token = _jsonwebtoken["default"].sign(req.body.email, process.env.TOKEN);
               values = [(0, _v["default"])(), req.body.token, req.body.email, req.body.firstname, req.body.lastname, // eslint-disable-next-line no-unused-vars
               _bcrypt["default"].hashSync(req.body.password, 10, function (error, hash) {

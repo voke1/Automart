@@ -39,10 +39,22 @@ var Order = {
               text = "INSERT INTO\n      orders(id, car_id, buyer, price, price_offered, status, created_on, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6, $7, $8)\n      returning *";
               values = [(0, _v["default"])(), req.body.car_id, req.body.buyer, req.body.price, req.body.price_offered, req.body.status, (0, _moment["default"])(new Date()), (0, _moment["default"])(new Date())];
               _context.prev = 2;
-              _context.next = 5;
-              return _db["default"].query(text, values);
+
+              if (!(!req.body.price_offered || !req.body.car_id)) {
+                _context.next = 5;
+                break;
+              }
+
+              return _context.abrupt("return", res.status(400).send({
+                status: 400,
+                error: 'please enter price offered and car ID'
+              }));
 
             case 5:
+              _context.next = 7;
+              return _db["default"].query(text, values);
+
+            case 7:
               _ref = _context.sent;
               rows = _ref.rows;
               order = rows[0];
@@ -51,20 +63,20 @@ var Order = {
                 order: order
               }));
 
-            case 11:
-              _context.prev = 11;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](2);
               return _context.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context.t0
               }));
 
-            case 14:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 11]]);
+      }, _callee, null, [[2, 13]]);
     }));
 
     function create(_x, _x2) {
@@ -93,16 +105,28 @@ var Order = {
               findOneQuery = 'SELECT * FROM orders WHERE id=$1';
               updateOneQuery = "UPDATE orders\n      SET car_id=$1,price=$2,price_offered=$3, old_price_offered=$4, new_price_offered=$5, modified_date=$6\n      WHERE id=$7 returning *";
               _context2.prev = 2;
+
+              if (req.body.new_price_offered) {
+                _context2.next = 5;
+                break;
+              }
+
+              return _context2.abrupt("return", res.status(400).send({
+                status: 400,
+                error: 'please enter new price offered and car ID'
+              }));
+
+            case 5:
               req.params.id = req.params.orderId;
-              _context2.next = 6;
+              _context2.next = 8;
               return _db["default"].query(findOneQuery, [req.params.id]);
 
-            case 6:
+            case 8:
               _ref2 = _context2.sent;
               rows = _ref2.rows;
 
               if (rows[0]) {
-                _context2.next = 10;
+                _context2.next = 12;
                 break;
               }
 
@@ -111,19 +135,18 @@ var Order = {
                 error: 'order not found'
               }));
 
-            case 10:
+            case 12:
               if (!(rows[0].status === 'pending')) {
-                _context2.next = 19;
+                _context2.next = 20;
                 break;
               }
 
               req.body.old_price_offered = rows[0].price_offered;
-              req.body.new_price_offered = req.body.price_offered;
               values = [req.body.car_id, req.body.price, req.body.price_offered, req.body.old_price_offered, req.body.new_price_offered, (0, _moment["default"])(new Date()), req.params.id];
-              _context2.next = 16;
+              _context2.next = 17;
               return _db["default"].query(updateOneQuery, values);
 
-            case 16:
+            case 17:
               response = _context2.sent;
               modifiedOrder = response.rows[0];
               return _context2.abrupt("return", res.status(200).send({
@@ -131,23 +154,23 @@ var Order = {
                 modifiedOrder: modifiedOrder
               }));
 
-            case 19:
+            case 20:
               return _context2.abrupt("return", res.status(404).send({
                 status: 404,
-                message: "cannot update price, status is ".concat(rows[0].status)
+                error: "cannot update price, status is ".concat(rows[0].status)
               }));
 
-            case 22:
-              _context2.prev = 22;
+            case 23:
+              _context2.prev = 23;
               _context2.t0 = _context2["catch"](2);
               return _context2.abrupt("return", res.status(400).send(_context2.t0));
 
-            case 25:
+            case 26:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 22]]);
+      }, _callee2, null, [[2, 23]]);
     }));
 
     function getUpdateOrderPrice(_x3, _x4) {
