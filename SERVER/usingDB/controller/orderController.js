@@ -1,3 +1,4 @@
+
 import '@babel/polyfill';
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
@@ -28,6 +29,10 @@ const Order = {
       moment(new Date()),
     ];
     try {
+      // handling no input for creating a purchase order
+      if (!req.body.price_offered || !req.body.car_id) {
+        return res.status(400).send({ status: 400, error: 'please enter price offered and car ID' });
+      }
       const { rows } = await db.query(text, values);
       const order = (rows[0]);
       return res.status(201).send({ status: 201, order });
@@ -48,6 +53,9 @@ const Order = {
       SET car_id=$1,price=$2,price_offered=$3, old_price_offered=$4, new_price_offered=$5, modified_date=$6
       WHERE id=$7 returning *`;
     try {
+      if (!req.body.new_price_offered) {
+        return res.status(400).send({ status: 400, error: 'please enter new price offered and car ID' });
+      }
       req.params.id = req.params.orderId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
 
@@ -56,7 +64,6 @@ const Order = {
       }
       if (rows[0].status === 'pending') {
         req.body.old_price_offered = rows[0].price_offered;
-        req.body.new_price_offered = req.body.price_offered;
         const values = [
           req.body.car_id,
           req.body.price,
@@ -72,7 +79,7 @@ const Order = {
         return res.status(200).send({ status: 200, modifiedOrder });
       }
 
-      return res.status(404).send({ status: 404, message: `cannot update price, status is ${rows[0].status}` });
+      return res.status(404).send({ status: 404, error: `cannot update price, status is ${rows[0].status}` });
     } catch (err) {
       return res.status(400).send(err);
     }

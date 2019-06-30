@@ -39,10 +39,22 @@ var Flag = {
               text = "INSERT INTO\n      flags(id, car_id, reason, description, created_on, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6)\n      returning *";
               values = [(0, _v["default"])(), req.body.car_id, req.body.reason, req.body.description, (0, _moment["default"])(new Date()), (0, _moment["default"])(new Date())];
               _context.prev = 2;
-              _context.next = 5;
-              return _db["default"].query(text, values);
+
+              if (req.body.reason) {
+                _context.next = 5;
+                break;
+              }
+
+              return _context.abrupt("return", res.status(400).send({
+                status: 400,
+                error: 'please enter car Id and reason for report'
+              }));
 
             case 5:
+              _context.next = 7;
+              return _db["default"].query(text, values);
+
+            case 7:
               _ref = _context.sent;
               rows = _ref.rows;
               flag = rows[0];
@@ -51,20 +63,20 @@ var Flag = {
                 flag: flag
               }));
 
-            case 11:
-              _context.prev = 11;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](2);
               return _context.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context.t0
               }));
 
-            case 14:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 11]]);
+      }, _callee, null, [[2, 13]]);
     }));
 
     function create(_x, _x2) {

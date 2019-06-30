@@ -1,15 +1,26 @@
 "use strict";
 
+/* eslint-disable no-unused-vars */
 var _require = require('pg'),
     Pool = _require.Pool;
 
 var dotenv = require('dotenv');
 
 dotenv.config();
-var pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
+var pool = new Pool();
+
+if (process.env.NODE_ENV === 'test') {
+  pool = new Pool({
+    connectionString: process.env.TEST_DATABASE_URL,
+    ssl: true
+  });
+} else {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  });
+}
+
 pool.on('connect', function () {
   console.log('connected to the db');
 });
@@ -40,7 +51,7 @@ var createOrderTables = function createOrderTables() {
 };
 
 var createUserTables = function createUserTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n        users(\n          id UUID PRIMARY KEY,\n          token VARCHAR(128),\n          email VARCHAR(128),\n          firstname VARCHAR(128),\n          lastname VARCHAR(128),\n          password VARCHAR(128),\n          is_admin VARCHAR(128),\n          created_date TIMESTAMP,\n          modified_date TIMESTAMP\n        )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n        users(\n          id UUID PRIMARY KEY,\n          token VARCHAR(128),\n          email VARCHAR(128),\n          firstname VARCHAR(128),\n          lastname VARCHAR(128),\n          password VARCHAR(128),\n          is_admin VARCHAR(128),\n          created_date TIMESTAMP,\n          modified_date TIMESTAMP,\n          resetPasswordToken VARCHAR(128),\n          resetPasswordExpires VARCHAR(128)\n        )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();

@@ -39,10 +39,22 @@ var Car = {
               text = "INSERT INTO\n    cars(id, manufacturer, owner, model, price, state, status, body_type, created_on, modified_date)\n    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)\n      returning *";
               values = [(0, _v["default"])(), req.body.manufacturer, req.body.owner, req.body.model, req.body.price, req.body.state, req.body.status, req.body.body_type, (0, _moment["default"])(new Date()), (0, _moment["default"])(new Date())];
               _context.prev = 2;
-              _context.next = 5;
-              return _db["default"].query(text, values);
+
+              if (!(!req.body.price || !req.body.state || !req.body.manufacturer)) {
+                _context.next = 5;
+                break;
+              }
+
+              return _context.abrupt("return", res.status(400).send({
+                status: 400,
+                error: 'please enter required fields'
+              }));
 
             case 5:
+              _context.next = 7;
+              return _db["default"].query(text, values);
+
+            case 7:
               _ref = _context.sent;
               rows = _ref.rows;
               data = rows[0];
@@ -51,20 +63,20 @@ var Car = {
                 data: data
               }));
 
-            case 11:
-              _context.prev = 11;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](2);
               return _context.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context.t0
               }));
 
-            case 14:
+            case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 11]]);
+      }, _callee, null, [[2, 13]]);
     }));
 
     function create(_x, _x2) {
@@ -159,16 +171,28 @@ var Car = {
               findOneQuery = 'SELECT * FROM cars WHERE id=$1';
               updateOneQuery = "UPDATE cars\n      SET price=$1, modified_date=$2\n      WHERE id=$3 returning *";
               _context3.prev = 2;
+
+              if (req.body.price) {
+                _context3.next = 5;
+                break;
+              }
+
+              return _context3.abrupt("return", res.status(400).send({
+                status: 400,
+                error: 'please enter required fields'
+              }));
+
+            case 5:
               req.params.id = req.params.carId;
-              _context3.next = 6;
+              _context3.next = 8;
               return _db["default"].query(findOneQuery, [req.params.id]);
 
-            case 6:
+            case 8:
               _ref3 = _context3.sent;
               rows = _ref3.rows;
 
               if (rows[0]) {
-                _context3.next = 10;
+                _context3.next = 12;
                 break;
               }
 
@@ -177,12 +201,12 @@ var Car = {
                 error: 'car not found'
               }));
 
-            case 10:
+            case 12:
               values = [req.body.price, (0, _moment["default"])(new Date()), req.params.id];
-              _context3.next = 13;
+              _context3.next = 15;
               return _db["default"].query(updateOneQuery, values);
 
-            case 13:
+            case 15:
               response = _context3.sent;
               updatedAd = response.rows[0];
               return _context3.abrupt("return", res.status(200).send({
@@ -190,20 +214,20 @@ var Car = {
                 updatedAd: updatedAd
               }));
 
-            case 18:
-              _context3.prev = 18;
+            case 20:
+              _context3.prev = 20;
               _context3.t0 = _context3["catch"](2);
               return _context3.abrupt("return", res.status(400).send({
                 status: 400,
                 err: _context3.t0
               }));
 
-            case 21:
+            case 23:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[2, 18]]);
+      }, _callee3, null, [[2, 20]]);
     }));
 
     function getUpdatePrice(_x5, _x6) {
