@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-        <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta name="description" content="automobiles online marketplace">
-                <meta name="keywords" content="Automobile online marketplace">
-                <meta name="author" content="Voke Olomu">
-                <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                <title>Auto Mart</title>
-                <link rel="stylesheet" type="text/css" href="UI/css/style.css" />
-            </head>
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="automobiles online marketplace">
+    <meta name="keywords" content="Automobile online marketplace">
+    <meta name="author" content="Voke Olomu">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Auto Mart</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
 
 <body>
     <header class="header">
@@ -27,8 +27,8 @@
 
         </ul>
     </header>
-    <div class="down-sign"></div> 
-    <form class="form">
+    <div class="down-sign"></div>
+    <form class="form" method="POST" action="../SERVER/app.js/api/v1/auth/signup">
         <h1>Sign Up</h1>
         <div class="form-group">
             <input type="text" placeholder=" " id="name" required>
@@ -67,40 +67,38 @@
     </form>
     </header>
     <div></div>
+    <!--footer begins here-->
     <footer class="footer">
+        <div class="main">
+            <div class="submain"><input type="checkbox" id="footer-our-company" class="input"><label
+                    for="footer-our-company" class="label"><span class="_34Lkm">AUTOMART</span><svg class="svg">
+                        <use xlink:href="#chevron"></use>
+                    </svg></label>
+                <ul class="list">
+                    <li><a>About </a></li>
+                    <li><a>Dealers</a></li>
+                    <li><a>Contact </a></li>
+                </ul>
+            </div>
+            <div class="submain"><input type="checkbox" id="footer-buying" class="input"><label for="footer-buying"
+                    class="label"><span class="_34Lkm">Buying &amp; Selling</span><svg class="svg">
+                        <use xlink:href="#chevron"></use>
+                    </svg></label>
+                <ul class="list">
+                    <li><a>Find a Car</a></li>
+                    <li><a>Sell Your Car</a></li>
+                    <li><a>Car Dealers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="_1lul1">
             <div class="main">
-                <div class="submain"><input type="checkbox" id="footer-our-company" class="input"><label
-                        for="footer-our-company" class="label"><span class="_34Lkm">AUTOMART</span><svg class="svg">
-                            <use xlink:href="#chevron"></use>
-                        </svg></label>
-                    <ul class="list">
-                        <li><a>About </a></li>
-                        <li><a>Dealers</a></li>
-                        <li><a>Contact </a></li>
-    
-                    </ul>
-                </div>
-                <div class="submain"><input type="checkbox" id="footer-buying" class="input"><label for="footer-buying"
-                        class="label"><span class="_34Lkm">Buying &amp; Selling</span><svg class="svg">
-                            <use xlink:href="#chevron"></use>
-                        </svg></label>
-                    <ul class="list">
-                        <li><a >Find a Car</a></li>
-                        <li><a >Sell Your Car</a></li>
-                        <li><a>Car Dealers</a></li>
-                    </ul>
-                </div>
+                <div class="_2N4Iz"><a>Terms of Service</a><a>Privacy Statement</a><a>Ad Choices</a><span
+                        id="signal-link-container-footer" class="_270kB"></span></div>
+                <div class="_19tgC">© <span>2019</span> AUTOMART<span> All rights reserved.</span></div>
             </div>
-            <div class="_1lul1">
-                <div class="main">
-                    <div class="_2N4Iz"><a>Terms of Service</a><a
-                            >Privacy Statement</a><a
-                            >Ad Choices</a><span
-                            id="signal-link-container-footer" class="_270kB"></span></div>
-                    <div class="_19tgC">© <span>2019</span> AUTOMART<span> All rights reserved.</span></div>
-                </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
 </body>
 
 </html>
