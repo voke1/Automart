@@ -8,6 +8,7 @@ import userRoutes from './routes/user_route';
 import orderRoutes from './routes/order_route';
 import flagRoutes from './routes/flag_route';
 import swaggerDoc from '../swaggerDoc';
+import cors from './usingDB/middleware/cors';
 
 
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
+app.use(cors);
 
 app.use('/', userRoutes);
 app.use('/', carRoutes);

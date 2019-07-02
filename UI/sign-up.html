@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Auto Mart</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="./index.js"></script>
 </head>
 
 
@@ -28,16 +29,26 @@
         </ul>
     </header>
     <div class="down-sign"></div>
-    <form class="form" method="POST" action="../SERVER/app.js/api/v1/auth/signup">
+
+<!--sign up form begins here-->
+    <form class="form" method="POST" id="addUsers">
         <h1>Sign Up</h1>
         <div class="form-group">
-            <input type="text" placeholder=" " id="name" required>
-            <label for="name">Name</label>
+            <input type="text" placeholder=" " id="firstname" required>
+            <label for="name">Firstame</label>
             <div class="error">
                 <i class="fas fa-exclamation-circle"></i>
                 Error encountered!
             </div>
         </div>
+        <div class="form-group">
+                <input type="text" placeholder=" " id="lastname" required>
+                <label for="name">Lastname</label>
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Error encountered!
+                </div>
+            </div>
         <div class="form-group">
             <input type="email" placeholder=" " id="email" required>
             <label for="email">Email</label>
@@ -65,8 +76,10 @@
             <a href="#">Already have an account? Sign in</a>
         </div>
     </form>
+
     </header>
     <div></div>
+
     <!--footer begins here-->
     <footer class="footer">
         <div class="main">
