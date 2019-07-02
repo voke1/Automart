@@ -10,6 +10,7 @@
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <title>Auto Mart</title>
                 <link rel="stylesheet" type="text/css" href="css/style.css"/>
+                <script src="./index.js"></script>
             </head>
             
 
@@ -30,24 +31,16 @@
     </header>
     <div class="down-sign"></div>
     <!--section for sign-in form-->
-    <form class="form">
+    <form class="form-signin" method="POST", id='signin' >
         <h1>Sign in</h1>
-        <div class="form-group">
-            <input type="text" placeholder=" " id="name" required>
-            <label for="name">Name</label>
-            <div class="error">
-                <i class="fas fa-exclamation-circle"></i>
-                Error encountered!
-            </div>
-        </div>
-        <div class="form-group">
+        <div class="form-group-signin">
             <input type="email" placeholder=" " id="email" required>
             <label for="email">Email</label>
             <div class="error">
                 <i class="fas fa-exclamation-circle"></i>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group-signin">
             <input type="password" placeholder=" " id="password" required>
             <label for="password">Password</label>
             <div class="error">
