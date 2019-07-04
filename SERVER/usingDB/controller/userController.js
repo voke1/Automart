@@ -130,7 +130,7 @@ const User = {
         };
         smtpTransport.sendMail(mailOptions, function () {
           console.log('mail sent');
-          return res.status(404).send({ status: 404, error: `An email has been sent to ${user.email} containing your password` });
+          return res.status(404).send({ status: 404, info: `An email has been sent to ${user.email} containing your password` });
         });
         return null;
       },
