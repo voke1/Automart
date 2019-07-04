@@ -10,6 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Auto Mart</title>
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="./js/post-ad.js"></script>
     </head>
     
 
@@ -37,13 +38,13 @@
 
                 </div>
                 <div class="details">
-                    <h3>
+                    <h3 id="sell-car">
                         Sell your Car
                     </h3>
-                    <form action="">
+                    <form action="" id="post-ad">
                         <p>
-                            <label for=""> Make </label>
-                            <input type="text" name="firstname">
+                            <label for=""> State </label>
+                            <input type="text" name="firstname" placeholder="used or new" id="state">
                         </p>
                         <p>
                             <label for=""> Model</label>
@@ -51,7 +52,7 @@
                         </p>
                         <p>
                             <label for=""> Price</label>
-                            <input type="text" name="firstname">
+                            <input type="text" name="firstname" placeholder="500000" id="price">
                         </p>
                         <p>
                             <label for=""> Firstname</label>
@@ -61,7 +62,7 @@
                             <label for=""> Phonenumber</label>
                             <input type="text" name="firstname">
                         </p>
-                        <p class="submit-btn"> post ad</p>
+                        <p class="submit-btn" id="submit-btn-id"> Post ad</p>
                     </form>
 
 
