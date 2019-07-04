@@ -1,27 +1,23 @@
 /* eslint-disable func-names */
 window.onload = function () {
-  function addUser(e) {
+  async function signIn(e) {
     e.preventDefault();
-
-    const firstname = document.getElementById('firstname').value;
-    const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     // const submit = document.getElementById('body').value;
-
-    fetch('http://localhost:2000/api/v1/auth/signup', {
+    const response = await fetch('http://localhost:2000/api/v1/auth/signin', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
-        firstname, lastname, email, password,
+        email, password,
       }),
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    });
+    const data = await response.json();
+    console.log(data);
+    localStorage.setItem('authorization', data.signedUser.token);
   }
-
-  document.getElementById('addUsers').addEventListener('submit', addUser);
+  document.getElementById('signin').addEventListener('submit', signIn);
 };
