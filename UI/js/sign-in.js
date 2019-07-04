@@ -16,8 +16,29 @@ window.onload = function () {
       }),
     });
     const data = await response.json();
-    console.log(data);
-    localStorage.setItem('authorization', data.signedUser.token);
+    console.log(data.error);
+    if (data.signedUser) {
+      localStorage.setItem('authorization', data.signedUser.token);
+      window.location.href = 'dashboard.html';
+    }
+    if (data.Authentication_failed) {
+      const displayInfo = document.createElement('div');
+      if (displayInfo.innerHTML !== data.Authentication_failed) {
+        displayInfo.style.color = 'red';
+        displayInfo.style.position = 'center';
+        displayInfo.innerHTML = data.Authentication_failed;
+        document.getElementById('signin').appendChild(displayInfo);
+      }
+    }
+    if (data.error) {
+      const Info = document.createElement('div');
+      if (Info.innerHTML !== data.error) {
+        Info.style.color = 'red';
+        Info.style.position = 'center';
+        Info.innerHTML = data.error;
+        document.getElementById('signin').appendChild(Info);
+      }
+    }
   }
   document.getElementById('signin').addEventListener('submit', signIn);
 };
