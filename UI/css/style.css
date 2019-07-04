@@ -1260,6 +1260,135 @@ li .img-i {
 
 /*Sign-in.html styles starts here*/
 
+.form-signin {
+	margin: auto;
+	padding: 5px;
+	max-width: 420px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	border: solid;
+	border-radius: 10px;
+	letter-spacing: 0.5px;
+	color: #000000;
+}
+
+.form-signin h1 {
+	text-align: center;
+	margin: 20px 0 35px 0;
+	color: #532380;
+	text-shadow: 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.form-group-signin {
+	margin: 2px 2px;
+	max-width: 100%;
+	min-height: 68px;
+	margin: 10px 0 0 0;
+	padding: 0 35px;
+	border-radius: 10px;
+	position: relative;
+}
+
+.form-group-signin input {
+	width: 100%;
+	box-sizing: border-box;
+	height: 38px;
+	padding: 0 12px;
+	font-size: 17px;
+	letter-spacing: 0.25px;
+	border-radius: 20px;
+	border: 1.5px solid #532380;
+	background-color: #fff;
+	color: #000000;
+}
+
+.form-group-signin input:active,
+.form-group-signin input:focus {
+	background-color: #0000;
+	outline: none;
+	box-shadow: 0 0 2px 0 #532380;
+	border: 1.5px solid #0000;
+	color: #000000;
+}
+
+.form-group-signin input::selection {
+	background-color: #532380;
+	color: #000000;
+}
+
+.form-group-signin label {
+	pointer-events: none;
+	position: absolute;
+	margin: 0;
+	padding: 0 2px;
+	top: 9px;
+	left: 47px;
+	font-size: 16px;
+	color: #532380;
+	transition: all 0.12s ease;
+}
+
+.form-group-signin input:focus+label,
+.form-group-signin input:not(:placeholder-shown)+label {
+	transform: translateY(-27px);
+	font-size: 14px;
+	font-weight: bold;
+	color: #532380;
+}
+
+.error {
+	color: rgb(255, 102, 102);
+	margin: 3px 0px 0px 12px;
+	font-size: 12.5px;
+	display: none;
+	letter-spacing: 0px;
+}
+
+.form-signin input[type="submit"] {
+	display: block;
+	margin: 20px auto 10px;
+	width: 110px;
+	height: 45px;
+	border-radius: 25px;
+	font-size: 17px;
+	border: none;
+	text-transform: capitalize;
+	background-color: #532380;
+	color: black;
+	cursor: auto;
+	outline: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.form-signin input[type="submit"]:hover,
+.form-signin input[type="submit"]:focus {
+	background-color: #2991CF;
+	box-shadow: 0 0 2px 0px #532380;
+}
+
+.form-bottom {
+	text-align: center;
+	margin: 15px 0;
+	font-size: 12px;
+	letter-spacing: 0.75px;
+}
+
+.form-bottom a {
+	text-decoration: none;
+	color: #532380;
+}
+
+.form-bottom a:hover,
+.form-bottom a:focus {
+	color: #2991CF;
+	outline: none;
+}
+
+
+/*Sign-up.html styles starts here*/
+
 .form {
 	margin: auto;
 	padding: 5px;
