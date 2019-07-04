@@ -109,8 +109,6 @@ const User = {
             return res.status(404).send({ status: 404, error: 'No user account with the email already exist' });
           }
           user = rows[0];
-          user.resetPasswordToken = token;
-          user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         } catch (error) {
           return res.status(401).send({ error });
         }
@@ -127,12 +125,12 @@ const User = {
           from: 'vokeolomu01@gmail.com',
           subject: 'Password Reset',
           text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n'
-            + `Please see below for your new password: ${token}`
+            + `Please see below for your password: ${user.password}`
             + 'If you did not request this, please ignore this email and your password will remain unchanged.\n',
         };
         smtpTransport.sendMail(mailOptions, function () {
           console.log('mail sent');
-          return res.status(404).send({ status: 404, error: `An email has been sent to ${user.email} containing your new password` });
+          return res.status(404).send({ status: 404, info: `An email has been sent to ${user.email} containing your password` });
         });
         return null;
       },
