@@ -31,13 +31,13 @@ const Car = {
     try {
       // handling no input values to post a Car Ad.
       if (!req.body.price || !req.body.state ) {
-        return res.status(400).send({ status: 400, msg: 'please enter required fields' });
+        return res.status(400).send({ status: 400, error: 'please enter required fields' });
       }
       const { rows } = await db.query(text, values);
       const data = rows[0];
       return res.status(201).send({ status: 201, data, info: 'Car Ad successfully posted' });
-    } catch (error) {
-      return res.status(400).send({ status: 400, error });
+    } catch (err) {
+      return res.status(400).send({ status: 400, err });
     }
   },
 
