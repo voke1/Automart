@@ -1,7 +1,9 @@
 import '@babel/polyfill';
+import cloudinary from 'cloudinary';
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 import db from '../db';
+
 
 const Car = {
 
@@ -12,10 +14,29 @@ const Car = {
  * @returns {object} car object
  */
   async create(req, res) {
+    console.log(req.body);
+    console.log(req.files);
+    cloudinary.config({
+      cloud_name: 'voke',
+      api_key: '146586867451971',
+      api_secret: 'ZKdVZgEc-NY7qUnL9jXNnRuZQWw',
+    });
+    
+    const filename = req.files.dataFile.path;
+  
+    const result = await cloudinary.uploader.upload(filename, { tags: 'gotemps', resource_type: 'auto' })
+      .catch((err) => {
+        if (err) {
+          console.warn(err);
+        }
+      });
+
     const text = `INSERT INTO
-    cars(id, manufacturer, owner, model, price, state, status, body_type, created_on, modified_date)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+    cars(id, manufacturer, owner, model, price, state, status, body_type, img_url, created_on, modified_date)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
       returning *`;
+    const img_url = result.secure_url;
+    
     const values = [
       uuidv4(),
       req.body.manufacturer,
@@ -25,6 +46,7 @@ const Car = {
       req.body.state,
       req.body.status,
       req.body.body_type,
+      img_url,
       moment(new Date()),
       moment(new Date()),
     ];

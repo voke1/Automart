@@ -18,22 +18,22 @@ async function viewAds() {
 
 
   });
-  const data = await response.json();
-  console.log(data.rows);
-  if (data.rows.length > 0) {
+  const result = await response.json();
+  console.log(result.rows);
+  if (result.rows.length > 0) {
     let adTemplate;
     const adList = document.querySelector('.column');
 
-    for (let i = 0; i < data.rows.length; i++) {
+    for (let i = 0; i < result.rows.length; i++) {
       adTemplate += ` <li>
       <div class="img-i">
       <label class="car-state-label">NEW</label>
-          <a href="car-details.html"><img src="./img/Benz.png" alt="product1"></a>
+          <a href="car-details.html"><img src= ${result.rows[i].img_url} alt="product"></a>
       </div>
     
       <div class="desc-i">
           <ul class='car-list'>
-              <li>&nbsp; NAME: G-WAGON</li>
+              <li>&nbsp; NAME: ${result.rows[i].model}</li>
               <li>&nbsp; PRICE: NGN34,234,230.00</li>
           </ul>
           <h3 class="view-btn"><a href="car-details.html">VIEW CAR</a></h3>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-       <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="automobiles online marketplace">
-        <meta name="keywords" content="Automobile online marketplace">
-        <meta name="author" content="Voke Olomu">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Auto Mart</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <script src="./js/post-ad.js" async></script>
-    </head>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="automobiles online marketplace">
+    <meta name="keywords" content="Automobile online marketplace">
+    <meta name="author" content="Voke Olomu">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Auto Mart</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="./js/post-ad.js" async></script>
+</head>
+
 
 <body>
 
@@ -32,46 +32,49 @@
             </ul>
         </header>
         <div class="down"></div>
-        <section class="container1">
-            <div class="container-post_ad">
-                <div class="post_ad-wrapper">
-
+        <section class="purchase-car">
+            <div class="row">
+                <div class="col-75">
+                    <div class="container-purchase">
+                        <form action="/action_page.php" method="POST" id="post-ad">
+                            <div class="row">
+                                <div class="col-50">
+                                    <h3>Sell your Car</h3>
+                                    <label for="fname"><i class="fa fa-user"></i> Manufacturer<span>*</span></label>
+                                    <input type="text" id="manufacturer" name="firstname" placeholder="Toyota">
+                                    <label for="email"><i class="fa fa-envelope"></i> State<span>*</span></label>
+                                    <input type="text" id="state" name="email" placeholder="New">
+                                    <div class="grid">
+                                        <div class="field">
+                                            <label class=""> Price <span>*</span></label>
+                                            <span>₦</span><input name="price" id="price" placeholder="1250000" type="text">
+                                        </div>
+                                    </div>
+                                    <label for="city"><i class="fa fa-institution"></i> Body type<span>*</span></label>
+                                    <input type="text" id="body_type" name="city" placeholder="Convertible">
+                                </div>
+                                <div class="col-50">
+                                    <label for="cname">Model<span>*</span></label>
+                                    <input type="text" id="model" name="cardname" placeholder="Camry">
+                                    <label>Upload image<span>*</span></label>
+                                    <input type='file' id="image"/>
+                                </div>
+                            </div>
+                            <div class='ad-description'>
+                                <label>
+                                    Description
+                                    <small><span>600/600</span></small>
+                                </label>
+                                <textarea id="description"></textarea>
+                            </div>
+                            <input type="submit" value="Submit" class="butn">
+                        </form>
+                    </div>
                 </div>
-                <div class="details">
-                    <h3 id="sell-car">
-                        Sell your Car
-                    </h3>
-                    <form action="" id="post-ad">
-                        <p>
-                            <label for=""> State </label>
-                            <input type="text" name="firstname" placeholder="used or new" id="state">
-                        </p>
-                        <p>
-                            <label for=""> Model</label>
-                            <input type="text" name="firstname">
-                        </p>
-                        <p>
-                            <label for=""> Price</label>
-                            <input type="text" name="firstname" placeholder="500000" id="price">
-                        </p>
-                        <p>
-                            <label for=""> Firstname</label>
-                            <input type="text" name="firstname">
-                        </p>
-                        <p>
-                            <label for=""> Phonenumber</label>
-                            <input type="text" name="firstname">
-                        </p>
-                        <p class="submit-btn" id="submit-btn-id"> Post ad</p>
-                    </form>
-
-
-                </div>
-
             </div>
         </section>
-          <!--page footer begins here-->
-    <footer class="footer">
+        <!--page footer begins here-->
+        <footer class="footer">
             <div class="main">
                 <div class="submain"><input type="checkbox" id="footer-our-company" class="input"><label
                         for="footer-our-company" class="label"><span class="_34Lkm">AUTOMART</span><svg class="svg">
@@ -99,7 +102,7 @@
                     <div class="_19tgC">© <span>2019</span> AUTOMART<span> All rights reserved.</span></div>
                 </div>
             </div>
-        </footer>    
+        </footer>
     </body>
 
 </html>
