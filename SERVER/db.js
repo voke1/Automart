@@ -38,6 +38,7 @@ const createCarTables = () => {
         state VARCHAR(128) ,
         status VARCHAR(128) ,
         body_type VARCHAR(128) ,
+        img_url VARCHAR(128),
         model VARCHAR(128) ,
         created_date TIMESTAMP,
         modified_date TIMESTAMP

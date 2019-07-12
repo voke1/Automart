@@ -628,23 +628,27 @@ input#search-bar:focus:-ms-placeholder {
 /*  purchase-car.html styles starts here*/
 
 .purchase-car {
-	height: 600px;
+	height: 100%;
 }
 
 .purchase-car h2 {
 	text-align: left;
 }
 
-* {
-	box-sizing: border-box;
-}
-
-.row {
+.purchase-car .row {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	margin: 0 -10px;
+	margin-right: 2%;
+	margin-left: 8rem;
+	margin-top: 5%;
+	
+	
+}
+
+.ad-description{
+	margin-left: 10%;
 }
 
 .col-25 {
@@ -959,7 +963,7 @@ textarea {
 
 .container-view-ads {
 	margin-top: 60px;
-	height: 1200px;
+	height: 100%;
 	width: 100%;
 	background-color: white;
 	display: inline-block;

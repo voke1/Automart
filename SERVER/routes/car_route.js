@@ -1,16 +1,17 @@
 import express from 'express';
+import multiparty from 'connect-multiparty';
 import Car from '../usingDB/controller/carController';
 import Auth from '../usingDB/middleware/checkAuth';
-import uploadImage from '../usingDB/middleware/imageUpload'
 
 
+const multipartyMiddleware = multiparty();
 const router = express.Router();
 
 // view Car Ads based on input query
 router.get('/api/v1/car', Auth, Car.getAll);
 
 // post car Ad
-router.post('/api/v1/car', Auth, Car.create);
+router.post('/api/v1/car', Auth, multipartyMiddleware, Car.create);
 
 // View a specific car Ad
 router.get('/api/v1/car/:carId/', Car.getOne);
