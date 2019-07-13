@@ -8,10 +8,10 @@ const multipartyMiddleware = multiparty();
 const router = express.Router();
 
 // view Car Ads based on input query
-router.get('/api/v1/car', Auth, Car.getAll);
+router.get('/api/v1/car', Car.getAll);
 
 // post car Ad
-router.post('/api/v1/car', Auth, multipartyMiddleware, Car.create);
+router.post('/api/v1/car', multipartyMiddleware, Car.create);
 
 // View a specific car Ad
 router.get('/api/v1/car/:carId/', Auth, Car.getOne);
