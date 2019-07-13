@@ -28,8 +28,8 @@ const User = {
    */
   async create(req, res) {
     const text = `INSERT INTO
-      Users(id, token, email, firstname, lastname, password, is_admin, created_date, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      Users(id, token, email, first_name, last_name, password, is_admin, address, created_date, modified_date)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *`;
     // handling no input value to sign up a user.
     if (!req.body.email || !req.body.password) {
@@ -44,13 +44,14 @@ const User = {
       uuidv4(),
       req.body.token,
       req.body.email,
-      req.body.firstname,
-      req.body.lastname,
+      req.body.first_name,
+      req.body.last_name,
       // eslint-disable-next-line no-unused-vars
       bcrypt.hashSync(req.body.password, 10, (error, hash) => {
         if (error) { return ({ message: 'error found' }); } return null;
       }) || '',
       req.body.is_admin,
+      req.body.address,
       moment(new Date()),
       moment(new Date()),
     ];
@@ -80,10 +81,10 @@ const User = {
       }
       bcrypt.compare(req.body.password, rows[0].password, (error, result) => {
         if (result) {
-          const signedUser = rows[0];
-          return res.status(200).send({ status: 200, signedUser });
+          const data = rows[0];
+          return res.status(200).send({ status: 200, data });
         }
-        return res.status(401).send({ status: 401, Authentication_failed: 'Authentication information is invalid' });
+        return res.status(401).send({ status: 401, error: 'Authentication information is invalid' });
       });
     } catch (error) {
       return res.status(401).send({ status: 401, error: 'Please enter valid email and password' });

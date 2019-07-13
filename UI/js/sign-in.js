@@ -15,27 +15,27 @@ window.onload = function () {
         email, password,
       }),
     });
-    const data = await response.json();
-    console.log(data.error);
-    if (data.signedUser) {
-      localStorage.setItem('authorization', data.signedUser.token);
+    const result = await response.json();
+    console.log(result.error);
+    if (result.data) {
+      localStorage.setItem('authorization', result.data.token);
       window.location.href = 'dashboard.html';
     }
-    if (data.Authentication_failed) {
+    if (typeof result.error === 'string') {
       const displayInfo = document.createElement('div');
-      if (displayInfo.innerHTML !== data.Authentication_failed) {
+      if (displayInfo.innerHTML !== result.error) {
         displayInfo.style.color = 'red';
         displayInfo.style.position = 'center';
-        displayInfo.innerHTML = data.Authentication_failed;
+        displayInfo.innerHTML = result.error;
         document.getElementById('signin').appendChild(displayInfo);
       }
     }
-    if (data.error) {
+    if (result.error) {
       const Info = document.createElement('div');
-      if (Info.innerHTML !== data.error) {
+      if (Info.innerHTML !== result.error) {
         Info.style.color = 'red';
         Info.style.position = 'center';
-        Info.innerHTML = data.error;
+        Info.innerHTML = result.error;
         document.getElementById('signin').appendChild(Info);
       }
     }

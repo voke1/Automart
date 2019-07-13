@@ -24,8 +24,8 @@ const Car = {
     let img_url;
 
     if (req.files) {
-      if (req.files.dataFile) {
-        const filename = req.files.dataFile.path;
+      if (req.files.image_url) {
+        const filename = req.files.image_url.path;
         result = await cloudinary.uploader.upload(filename, { tags: 'gotemps', resource_type: 'auto' })
           .catch((err) => {
             if (err) {
@@ -241,18 +241,19 @@ const Car = {
     */
   async delete(req, res) {
     const deleteQuery = 'DELETE FROM cars WHERE id=$1 returning *';
-    try {
-      req.params.id = req.params.carId;
-      const { rows } = await db.query(deleteQuery, [req.params.id]);
+    const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
+    // try {
+    req.params.id = req.params.carId;
+    const { rows } = await db.query(findOneQuery, [req.params.id]);
 
-      if (!rows[0]) {
-        return res.status(404).send({ status: 404, error: 'Car Ad not found to delete' });
-      }
-
-      return res.status(204).send({ status: 204, message: 'Car Ad successfully deleted' });
-    } catch (error) {
-      return res.status(400).send({ status: 400, error });
+    if (!rows[0]) {
+      return res.status(404).send({ status: 404, error: 'Car Ad not found to delete' });
     }
+    await db.query(deleteQuery, [rows[0].id]);
+    return res.status(204).send({ status: 204, data: 'Car Ad successfully deleted' });
+    // } catch (error) {
+    //   return res.status(400).send({ status: 400, error });
+    // }
   },
 };
 

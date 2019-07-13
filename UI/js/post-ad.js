@@ -5,7 +5,7 @@ async function postAd(e) {
   formData.append('price', document.getElementById('price').value);
   formData.append('state', document.getElementById('state').value);
   formData.append('manufacturer', document.getElementById('manufacturer').value);
-  formData.append('dataFile', document.getElementById('image').files[0]);
+  formData.append('image_url', document.getElementById('image').files[0]);
   formData.append('description', document.getElementById('description').value);
   formData.append('model', document.getElementById('model').value);
   // eslint-disable-next-line camelcase
