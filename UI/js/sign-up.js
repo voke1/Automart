@@ -3,8 +3,8 @@ window.onload = function () {
   async function addUser(e) {
     e.preventDefault();
 
-    const firstname = document.getElementById('firstname').value;
-    const lastname = document.getElementById('lastname').value;
+    const first_name = document.getElementById('firstname').value;
+    const last_name = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     // const submit = document.getElementById('body').value;
@@ -16,7 +16,7 @@ window.onload = function () {
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
-        firstname, lastname, email, password,
+        first_name, last_name, email, password,
       }),
     });
     const data = await response.json();

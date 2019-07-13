@@ -148,15 +148,15 @@ describe('ORDER', () => {
         .send(orderOne);
       result.body.should.be.a('object');
       result.status.should.equal(200);
-      result.body.modifiedOrder.should.have.property('price_offered');
-      result.body.modifiedOrder.should.have.property('price');
-      result.body.modifiedOrder.price.should.equal('200000');
-      result.body.modifiedOrder.should.have.property('car_id');
-      result.body.modifiedOrder.should.have.property('buyer');
-      result.body.modifiedOrder.should.have.property('status');
-      result.body.modifiedOrder.should.have.property('old_price_offered');
-      result.body.modifiedOrder.should.have.property('new_price_offered');
-      result.body.modifiedOrder.should.have.property('id');
+      result.body.data.should.have.property('price_offered');
+      result.body.data.should.have.property('price');
+      result.body.data.price.should.equal('200000');
+      result.body.data.should.have.property('car_id');
+      result.body.data.should.have.property('buyer');
+      result.body.data.should.have.property('status');
+      result.body.data.should.have.property('old_price_offered');
+      result.body.data.should.have.property('new_price_offered');
+      result.body.data.should.have.property('id');
     });
     it('it should return a 400 error if required fields are missing', async () => {
       const result = await chai
@@ -188,8 +188,8 @@ describe('ORDER', () => {
         });
 
       result.status.should.equal(200);
-      result.body.modifiedOrder.should.have.property('new_price_offered');
-      result.body.modifiedOrder.new_price_offered.should.equal('800000');
+      result.body.data.should.have.property('new_price_offered');
+      result.body.data.new_price_offered.should.equal('800000');
     });
   });
 });

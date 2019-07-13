@@ -4,7 +4,6 @@ import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 import db from '../db';
 
-
 const Order = {
 
   /**
@@ -18,6 +17,9 @@ const Order = {
       orders(id, car_id, buyer, price, price_offered, status, created_on, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8)
       returning *`;
+    if (req.body.amount) {
+      req.body.price_offered = req.body.amount;
+    }
     const values = [
       uuidv4(),
       req.body.car_id,
@@ -53,6 +55,7 @@ const Order = {
       SET car_id=$1,price=$2,price_offered=$3, old_price_offered=$4, new_price_offered=$5, modified_date=$6
       WHERE id=$7 returning *`;
     try {
+      // req.body.new_price_offered = req.body.price;
       if (!req.body.new_price_offered) {
         return res.status(400).send({ status: 400, error: 'please enter new price offered and car ID' });
       }
@@ -75,8 +78,8 @@ const Order = {
 
         ];
         const response = await db.query(updateOneQuery, values);
-        const modifiedOrder = response.rows[0];
-        return res.status(200).send({ status: 200, modifiedOrder });
+        const data = response.rows[0];
+        return res.status(200).send({ status: 200, data });
       }
 
       return res.status(404).send({ status: 404, error: `cannot update price, status is ${rows[0].status}` });
