@@ -13,30 +13,34 @@ const Car = {
  * @param {object} res
  * @returns {object} car object
  */
+
   async create(req, res) {
-    console.log(req.body);
-    console.log(req.files);
     cloudinary.config({
       cloud_name: 'voke',
       api_key: '146586867451971',
       api_secret: 'ZKdVZgEc-NY7qUnL9jXNnRuZQWw',
     });
-    
-    const filename = req.files.dataFile.path;
-  
-    const result = await cloudinary.uploader.upload(filename, { tags: 'gotemps', resource_type: 'auto' })
-      .catch((err) => {
-        if (err) {
-          console.warn(err);
-        }
-      });
+    let result;
+    let img_url;
 
+    if (req.files) {
+      if (req.files.dataFile) {
+        const filename = req.files.dataFile.path;
+        result = await cloudinary.uploader.upload(filename, { tags: 'gotemps', resource_type: 'auto' })
+          .catch((err) => {
+            if (err) {
+              console.warn(err);
+            }
+          });
+        img_url = result.secure_url;
+      }
+    }
     const text = `INSERT INTO
     cars(id, manufacturer, owner, model, price, state, status, body_type, img_url, created_on, modified_date)
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
       returning *`;
-    const img_url = result.secure_url;
-    
+
+
     const values = [
       uuidv4(),
       req.body.manufacturer,
@@ -52,7 +56,7 @@ const Car = {
     ];
     try {
       // handling no input values to post a Car Ad.
-      if (!req.body.price || !req.body.state ) {
+      if (!req.body.price || !req.body.state) {
         return res.status(400).send({ status: 400, error: 'please enter required fields' });
       }
       const { rows } = await db.query(text, values);
