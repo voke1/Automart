@@ -52,7 +52,7 @@ const User = {
       req.body.last_name,
       // eslint-disable-next-line no-unused-vars
       bcrypt.hashSync(req.body.password, 10, (error, hash) => {
-        if (error) { return ({ message: 'error found' }); } return null;
+        if (error) { return ({ error: 'error found' }); } return null;
       }) || '',
       req.body.is_admin,
       req.body.address,

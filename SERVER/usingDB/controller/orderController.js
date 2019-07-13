@@ -36,8 +36,8 @@ const Order = {
         return res.status(400).send({ status: 400, error: 'please enter price offered and car ID' });
       }
       const { rows } = await db.query(text, values);
-      const order = (rows[0]);
-      return res.status(201).send({ status: 201, order });
+      const data = (rows[0]);
+      return res.status(201).send({ status: 201, data });
     } catch (error) {
       return res.status(400).send({ status: 400, error });
     }
