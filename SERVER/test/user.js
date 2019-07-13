@@ -43,19 +43,19 @@ describe('USER', () => {
         .send(userTwo);
       result.body.should.be.a('object');
       result.status.should.equal(201);
-      result.body.user.should.have.property('email');
-      result.body.user.should.have.property('password');
-      result.body.user.email.should.equal('testemail4@gmail.com');
-      result.body.user.should.have.property('id');
+      result.body.data.should.have.property('email');
+      result.body.data.should.have.property('password');
+      result.body.data.email.should.equal('testemail4@gmail.com');
+      result.body.data.should.have.property('id');
     });
     it('it should return a signin token', async () => {
       const result = await chai
         .request(server)
         .post('/api/v1/auth/signup')
         .send(userThree);
-      result.body.user.should.be.a('object');
+      result.body.data.should.be.a('object');
       result.status.should.equal(201);
-      result.body.user.should.have.property('token');
+      result.body.data.should.have.property('token');
     });
     it('it should return a 400 error if required fields are missing for authorized login', async () => {
       const result = await chai

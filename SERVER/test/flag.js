@@ -44,7 +44,7 @@ describe('FLAG', () => {
       .post('/api/v1/auth/signup')
       .send(userOne);
     result.status.should.equal(201);
-    userToken = result.body.user.token;
+    userToken = result.body.data.token;
   });
   describe('/POST api/v1/flag', () => {
     it('it should return a 401 authentication failed', async () => {
