@@ -196,7 +196,7 @@ const Car = {
 
     // view all Cars
     try {
-      const decode = await jwt.verify(req.body.authorization, process.env.TOKEN);
+      const decode = await jwt.verify(req.headers.authorization, process.env.TOKEN);
       const result = decode.isAdmin;
       if (result === 'false') {
         return res.status(400).send({ status: 400, error: 'User is not Admin' });
@@ -249,7 +249,7 @@ const Car = {
     * @returns {void} return statuc code 204
     */
   async delete(req, res) {
-    const decode = jwt.verify(req.body.authorization, process.env.TOKEN);
+    const decode = jwt.verify(req.headers.authorization, process.env.TOKEN);
     try {
       if (decode.isAdmin === 'false') {
         return res.status(400).send({ status: 400, error: 'User is not Admin' });
