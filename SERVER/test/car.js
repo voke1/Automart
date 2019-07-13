@@ -48,7 +48,7 @@ describe('CAR', () => {
       .post('/api/v1/auth/signup')
       .send(userOne);
     result.status.should.equal(201);
-    userToken = result.body.user.token;
+    userToken = result.body.data.token;
   });
   before(async () => {
     const result = await chai
