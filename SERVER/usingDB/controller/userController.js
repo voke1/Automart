@@ -39,7 +39,11 @@ const User = {
     // eslint-disable-next-line no-unused-expressions
     // this.findUser;
 
-    req.body.token = jwt.sign(req.body.email, process.env.TOKEN);
+    const payload = { email: req.body.email, isAdmin: req.body.is_admin };
+    const options = { expiresIn: '2d' };
+    const secret = process.env.TOKEN;
+
+    req.body.token = jwt.sign(payload, secret, options);
     const values = [
       uuidv4(),
       req.body.token,
@@ -57,13 +61,13 @@ const User = {
     ];
 
 
-    try {
+    // try {
       const { rows } = await db.query(text, values);
       const user = (rows[0]);
       return res.status(201).send({ status: 201, user });
-    } catch (error) {
-      return res.status(400).send({ status: 400, error });
-    }
+    // } catch (error) {
+    //   return res.status(400).send({ status: 400, error });
+    // }
   },
   /**
        * //sign in a user
@@ -91,6 +95,18 @@ const User = {
     }
     return null;
   },
+
+  // Get all users
+  async getAll(req, res) {
+    const findAllQuery = 'SELECT * FROM users';
+    try {
+      const { rows } = await db.query(findAllQuery);
+      return res.status(200).send({ status: 200, rows });
+    } catch (error) {
+      return res.status(401).send({ status: 401, error: 'No user found' });
+    }
+  },
+
   // Reset Password
   async updatePassword(req, res) {
     async.waterfall([

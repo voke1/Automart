@@ -83,12 +83,12 @@ const createUserTables = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
         users(
           id UUID PRIMARY KEY,
-          token VARCHAR(128),
+          token VARCHAR(8000),
           email VARCHAR(128),
           first_name VARCHAR(128),
           last_name VARCHAR(128),
           password VARCHAR(128),
-          is_admin VARCHAR(128),
+          is_admin BOOL DEFAULT 'f',
           address VARCHAR(128),
           created_date TIMESTAMP,
           modified_date TIMESTAMP,

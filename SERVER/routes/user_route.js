@@ -10,6 +10,10 @@ router.post('/api/v1/auth/signin', User.getOne);
 // sign up a user
 router.post('/api/v1/auth/signup', User.create);
 
+
+// get all users including admin
+router.get('/api/v1/user', User.getAll);
+
 // forgot password
 router.post('/api/v1/users/:useremail/reset_password', User.updatePassword);
 

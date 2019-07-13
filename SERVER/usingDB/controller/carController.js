@@ -1,5 +1,6 @@
 import '@babel/polyfill';
 import cloudinary from 'cloudinary';
+import jwt from 'jsonwebtoken';
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 import db from '../db';
@@ -192,8 +193,16 @@ const Car = {
         return res.status(400).send({ status: 400, error: `Cannot find car of ${req.query.body_type} body type` });
       }
     }
-    const findAllQuery = 'SELECT * FROM cars';
+
+    // view all Cars
     try {
+      const decode = await jwt.verify(req.headers.authorization, process.env.TOKEN);
+      const result = decode.isAdmin;
+      if (result === 'false') {
+        return res.status(400).send({ status: 400, error: 'User is not Admin' });
+      }
+      const findAllQuery = 'SELECT * FROM cars';
+
       const { rows } = await db.query(findAllQuery);
       return res.status(200).send({ status: 200, rows });
     } catch (error) {
@@ -240,20 +249,25 @@ const Car = {
     * @returns {void} return statuc code 204
     */
   async delete(req, res) {
-    const deleteQuery = 'DELETE FROM cars WHERE id=$1 returning *';
-    const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
-    // try {
-    req.params.id = req.params.carId;
-    const { rows } = await db.query(findOneQuery, [req.params.id]);
+    const decode = jwt.verify(req.headers.authorization, process.env.TOKEN);
+    try {
+      if (decode.isAdmin === 'false') {
+        return res.status(400).send({ status: 400, error: 'User is not Admin' });
+      }
+      const deleteQuery = 'DELETE FROM cars WHERE id=$1 returning *';
+      const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
 
-    if (!rows[0]) {
-      return res.status(404).send({ status: 404, error: 'Car Ad not found to delete' });
+      req.params.id = req.params.carId;
+      const { rows } = await db.query(findOneQuery, [req.params.id]);
+      
+      if (!rows[0]) {
+        return res.status(404).send({ status: 404, error: 'Car Ad not found to delete' });
+      }
+      await db.query(deleteQuery, [rows[0].id]);
+      return res.status(204).send({ status: 204, data: 'Car Ad successfully deleted' });
+    } catch (error) {
+      return res.status(400).send({ status: 400, error });
     }
-    await db.query(deleteQuery, [rows[0].id]);
-    return res.status(204).send({ status: 204, data: 'Car Ad successfully deleted' });
-    // } catch (error) {
-    //   return res.status(400).send({ status: 400, error });
-    // }
   },
 };
 
