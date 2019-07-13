@@ -30,8 +30,8 @@ const Flag = {
         return res.status(400).send({ status: 400, error: 'please enter car Id and reason for report' });
       }
       const { rows } = await db.query(text, values);
-      const flag = rows[0];
-      return res.status(201).send({ status: 201, flag });
+      const data = rows[0];
+      return res.status(201).send({ status: 201, data });
     } catch (error) {
       return res.status(400).send({ status: 400, error });
     }
