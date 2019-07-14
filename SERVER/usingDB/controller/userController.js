@@ -39,7 +39,7 @@ const User = {
     // eslint-disable-next-line no-unused-expressions
     // this.findUser;
 
-    const payload = { email: req.body.email, isAdmin: req.body.is_admin };
+    const payload = { email: req.body.email, id: uuidv4(), isAdmin: req.body.is_admin };
     const options = { expiresIn: '2d' };
     const secret = process.env.TOKEN;
 

@@ -41,7 +41,8 @@ const Car = {
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
       returning *`;
 
-
+    const decode = jwt.verify(req.headers.token, process.env.TOKEN);
+    req.body.owner = decode.id;
     const values = [
       uuidv4(),
       req.body.manufacturer,
@@ -251,6 +252,7 @@ const Car = {
     */
   async delete(req, res) {
     const decode = jwt.verify(req.headers.token, process.env.TOKEN);
+    console.log(decode);
     try {
       if (decode.isAdmin === 'false') {
         return res.status(400).send({ status: 400, error: 'User is not Admin' });
