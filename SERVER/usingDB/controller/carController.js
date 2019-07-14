@@ -100,9 +100,6 @@ const Car = {
       SET price=$1, modified_date=$2
       WHERE id=$3 returning *`;
     try {
-      if (!req.body.price) {
-        return res.status(400).send({ status: 400, error: 'please enter required fields' });
-      }
       req.params.id = req.params.carId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
 
@@ -117,8 +114,8 @@ const Car = {
       const response = await db.query(updateOneQuery, values);
       const data = response.rows[0];
       return res.status(200).send({ status: 200, data });
-    } catch (err) {
-      return res.status(400).send({ status: 400, err });
+    } catch (error) {
+      return res.status(400).send({ status: 400, error });
     }
   },
 
@@ -265,7 +262,7 @@ const Car = {
         return res.status(404).send({ status: 404, error: 'Car Ad not found to delete' });
       }
       await db.query(deleteQuery, [rows[0].id]);
-      return res.status(204).send({ status: 204, data: 'Car Ad successfully deleted' });
+      return res.status(200).send({ status: 200, data: 'Car Ad successfully deleted' });
     } catch (error) {
       return res.status(400).send({ status: 400, error });
     }
