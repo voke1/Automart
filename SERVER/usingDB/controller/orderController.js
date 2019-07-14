@@ -65,24 +65,23 @@ const Order = {
       if (!rows[0]) {
         return res.status(404).send({ status: 404, error: 'order not found' });
       }
-      if (rows[0].status === 'pending') {
-        req.body.old_price_offered = rows[0].price_offered;
-        const values = [
-          req.body.car_id,
-          req.body.price,
-          req.body.price_offered,
-          req.body.old_price_offered,
-          req.body.new_price_offered,
-          moment(new Date()),
-          req.params.id,
-
-        ];
-        const response = await db.query(updateOneQuery, values);
-        const data = response.rows[0];
-        return res.status(200).send({ status: 200, data });
+      if (rows[0].status !== 'pending') {
+        return res.status(406).send({ status: 406, error: `cannot update price, status is ${rows[0].status}` });
       }
+      req.body.old_price_offered = rows[0].price_offered;
+      const values = [
+        req.body.car_id,
+        req.body.price,
+        req.body.price_offered,
+        req.body.old_price_offered,
+        req.body.new_price_offered,
+        moment(new Date()),
+        req.params.id,
 
-      return res.status(404).send({ status: 404, error: `cannot update price, status is ${rows[0].status}` });
+      ];
+      const response = await db.query(updateOneQuery, values);
+      const data = response.rows[0];
+      return res.status(200).send({ status: 200, data });
     } catch (err) {
       return res.status(400).send(err);
     }
