@@ -102,7 +102,7 @@ const Car = {
       WHERE id=$3 returning *`;
     try {
       if (!req.body.price) {
-        return res.status(400).send({ status: 400, error: 'please fill in required fields' });
+        return res.status(422).send({ status: 422, error: 'please fill in required fields' });
       }
       req.params.id = req.params.carId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
