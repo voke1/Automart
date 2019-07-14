@@ -100,9 +100,6 @@ const Car = {
       SET price=$1, modified_date=$2
       WHERE id=$3 returning *`;
     try {
-      if (!req.body.price) {
-        return res.status(404).send({ status: 404, error: 'please fill in required fields' });
-      }
       req.params.id = req.params.carId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
 
