@@ -56,8 +56,8 @@ const Order = {
       WHERE id=$7 returning *`;
     try {
       // req.body.new_price_offered = req.body.price;
-      if (!req.body.price) {
-        return res.status(405).send({ status: 405, error: 'please enter new price offered and car ID' });
+      if (!req.body.price || isNaN(req.body.price)) {
+        return res.status(405).send({ status: 405, error: 'please enter new price offered and order ID' });
       }
       req.params.id = req.params.orderId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
@@ -65,10 +65,6 @@ const Order = {
       if (!rows[0]) {
         return res.status(404).send({ status: 404, error: 'order not found' });
       }
-      if (rows[0].status !== 'pending') {
-        return res.status(406).send({ status: 406, error: `cannot update price, status is ${rows[0].status}` });
-      }
-
       req.body.old_price_offered = rows[0].price_offered;
       const values = [
         req.body.car_id,
@@ -83,7 +79,6 @@ const Order = {
       const response = await db.query(updateOneQuery, values);
       const data = response.rows[0];
       return res.status(200).send({ status: 200, data });
-
     } catch (error) {
       return res.status(400).send(error);
     }
