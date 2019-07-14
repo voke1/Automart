@@ -65,9 +65,7 @@ const Order = {
       if (!rows[0]) {
         return res.status(404).send({ status: 404, error: 'order not found' });
       }
-      if (rows[0].status !== 'pending') {
-        return res.status(406).send({ status: 406, error: `cannot update price, status is ${rows[0].status}` });
-      }
+  
 
       req.body.old_price_offered = rows[0].price_offered;
       const values = [
