@@ -56,8 +56,8 @@ const Order = {
       WHERE id=$7 returning *`;
     try {
       // req.body.new_price_offered = req.body.price;
-      if (!req.body.price || isNaN(req.body.price)) {
-        return res.status(405).send({ status: 405, error: 'please enter new price offered and order ID' });
+      if (!req.body.price) {
+        return res.status(400).send({ status: 400, error: 'please enter new price offered and order ID' });
       }
       req.params.id = req.params.orderId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
