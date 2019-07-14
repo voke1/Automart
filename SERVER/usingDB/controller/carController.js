@@ -82,8 +82,8 @@ const Car = {
       if (!rows[0]) {
         return res.status(404).send({ status: 404, error: 'car not found' });
       }
-      const car = rows[0];
-      return res.status(200).send({ status: 200, car });
+      const data = rows[0];
+      return res.status(200).send({ status: 200, data });
     } catch (error) {
       return res.status(400).send({ status: 400, error });
     }
@@ -115,8 +115,8 @@ const Car = {
         req.params.id,
       ];
       const response = await db.query(updateOneQuery, values);
-      const updatedAd = response.rows[0];
-      return res.status(200).send({ status: 200, updatedAd });
+      const data = response.rows[0];
+      return res.status(200).send({ status: 200, data });
     } catch (err) {
       return res.status(400).send({ status: 400, err });
     }
@@ -204,7 +204,8 @@ const Car = {
       const findAllQuery = 'SELECT * FROM cars';
 
       const { rows } = await db.query(findAllQuery);
-      return res.status(200).send({ status: 200, rows });
+      const data = rows;
+      return res.status(200).send({ status: 200, data });
     } catch (error) {
       return res.status(400).send({ status: 400, error });
     }
@@ -236,8 +237,8 @@ const Car = {
         req.params.id,
       ];
       const response = await db.query(updateOneQuery, values);
-      const modifiedAdStatus = response.rows[0];
-      return res.status(200).send({ status: 200, modifiedAdStatus });
+      const data = response.rows[0];
+      return res.status(200).send({ status: 200, data });
     } catch (err) {
       return res.status(400).send({ status: 400, err });
     }
@@ -246,7 +247,7 @@ const Car = {
     * Delete A Car
     * @param {object} req
     * @param {object} res
-    * @returns {void} return statuc code 204
+    * @returns {void} return statuc code 204  
     */
   async delete(req, res) {
     const decode = jwt.verify(req.headers.token, process.env.TOKEN);
@@ -259,7 +260,7 @@ const Car = {
 
       req.params.id = req.params.carId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
-      
+
       if (!rows[0]) {
         return res.status(404).send({ status: 404, error: 'Car Ad not found to delete' });
       }

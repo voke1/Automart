@@ -56,7 +56,7 @@ const Order = {
       WHERE id=$7 returning *`;
     try {
       // req.body.new_price_offered = req.body.price;
-      if (!req.body.new_price_offered) {
+      if (!req.body.price) {
         return res.status(400).send({ status: 400, error: 'please enter new price offered and car ID' });
       }
       req.params.id = req.params.orderId;
