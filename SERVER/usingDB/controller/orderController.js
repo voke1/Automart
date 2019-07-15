@@ -64,6 +64,7 @@ const Order = {
       const { rows } = await db.query(findOneQuery, [req.params.id]);
       
       req.body.old_price_offered = rows[0].price_offered;
+      req.body.new_price_offered = req.body.amount;
       const values = [
         req.body.car_id,
         req.body.price,
