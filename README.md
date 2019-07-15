@@ -86,10 +86,10 @@ An API testing tool such as POSTMAN will be required.
 
 | Verb     | Endpoint                                                           | Action
 | :------- | :---------------------------------------------------------------   | :---------------------------------------------
-| POST     | /api/v1/auth/signup                                                | Create a user
-| POST     | /api/v1/auth/signin                                                | Sign a user in
+| POST     | /api/v1/auth/signup                                                | Create a new user
+| POST     | /api/v1/auth/signin                                                | Signin an existing user
 | POST     | /api/v1/car                                                        | Create a car AD
-| GET      | /api/v1/car                                                        | View all posted ADs whether sold or available
+| GET      | /api/v1/car                                                        | View posted Car ADs
 | GET      | /api/v1/car/:carId                                                 | View a specific car AD
 | PATCH    | /api/v1/car/:carId/price                                           | Update a specific car AD price
 | PATCH    | /api/v1/car/:carId/status                                          | Update a specific car AD status (sold)
