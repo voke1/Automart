@@ -99,7 +99,6 @@ const Car = {
   * @returns {object} update price of Car Ad
   */
   async getUpdatePrice(req, res) {
-    console.log(req.body);
     const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
     const updateOneQuery = `UPDATE cars
       SET price=$1, modified_date=$2
@@ -259,7 +258,6 @@ const Car = {
   // delete a specific Car Ad (Admins only)
   async delete(req, res) {
     const decode = jwt.verify(req.headers.token, process.env.TOKEN);
-    console.log(decode);
     try {
       if (decode.isAdmin === 'false') {
         return res.status(400).send({ status: 400, error: 'User is not Admin' });

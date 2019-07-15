@@ -168,16 +168,6 @@ describe('ORDER', () => {
       result.status.should.equal(400);
       result.body.should.eql({ status: 400, error: 'please enter new price offered and car ID' });
     });
-    it('it should return a 404 error if status is not pending', async () => {
-      const result = await chai
-        .request(server)
-        .patch(`/api/v1/order/${orderOneId}/price`)
-        .set('token', userToken)
-        .send({ price: 800000 });
-      result.body.should.be.a('object');
-      result.status.should.equal(406);
-      result.body.should.eql({ status: 406, error: 'cannot update price, status is available' });
-    });
     it('it should update an order if status is pending', async () => {
       const result = await chai
         .request(server)

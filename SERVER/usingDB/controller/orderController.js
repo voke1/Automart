@@ -49,7 +49,6 @@ const Order = {
    * @returns {object} updated order
    */
   async getUpdateOrderPrice(req, res) {
-    console.log(req.body);
     const findOneQuery = 'SELECT * FROM orders WHERE id=$1';
 
     const updateOneQuery = `UPDATE orders
@@ -64,7 +63,6 @@ const Order = {
       const { rows } = await db.query(findOneQuery, [req.params.id]);
 
       req.body.old_price_offered = rows[0].price_offered;
-      console.log('amount:', req.body);
       if (!req.body.amount) {
         req.body.new_price_offered = req.body.price;
       } else {
