@@ -36,14 +36,12 @@ const User = {
       return res.status(400).send({ status: 400, error: 'please fill in required fields' });
     }
 
-    // eslint-disable-next-line no-unused-expressions
-    // this.findUser;
-
+    // generate user token
     const payload = { email: req.body.email, id: uuidv4(), isAdmin: req.body.is_admin };
     const options = { expiresIn: '2d' };
     const secret = process.env.TOKEN;
-
     req.body.token = jwt.sign(payload, secret, options);
+
     const values = [
       uuidv4(),
       req.body.token,
@@ -67,7 +65,7 @@ const User = {
       return res.status(201).send({ status: 201, data });
     } catch (error) {
       return res.status(400).send({ status: 400, error });
-     }
+    }
   },
   /**
        * //sign in a user
@@ -83,6 +81,7 @@ const User = {
       if (!rows[0]) {
         return res.status(404).send({ status: 404, error: `A user with the specified email: ${req.body.email} was not found` });
       }
+      // check if user password is correct
       bcrypt.compare(req.body.password, rows[0].password, (error, result) => {
         if (result) {
           const data = rows[0];
