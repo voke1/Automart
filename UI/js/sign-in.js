@@ -4,8 +4,8 @@ window.onload = function () {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    // const submit = document.getElementById('body').value;
-    const response = await fetch('http://localhost:2000/api/v1/auth/signin', {
+    
+    const response = await fetch('https://voke-automart.herokuapp.com/api/v1/auth/signin', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
@@ -18,8 +18,8 @@ window.onload = function () {
     const result = await response.json();
     console.log(result.error);
     if (result.data) {
-      localStorage.setItem('authorization', result.data.token);
-      window.location.href = 'dashboard.html';
+      localStorage.setItem('token', result.data.token);
+      window.location.href = 'view-all-ads.html';
     }
     if (typeof result.error === 'string') {
       const displayInfo = document.createElement('div');
