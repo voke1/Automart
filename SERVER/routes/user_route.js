@@ -14,7 +14,7 @@ router.post('/api/v1/auth/signup', User.create);
 // get all users including admin
 router.get('/api/v1/user', User.getAll);
 
-// forgot password
+// route to reset password
 router.post('/api/v1/users/:useremail/reset_password', User.updatePassword);
 
 

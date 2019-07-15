@@ -17,13 +17,14 @@ const Car = {
 
   async create(req, res) {
     cloudinary.config({
-      cloud_name: 'voke',
-      api_key: '146586867451971',
-      api_secret: 'ZKdVZgEc-NY7qUnL9jXNnRuZQWw',
+      cloud_name: process.env.CLOUD_NAME,
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
     });
     let result;
     let img_url;
 
+    // checks if Car Ad image is present to upload to cloudinary account
     if (req.files) {
       if (req.files.image_url) {
         const filename = req.files.image_url.path;
@@ -40,9 +41,10 @@ const Car = {
     cars(id, manufacturer, owner, model, price, state, status, body_type, img_url, created_on, modified_date)
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
       returning *`;
-
+    // get user id from user token
     const decode = jwt.verify(req.headers.token, process.env.TOKEN);
     req.body.owner = decode.id;
+
     const values = [
       uuidv4(),
       req.body.manufacturer,
@@ -57,10 +59,11 @@ const Car = {
       moment(new Date()),
     ];
     try {
-      // handling no input values to post a Car Ad.
+      // validation to handle no input values to post a Car Ad.
       if (!req.body.price || !req.body.state) {
         return res.status(400).send({ status: 400, error: 'please enter required fields' });
       }
+      // post Car Ad
       const { rows } = await db.query(text, values);
       const data = rows[0];
       return res.status(201).send({ status: 201, data, info: 'Car Ad successfully posted' });
@@ -164,13 +167,13 @@ const Car = {
       // return all available car Ads within a specified price range
       if (req.query.min_price) {
         const findAllQuery = `SELECT * FROM cars WHERE status = 'available' AND price BETWEEN '${req.query.min_price}' AND '${req.query.max_price}' `;
-        // try {
-        const { rows } = await db.query(findAllQuery);
-        const carRange = rows;
-        return res.status(200).send({ status: 200, carRange });
-        // } catch (error) {
-        //   return res.status(400).send({ status: 400, error });
-        // }
+        try {
+          const { rows } = await db.query(findAllQuery);
+          const carRange = rows;
+          return res.status(200).send({ status: 200, carRange });
+        } catch (error) {
+          return res.status(400).send({ status: 400, error });
+        }
       }
       // Return all available car Ads
       const findAllQuery = "SELECT * FROM cars WHERE status = 'available'";
@@ -195,10 +198,11 @@ const Car = {
       }
     }
 
-    // view all Cars
+    // view all Cars (Admins only)
     try {
       const decode = await jwt.verify(req.headers.token, process.env.TOKEN);
       const result = decode.isAdmin;
+
       if (result === 'false') {
         return res.status(400).send({ status: 400, error: 'User is not Admin' });
       }
@@ -250,6 +254,8 @@ const Car = {
     * @param {object} res
     * @returns {void} return statuc code 204  
     */
+
+  // delete a specific Car Ad (Admins only)
   async delete(req, res) {
     const decode = jwt.verify(req.headers.token, process.env.TOKEN);
     console.log(decode);

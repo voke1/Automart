@@ -296,7 +296,7 @@
         "summary": "Delete a specific Car Ad ",
         "description": "Signed in user can delete a specific Car Ad",
         "produces": [
-          "application/xml"
+          "application/json"
         ],
         "parameters": [
           {
@@ -516,7 +516,7 @@
               }
             }
           },
-          "400": {
+          "406": {
             "description": "Invalid Order"
           }
         },
@@ -545,11 +545,11 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstname": {
+                "first_name": {
                   "type": "string",
                   "example": "John"
                 },
-                "lastname": {
+                "last_name": {
                   "type": "string",
                   "example": "Doe"
                 },
@@ -565,7 +565,7 @@
                   "description": "Address of Automart User"
                 },
                 "is_admin": {
-                  "type": "string",
+                  "type": true,
                   "description": "confirms if user is an Admin"
                 }
               }
@@ -625,19 +625,14 @@
           "400": {
             "description": "User not found"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     }
   },
   "securityDefinitions": {
     "api_key": {
       "type": "apiKey",
-      "name": "Authorization",
+      "name": "token",
       "in": "header"
     }
   },
@@ -699,11 +694,11 @@
           "type": "integer",
           "format": "int64"
         },
-        "firstname": {
+        "first_name": {
           "type": "string",
           "example": "John"
         },
-        "lastname": {
+        "last_name": {
           "type": "string",
           "example": "Doe"
         },
@@ -719,7 +714,7 @@
           "description": "Address of Automart User"
         },
         "is_admin": {
-          "type": "string",
+          "type": true,
           "description": "confirms if user is an Admin"
         }
       },
@@ -753,7 +748,7 @@
         },
         "owner": {
           "type": "string",
-          "example": "John Doe"
+          "example": "user id"
         },
         "price": {
           "type": "integer",

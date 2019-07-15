@@ -24,9 +24,8 @@ pool.on('connect', () => {
   console.log('connected to the db');
 });
 
-/**
- * Create Tables
- */
+// create car, user, order and flag tables
+
 const createCarTables = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
       cars(
@@ -127,9 +126,7 @@ const createFlagTables = () => {
 };
 
 
-/**
- * Drop Tables
- */
+// delete Car Tables
 const dropCarTables = () => {
   const queryText = 'DROP TABLE IF EXISTS cars';
   pool.query(queryText)
@@ -142,9 +139,7 @@ const dropCarTables = () => {
       pool.end();
     });
 };
-/**
- * Drop Tables
- */
+// delete order tables
 const dropOrderTables = () => {
   const queryText = 'DROP TABLE IF EXISTS orders';
   pool.query(queryText)
@@ -157,9 +152,7 @@ const dropOrderTables = () => {
       pool.end();
     });
 };
-/**
- * Drop Tables
- */
+// delete user tables
 const dropUserTables = () => {
   const queryText = 'DROP TABLE IF EXISTS users';
   pool.query(queryText)
@@ -173,9 +166,7 @@ const dropUserTables = () => {
     });
 };
 
-/**
- * Drop Tables
- */
+// delete flag tables
 const dropFlagTables = () => {
   const queryText = 'DROP TABLE IF EXISTS flags';
   pool.query(queryText)

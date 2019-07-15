@@ -43,7 +43,7 @@ const Order = {
     }
   },
   /**
-   * Update an Order
+   * Update price of an Order
    * @param {object} req
    * @param {object} res
    * @returns {object} updated order

@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
+// Authentication middleware; check for token
 module.exports = (req, res, next) => {
   try {
-    // const token = req.body.authorization;
     const auth = req.headers.token;
     const decode = jwt.verify(auth, process.env.TOKEN);
     req.userData = decode;

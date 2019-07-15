@@ -6,11 +6,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 let pool = new Pool();
 
+// use test database for mocha tests
 if (process.env.NODE_ENV === 'test') {
   pool = new Pool({
 
     connectionString: process.env.TEST_DATABASE_URL, ssl: true,
   });
+  // use production database
 } else {
   pool = new Pool({
     connectionString: process.env.DATABASE_URL, ssl: true,
@@ -19,10 +21,7 @@ if (process.env.NODE_ENV === 'test') {
 
 export default {
   /**
-   * DB Query
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} object
+    query database
    */
   query(text, params) {
     return new Promise((resolve, reject) => {
