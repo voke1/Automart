@@ -99,6 +99,7 @@ const Car = {
   * @returns {object} update price of Car Ad
   */
   async getUpdatePrice(req, res) {
+    console.log(req.body);
     const findOneQuery = 'SELECT * FROM cars WHERE id=$1';
     const updateOneQuery = `UPDATE cars
       SET price=$1, modified_date=$2
