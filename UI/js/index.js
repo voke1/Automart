@@ -23,7 +23,7 @@ const memberNav = `
 </ul>
 `;
 async function getViewBtn() {
-  const buttons = [...document.querySelectorAll('.btn-car')];
+  const buttons = [...document.querySelectorAll('.btn-cars')];
     console.log(buttons);
   buttons.forEach((buton) => {
     buton.addEventListener('click', async () => {
