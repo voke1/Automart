@@ -13,13 +13,13 @@ async function postAd(e) {
   console.log(formData);
 
   // const submit = document.getElementById('body').value;
-  const response = await fetch('http://localhost:2000/api/v1/car', {
+  const response = await fetch('http://localhost:4000/api/v1/car', {
     method: 'POST',
     
     headers: {
       Accept: 'application/json, text/plain, */*',
       // 'Content-Type': 'application/json',
-      authorization: localStorage.getItem('authorization'),
+      token: localStorage.getItem('token'),
     },
     body: 
       formData,
@@ -51,5 +51,10 @@ async function postAd(e) {
       document.getElementById('post-ad').appendChild(Info);
     }
   }
+}
+function signout() {
+
+  localStorage.removeItem('token');
+  window.location.href = '.././index.html';
 }
 document.getElementById('post-ad').addEventListener('submit', postAd);

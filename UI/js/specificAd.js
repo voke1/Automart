@@ -10,7 +10,7 @@ async function getViewBtn() {
         headers: {
           Accept: 'application/json, text/plain, */*',
           'Content-type': 'application/json',
-          authorization: localStorage.getItem('authorization'),
+          token: localStorage.getItem('token'),
         },
 
 
@@ -60,5 +60,10 @@ async function getViewBtn() {
       specificAd.innerHTML = specificAdTemplate;
     });
   });
+}
+function signout() {
+
+  localStorage.removeItem('token');
+  window.location.href = '.././index.html';
 }
 getViewBtn();

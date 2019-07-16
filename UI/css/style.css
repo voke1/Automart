@@ -242,6 +242,15 @@ body {
 	background: #F6EFE7;
 }
 
+.section-a .brand-container-products {
+	background: #F6EFE7;
+	text-align: center;
+	margin-left: 10rem;
+	margin-right: 10rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+
+}
 .section-b {
 	background: #333;
 	color: #fff;
@@ -566,12 +575,15 @@ input#search-bar:focus:-ms-placeholder {
 #products .container-products .product figure figcaption {
 	font-family: "Franklin Gothic Medium";
 	color: rgba(89, 89, 89, 1);
-	font-size: 0.8rem;
+	font-size: 1.5rem;
 	font-weight: 600;
 	letter-spacing: 0.02rem;
 	text-align: center;
 	padding: 1rem 0rem 0rem;
 	text-transform: uppercase;
+}
+.viewads-text{
+	text-decoration: none;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -610,6 +622,7 @@ input#search-bar:focus:-ms-placeholder {
 	margin-left: 22%;
 	font-weight: 600;
 	letter-spacing: 0.1rem;
+	
 }
 
 #products .container-products p.button:hover {
@@ -999,6 +1012,7 @@ textarea {
 	align-items: center;
 	float: right;
 	align-content: center;
+	
 }
 
 .container-view-ads .view-ads .column {
