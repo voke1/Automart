@@ -13,7 +13,7 @@ async function postAd(e) {
   console.log(formData);
 
   // const submit = document.getElementById('body').value;
-  const response = await fetch('http://localhost:4000/api/v1/car', {
+  const response = await fetch('https://voke-automart.herokuapp.com/api/v1/car', {
     method: 'POST',
     
     headers: {

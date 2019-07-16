@@ -9,7 +9,7 @@ async function addUser(e) {
   const password = document.getElementById('password').value;
   // const submit = document.getElementById('body').value;
 
-  const response = await fetch('http://localhost:4000/api/v1/auth/signup', {
+  const response = await fetch('https://voke-automart.herokuapp.com/api/v1/auth/signup', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',

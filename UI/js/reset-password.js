@@ -5,7 +5,7 @@ window.onload = function () {
     const email = document.getElementById('email').value;
    
     // const submit = document.getElementById('body').value;
-    const response = await fetch('http://localhost:4000/api/v1/users/:useremail/reset_password', {
+    const response = await fetch('https://voke-automart.herokuapp.com/api/v1/users/:useremail/reset_password', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',

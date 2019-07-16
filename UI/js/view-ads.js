@@ -5,7 +5,7 @@ function getViewBtn() {
   buttons.forEach((button) => {
     button.addEventListener('click', async () => {
       const id = button.getAttribute('dataId');
-      const response = await fetch(`http://localhost:4000/api/v1/car/${id}`, {
+      const response = await fetch(`https://voke-automart.herokuapp.com/api/v1/car/${id}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json, text/plain, */*',
@@ -59,7 +59,7 @@ async function viewAds() {
   // e.preventDefault();
   let adTemplate;
   const adList = document.querySelector('.column');
-  const response = await fetch('http://localhost:4000/api/v1/car', {
+  const response = await fetch('https://voke-automart.herokuapp.com/api/v1/car', {
     method: 'GET',
     headers: {
       Accept: 'application/json, text/plain, */*',
