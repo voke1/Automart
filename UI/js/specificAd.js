@@ -5,7 +5,7 @@ async function getViewBtn() {
   buttons.forEach((button) => {
     button.addEventListener('click', async (e) => {
       const id = button.getAttribute('dataId');
-      const response = await fetch(`http://localhost:4000/api/v1/car/${id}`, {
+      const response = await fetch(`https://voke-automart.herokuapp.com/api/v1/car/${id}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json, text/plain, */*',

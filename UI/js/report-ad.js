@@ -6,7 +6,7 @@ window.onload = function () {
     const reason = document.getElementById('ss-form').value;
     
 
-    const response = await fetch('http://localhost:4000/api/v1/flag', {
+    const response = await fetch('https://voke-automart.herokuapp.com/api/v1/flag', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',

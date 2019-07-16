@@ -7,7 +7,7 @@ window.onload = function () {
 
     
     
-    const response = await fetch('http://localhost:4000/api/v1/auth/signin', {
+    const response = await fetch('https://voke-automart.herokuapp.com/api/v1/auth/signin', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
