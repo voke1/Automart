@@ -1,4 +1,16 @@
 
+document.onreadystatechange = function () {
+  const state = document.readyState;
+  if (state == 'interactive') {
+    document.getElementsByClassName('.column').style.visibility = 'hidden';
+  } else if (state == 'complete') {
+    setTimeout(() => {
+      document.getElementById('interactive');
+      document.getElementsByClassName('load').style.visibility = 'hidden';
+      document.getElementsByClassName('.column').style.visibility = 'visible';
+    }, 1000);
+  }
+};
 
 function getViewBtn() {
   const buttons = [...document.querySelectorAll('.view-btn')];
@@ -33,14 +45,11 @@ function getViewBtn() {
             </div>
             <div class="product--desc">
               <p>${result.data.description}</p>
-            </div>
-      
-                    <div class="product--quantity">
-                      <input class="quantity" type="number" placeholder="quantity" min="1" max="10" value="1"></input>
-                    </div>
+            </div> 
                     <div class="add-to-cart">
-                      <button class="btn-car btn--cart">BUY NOW!</button>
+                      <button class="btn-car">BUY NOW!</button>
                       <button class='btn-car' href='report-ad.html'>REPORT AD</button>
+                      <button class='btn-car' href='report-ad.html'>DELETE AD</button>
                     </div>
         </div>
       </div>
@@ -48,8 +57,8 @@ function getViewBtn() {
     });
   });
 }
-function signout() {
 
+function signout() {
   localStorage.removeItem('token');
   window.location.href = '.././index.html';
 }
@@ -93,7 +102,6 @@ async function viewAds() {
 
     adList.innerHTML = adTemplate;
     getViewBtn();
-
   }
 }
 viewAds();

@@ -81,7 +81,7 @@ body {
 	margin-right: 15%;
 }
 
-.head-content .btn-car {
+.head-content .btn-cars {
 	z-index: 3;
 	background: #532380;
 	color: #FFAF30;
@@ -839,6 +839,17 @@ textarea {
 .specific-car {
 	height: 750px;
 }
+.specificAdOptions{
+	margin-top: 10rem;
+}
+
+.specificAdOptions .adOptions{
+	
+	background-color: purple;
+	color: pink;
+	margin: auto;
+
+}
 
 .down {
 	height: 60px;
@@ -928,14 +939,18 @@ textarea {
 }
 
 .add-to-cart {
-	margin: 10px 10px 10px 0;
+	margin-top: 15%;
+	margin-bottom: 7%;
+	display: block;
+
 }
 
 .btn-car {
-	background: none;
-	border: 0;
-	outline: 0;
-	-webkit-appearance: none;
+	background-color: purple;
+	color: pink;
+	height: 2rem;
+	width: 7rem;
+	
 }
 
 .btn-car .btn--cart {
@@ -974,6 +989,13 @@ textarea {
 
 /*view-all-ads.html styles start here*/
 
+.container-view-ads .view-ads .column .load{
+    width: 90%;
+    height:50%;
+	position: fixed;
+    z-index:9999;
+    background:url("https://www.creditmutuel.fr/cmne/fr/banques/webservices/nswr/images/loading.gif") no-repeat center center rgba(0,0,0,0.25)
+}
 .container-view-ads {
 	margin-top: 60px;
 	height: 100%;

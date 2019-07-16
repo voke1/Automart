@@ -6,7 +6,6 @@ window.onload = function () {
     const password = document.getElementById('password').value;
 
     
-    
     const response = await fetch('https://voke-automart.herokuapp.com/api/v1/auth/signin', {
       method: 'POST',
       headers: {

@@ -105,6 +105,26 @@ const User = {
       return res.status(401).send({ status: 401, error: 'No user found' });
     }
   },
+  // delete users
+  async delete(req, res) {
+   // const decode = jwt.verify(req.headers.token, process.env.TOKEN);
+    try {
+      
+      const deleteQuery = 'DELETE FROM users WHERE id=$1 returning *';
+      const findOneQuery = 'SELECT * FROM users WHERE id=$1';
+
+      req.params.id = req.params.userId;
+      const { rows } = await db.query(findOneQuery, [req.params.id]);
+
+      if (!rows[0]) {
+        return res.status(404).send({ status: 404, error: 'User not found to delete' });
+      }
+      await db.query(deleteQuery, [rows[0].id]);
+      return res.status(200).send({ status: 200, data: 'User successfully deleted' });
+    } catch (error) {
+      return res.status(400).send({ status: 400, error });
+    }
+  },
 
   // Reset Password
   async updatePassword(req, res) {
