@@ -4,14 +4,14 @@ window.onload = function () {
     e.preventDefault();
 
     const reason = document.getElementById('ss-form').value;
-    //const authorization = localStorage.getItem('authorization');
+    
 
-    const response = await fetch('http://localhost:2000/api/v1/flag', {
+    const response = await fetch('http://localhost:4000/api/v1/flag', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
         'Content-type': 'application/json',
-        authorization: localStorage.getItem('authorization'),
+        token: localStorage.getItem('token'),
       },
 
       body: JSON.stringify({
@@ -22,5 +22,13 @@ window.onload = function () {
     console.log(data);
   }
 
+  function signout() {
+
+    localStorage.removeItem('token');
+    window.location.href = '.././index.html';
+  }
+
+
   document.getElementById('ss-form').addEventListener('submit', reportAd);
+
 };
