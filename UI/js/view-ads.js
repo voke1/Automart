@@ -48,7 +48,7 @@ function getViewBtn() {
             </div> 
                     <div class="add-to-cart">
                       <button class="btn-car">BUY NOW!</button>
-                      <button class='btn-car' href='report-ad.html'>REPORT AD</button>
+                      <button class='btn-car' onclick="window.location.href='report-ad.html'">REPORT AD</button>
                       <button class='btn-car' href='report-ad.html'>DELETE AD</button>
                     </div>
         </div>
@@ -56,7 +56,7 @@ function getViewBtn() {
       </div>`;
     });
   });
-  deleteAd();
+  
 }
 
 function signout() {
@@ -87,7 +87,7 @@ async function viewAds() {
       adTemplate += ` <li>
       <div class="img-i">
       <label class="car-state-label">NEW</label>
-          <a href="car-details.html"><img src= ${result.data[i].img_url} alt="product"></a>
+          <a><img src= ${result.data[i].img_url} alt="product"></a>
       </div>
     
       <div class="desc-i">
