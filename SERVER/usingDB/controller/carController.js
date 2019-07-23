@@ -15,7 +15,7 @@ const Car = {
  * @returns {object} car object
  */
 
-  async create(req, res) {
+  async createAd(req, res) {
     cloudinary.config({
       cloud_name: process.env.CLOUD_NAME,
       api_key: process.env.API_KEY,
@@ -78,7 +78,7 @@ const Car = {
  * @param {object} res
  * @returns {object} car object
  */
-  async getOne(req, res) {
+  async viewAd(req, res) {
     const text = 'SELECT * FROM cars WHERE id = $1';
     try {
       req.params.id = req.params.carId;
@@ -132,7 +132,7 @@ const Car = {
  * @param {object} res
  * @returns {object} cars array
  */
-  async getAll(req, res) {
+  async getAllAds(req, res) {
     if (req.query.status === 'available') {
       // return all new available cars
       if (req.query.state === 'new') {
@@ -256,7 +256,7 @@ const Car = {
     */
 
   // delete a specific Car Ad (Admins only)
-  async delete(req, res) {
+  async deleteAd(req, res) {
     const decode = jwt.verify(req.headers.token, process.env.TOKEN);
     try {
       if (decode.isAdmin === 'false') {

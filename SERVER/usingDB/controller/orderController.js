@@ -12,7 +12,7 @@ const Order = {
    * @param {object} res
    * @returns {object} order object
    */
-  async create(req, res) {
+  async createOrder(req, res) {
     const text = `INSERT INTO
       orders(id, car_id, buyer, price, price_offered, status, created_on, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8)

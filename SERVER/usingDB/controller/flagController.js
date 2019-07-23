@@ -10,7 +10,7 @@ const Flag = {
    * @param {object} res
    * @returns {object} flag object
    */
-  async create(req, res) {
+  async createReport(req, res) {
     const text = `INSERT INTO
       flags(id, car_id, reason, description, created_on, modified_date)
       VALUES($1, $2, $3, $4, $5, $6)

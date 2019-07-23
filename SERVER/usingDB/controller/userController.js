@@ -26,7 +26,7 @@ const User = {
    * @param {object} res
    * @returns {object} user object
    */
-  async create(req, res) {
+  async signUp(req, res) {
     const text = `INSERT INTO
       Users(id, token, email, first_name, last_name, password, is_admin, address, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
@@ -73,7 +73,7 @@ const User = {
        * @param {object} res
        * @returns {object} return user Object
        */
-  async getOne(req, res) {
+  async signIn(req, res) {
     const text = 'SELECT * FROM users WHERE email = $1';
     try {
       const { rows } = await db.query(text, [req.body.email]);
@@ -96,7 +96,7 @@ const User = {
   },
 
   // Get all users
-  async getAll(req, res) {
+  async getUsers(req, res) {
     const findAllQuery = 'SELECT * FROM users';
     try {
       const { rows } = await db.query(findAllQuery);
@@ -106,7 +106,7 @@ const User = {
     }
   },
   // delete users
-  async delete(req, res) {
+  async deleteUsers(req, res) {
     // const decode = jwt.verify(req.headers.token, process.env.TOKEN);
     try {
       const deleteQuery = 'DELETE FROM users WHERE id=$1 returning *';

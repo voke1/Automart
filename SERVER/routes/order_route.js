@@ -6,7 +6,7 @@ import Auth from '../usingDB/middleware/checkAuth';
 const router = express.Router();
 
 // protected route to post order
-router.post('/api/v1/order', Auth, Order.create);
+router.post('/api/v1/order', Auth, Order.createOrder);
 
 // protected route to update price of posted order
 router.patch('/api/v1/order/:orderId/price', Auth, Order.getUpdateOrderPrice);
