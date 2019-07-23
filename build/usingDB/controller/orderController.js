@@ -30,18 +30,23 @@ var Order = {
     var _create = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee(req, res) {
-      var text, values, _ref, rows, order;
+      var text, values, _ref, rows, data;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               text = "INSERT INTO\n      orders(id, car_id, buyer, price, price_offered, status, created_on, modified_date)\n      VALUES($1, $2, $3, $4, $5, $6, $7, $8)\n      returning *";
+
+              if (req.body.amount) {
+                req.body.price_offered = req.body.amount;
+              }
+
               values = [(0, _v["default"])(), req.body.car_id, req.body.buyer, req.body.price, req.body.price_offered, req.body.status, (0, _moment["default"])(new Date()), (0, _moment["default"])(new Date())];
-              _context.prev = 2;
+              _context.prev = 3;
 
               if (!(!req.body.price_offered || !req.body.car_id)) {
-                _context.next = 5;
+                _context.next = 6;
                 break;
               }
 
@@ -50,33 +55,33 @@ var Order = {
                 error: 'please enter price offered and car ID'
               }));
 
-            case 5:
-              _context.next = 7;
+            case 6:
+              _context.next = 8;
               return _db["default"].query(text, values);
 
-            case 7:
+            case 8:
               _ref = _context.sent;
               rows = _ref.rows;
-              order = rows[0];
+              data = rows[0];
               return _context.abrupt("return", res.status(201).send({
                 status: 201,
-                order: order
+                data: data
               }));
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](2);
+            case 14:
+              _context.prev = 14;
+              _context.t0 = _context["catch"](3);
               return _context.abrupt("return", res.status(400).send({
                 status: 400,
                 error: _context.t0
               }));
 
-            case 16:
+            case 17:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 13]]);
+      }, _callee, null, [[3, 14]]);
     }));
 
     function create(_x, _x2) {
@@ -87,7 +92,7 @@ var Order = {
   }(),
 
   /**
-   * Update an Order
+   * Update price of an Order
    * @param {object} req
    * @param {object} res
    * @returns {object} updated order
@@ -96,7 +101,7 @@ var Order = {
     var _getUpdateOrderPrice = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee2(req, res) {
-      var findOneQuery, updateOneQuery, _ref2, rows, values, response, modifiedOrder;
+      var findOneQuery, updateOneQuery, _ref2, rows, values, response, data;
 
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
@@ -106,7 +111,7 @@ var Order = {
               updateOneQuery = "UPDATE orders\n      SET car_id=$1,price=$2,price_offered=$3, old_price_offered=$4, new_price_offered=$5, modified_date=$6\n      WHERE id=$7 returning *";
               _context2.prev = 2;
 
-              if (req.body.new_price_offered) {
+              if (req.body.price) {
                 _context2.next = 5;
                 break;
               }
@@ -124,53 +129,37 @@ var Order = {
             case 8:
               _ref2 = _context2.sent;
               rows = _ref2.rows;
-
-              if (rows[0]) {
-                _context2.next = 12;
-                break;
-              }
-
-              return _context2.abrupt("return", res.status(404).send({
-                status: 404,
-                error: 'order not found'
-              }));
-
-            case 12:
-              if (!(rows[0].status === 'pending')) {
-                _context2.next = 20;
-                break;
-              }
-
               req.body.old_price_offered = rows[0].price_offered;
+
+              if (!req.body.amount) {
+                req.body.new_price_offered = req.body.price;
+              } else {
+                req.body.new_price_offered = req.body.amount;
+              }
+
               values = [req.body.car_id, req.body.price, req.body.price_offered, req.body.old_price_offered, req.body.new_price_offered, (0, _moment["default"])(new Date()), req.params.id];
-              _context2.next = 17;
+              _context2.next = 15;
               return _db["default"].query(updateOneQuery, values);
 
-            case 17:
+            case 15:
               response = _context2.sent;
-              modifiedOrder = response.rows[0];
+              data = response.rows[0];
               return _context2.abrupt("return", res.status(200).send({
                 status: 200,
-                modifiedOrder: modifiedOrder
+                data: data
               }));
 
             case 20:
-              return _context2.abrupt("return", res.status(404).send({
-                status: 404,
-                error: "cannot update price, status is ".concat(rows[0].status)
-              }));
-
-            case 23:
-              _context2.prev = 23;
+              _context2.prev = 20;
               _context2.t0 = _context2["catch"](2);
               return _context2.abrupt("return", res.status(400).send(_context2.t0));
 
-            case 26:
+            case 23:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 23]]);
+      }, _callee2, null, [[2, 20]]);
     }));
 
     function getUpdateOrderPrice(_x3, _x4) {

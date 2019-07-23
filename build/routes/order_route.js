@@ -9,10 +9,10 @@ var _checkAuth = _interopRequireDefault(require("../usingDB/middleware/checkAuth
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // import Order from '../usingDatastructure/controller/order_controller';
-var router = _express["default"].Router(); // post order
+var router = _express["default"].Router(); // protected route to post order
 
 
-router.post('/api/v1/order', _checkAuth["default"], _orderController["default"].create); // update price of posted order
+router.post('/api/v1/order', _checkAuth["default"], _orderController["default"].create); // protected route to update price of posted order
 
 router.patch('/api/v1/order/:orderId/price', _checkAuth["default"], _orderController["default"].getUpdateOrderPrice);
 module.exports = router;

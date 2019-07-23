@@ -56,7 +56,7 @@ function getViewBtn() {
       </div>`;
     });
   });
-  
+
 }
 
 function signout() {

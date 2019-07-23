@@ -30,7 +30,7 @@ var Flag = {
     var _create = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee(req, res) {
-      var text, values, _ref, rows, flag;
+      var text, values, _ref, rows, data;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -57,10 +57,10 @@ var Flag = {
             case 7:
               _ref = _context.sent;
               rows = _ref.rows;
-              flag = rows[0];
+              data = rows[0];
               return _context.abrupt("return", res.status(201).send({
                 status: 201,
-                flag: flag
+                data: data
               }));
 
             case 13:

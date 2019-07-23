@@ -66,7 +66,7 @@ describe('ORDER', function () {
           case 2:
             result = _context.sent;
             result.status.should.equal(201);
-            userToken = result.body.user.token;
+            userToken = result.body.data.token;
 
           case 5:
           case "end":
@@ -86,12 +86,12 @@ describe('ORDER', function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _chai["default"].request(_app["default"]).post('/api/v1/order').set('Authorization', userToken).send(orderOne);
+            return _chai["default"].request(_app["default"]).post('/api/v1/order').set('token', userToken).send(orderOne);
 
           case 2:
             firstOrder = _context2.sent;
             firstOrder.status.should.equal(201);
-            orderOneId = firstOrder.body.order.id;
+            orderOneId = firstOrder.body.data.id;
 
           case 5:
           case "end":
@@ -111,12 +111,12 @@ describe('ORDER', function () {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return _chai["default"].request(_app["default"]).post('/api/v1/order').set('Authorization', userToken).send(orderTwo);
+            return _chai["default"].request(_app["default"]).post('/api/v1/order').set('token', userToken).send(orderTwo);
 
           case 2:
             secondOrder = _context3.sent;
             secondOrder.status.should.equal(201);
-            orderTwoId = secondOrder.body.order.id;
+            orderTwoId = secondOrder.body.data.id;
 
           case 5:
           case "end":
@@ -165,7 +165,7 @@ describe('ORDER', function () {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/order').set('Authorization', userToken).send(orderOne);
+              return _chai["default"].request(_app["default"]).post('/api/v1/order').set('token', userToken).send(orderOne);
 
             case 2:
               result = _context5.sent;
@@ -189,21 +189,21 @@ describe('ORDER', function () {
           switch (_context6.prev = _context6.next) {
             case 0:
               _context6.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/order').set('Authorization', userToken).send(orderTwo);
+              return _chai["default"].request(_app["default"]).post('/api/v1/order').set('token', userToken).send(orderTwo);
 
             case 2:
               result = _context6.sent;
               result.body.should.be.a('object');
               result.status.should.equal(201);
-              result.body.order.should.have.property('price_offered');
-              result.body.order.should.have.property('price');
-              result.body.order.price.should.equal('200000');
-              result.body.order.should.have.property('car_id');
-              result.body.order.should.have.property('buyer');
-              result.body.order.should.have.property('status');
-              result.body.order.should.have.property('old_price_offered');
-              result.body.order.should.have.property('new_price_offered');
-              result.body.order.should.have.property('id');
+              result.body.data.should.have.property('price_offered');
+              result.body.data.should.have.property('price');
+              result.body.data.price.should.equal('200000');
+              result.body.data.should.have.property('car_id');
+              result.body.data.should.have.property('buyer');
+              result.body.data.should.have.property('status');
+              result.body.data.should.have.property('old_price_offered');
+              result.body.data.should.have.property('new_price_offered');
+              result.body.data.should.have.property('id');
 
             case 14:
             case "end":
@@ -223,7 +223,7 @@ describe('ORDER', function () {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/order').set('Authorization', userToken).send({});
+              return _chai["default"].request(_app["default"]).post('/api/v1/order').set('token', userToken).send({});
 
             case 2:
               result = _context7.sent;
@@ -282,7 +282,7 @@ describe('ORDER', function () {
           switch (_context9.prev = _context9.next) {
             case 0:
               _context9.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('Authorization', userToken).send(orderOne);
+              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('token', userToken).send(orderOne);
 
             case 2:
               result = _context9.sent;
@@ -306,21 +306,21 @@ describe('ORDER', function () {
           switch (_context10.prev = _context10.next) {
             case 0:
               _context10.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('Authorization', userToken).send(orderOne);
+              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('token', userToken).send(orderOne);
 
             case 2:
               result = _context10.sent;
               result.body.should.be.a('object');
               result.status.should.equal(200);
-              result.body.modifiedOrder.should.have.property('price_offered');
-              result.body.modifiedOrder.should.have.property('price');
-              result.body.modifiedOrder.price.should.equal('200000');
-              result.body.modifiedOrder.should.have.property('car_id');
-              result.body.modifiedOrder.should.have.property('buyer');
-              result.body.modifiedOrder.should.have.property('status');
-              result.body.modifiedOrder.should.have.property('old_price_offered');
-              result.body.modifiedOrder.should.have.property('new_price_offered');
-              result.body.modifiedOrder.should.have.property('id');
+              result.body.data.should.have.property('price_offered');
+              result.body.data.should.have.property('price');
+              result.body.data.price.should.equal('200000');
+              result.body.data.should.have.property('car_id');
+              result.body.data.should.have.property('buyer');
+              result.body.data.should.have.property('status');
+              result.body.data.should.have.property('old_price_offered');
+              result.body.data.should.have.property('new_price_offered');
+              result.body.data.should.have.property('id');
 
             case 14:
             case "end":
@@ -340,7 +340,7 @@ describe('ORDER', function () {
           switch (_context11.prev = _context11.next) {
             case 0:
               _context11.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('Authorization', userToken).send({});
+              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('token', userToken).send({});
 
             case 2:
               result = _context11.sent;
@@ -358,7 +358,7 @@ describe('ORDER', function () {
         }
       }, _callee11);
     })));
-    it('it should return a 404 error if status is not pending',
+    it('it should update an order if status is pending',
     /*#__PURE__*/
     _asyncToGenerator(
     /*#__PURE__*/
@@ -369,18 +369,15 @@ describe('ORDER', function () {
           switch (_context12.prev = _context12.next) {
             case 0:
               _context12.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderOneId, "/price")).set('Authorization', userToken).send({
-                new_price_offered: 800000
+              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('token', userToken).send({
+                price: '800000'
               });
 
             case 2:
               result = _context12.sent;
-              result.body.should.be.a('object');
-              result.status.should.equal(404);
-              result.body.should.eql({
-                status: 404,
-                error: 'cannot update price, status is available'
-              });
+              result.status.should.equal(200);
+              result.body.data.should.have.property('new_price_offered');
+              result.body.data.price.should.equal('800000');
 
             case 6:
             case "end":
@@ -388,34 +385,6 @@ describe('ORDER', function () {
           }
         }
       }, _callee12);
-    })));
-    it('it should update an order if status is pending',
-    /*#__PURE__*/
-    _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee13() {
-      var result;
-      return regeneratorRuntime.wrap(function _callee13$(_context13) {
-        while (1) {
-          switch (_context13.prev = _context13.next) {
-            case 0:
-              _context13.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/order/".concat(orderTwoId, "/price")).set('Authorization', userToken).send({
-                new_price_offered: '800000'
-              });
-
-            case 2:
-              result = _context13.sent;
-              result.status.should.equal(200);
-              result.body.modifiedOrder.should.have.property('new_price_offered');
-              result.body.modifiedOrder.new_price_offered.should.equal('800000');
-
-            case 6:
-            case "end":
-              return _context13.stop();
-          }
-        }
-      }, _callee13);
     })));
   });
 });

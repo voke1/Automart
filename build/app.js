@@ -14,11 +14,11 @@ var _user_route = _interopRequireDefault(require("./routes/user_route"));
 
 var _order_route = _interopRequireDefault(require("./routes/order_route"));
 
-var _cloudinary_route = _interopRequireDefault(require("./routes/cloudinary_route"));
-
 var _flag_route = _interopRequireDefault(require("./routes/flag_route"));
 
 var _swaggerDoc = _interopRequireDefault(require("../swaggerDoc"));
+
+var _cors = _interopRequireDefault(require("./usingDB/middleware/cors"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -28,7 +28,7 @@ app.use(_bodyParser["default"].urlencoded({
   extended: false
 }));
 app.use((0, _morgan["default"])('dev'));
-app.use('/', _cloudinary_route["default"]);
+app.use(_cors["default"]);
 app.use('/', _user_route["default"]);
 app.use('/', _car_route["default"]);
 app.use('/', _order_route["default"]);

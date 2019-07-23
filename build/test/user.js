@@ -74,10 +74,10 @@ describe('USER', function () {
               result = _context2.sent;
               result.body.should.be.a('object');
               result.status.should.equal(201);
-              result.body.user.should.have.property('email');
-              result.body.user.should.have.property('password');
-              result.body.user.email.should.equal('testemail4@gmail.com');
-              result.body.user.should.have.property('id');
+              result.body.data.should.have.property('email');
+              result.body.data.should.have.property('password');
+              result.body.data.email.should.equal('testemail4@gmail.com');
+              result.body.data.should.have.property('id');
 
             case 9:
             case "end":
@@ -101,9 +101,9 @@ describe('USER', function () {
 
             case 2:
               result = _context3.sent;
-              result.body.user.should.be.a('object');
+              result.body.data.should.be.a('object');
               result.status.should.equal(201);
-              result.body.user.should.have.property('token');
+              result.body.data.should.have.property('token');
 
             case 6:
             case "end":
@@ -147,74 +147,66 @@ describe('USER', function () {
     //     .send({userOne})
     //   result.body.should.be.a('object');
     //   result.status.should.equal(404);
+    // eslint-disable-next-line max-len
     //   result.body.should.eql({ status: 404, error:'A user with the specified email already exist'});
     // });
-  }); // describe('SIGNIN', () => {
-  //   it('it should return a 401 authentication failed for unauthorised user', async () => {
-  //     const result = await chai
-  //       .request(server)
-  //       .patch(`/api/v1/order/${orderOneId}/price`)
-  //       .send(orderOne)
-  //     result.status.should.equal(401);
-  //     result.body.should.eql({ status: 401, error: 'Authentication failed' });
-  //   });
-  //   it('it should be successful with 200 response upon authorization', async () => {
-  //     const result = await chai
-  //       .request(server)
-  //       .patch(`/api/v1/order/${orderTwoId}/price`)
-  //       .set('Authorization', userToken)
-  //       .send(orderOne)
-  //     result.status.should.equal(200);
-  //   })
-  //   it('it should be an object with keys and values', async () => {
-  //     const result = await chai
-  //       .request(server)
-  //       .patch(`/api/v1/order/${orderTwoId}/price`)
-  //       .send(orderOne)
-  //     result.body.should.be.a('object');
-  //     result.status.should.equal(200);
-  //     result.body.modifiedOrder.should.have.property('price_offered');
-  //     result.body.modifiedOrder.should.have.property('price');
-  //     result.body.modifiedOrder.price.should.equal('200000');
-  //     result.body.modifiedOrder.should.have.property('car_id');
-  //     result.body.modifiedOrder.should.have.property('buyer');
-  //     result.body.modifiedOrder.should.have.property('status');
-  //     result.body.modifiedOrder.should.have.property('old_price_offered');
-  //     result.body.modifiedOrder.should.have.property('new_price_offered');
-  //     result.body.modifiedOrder.should.have.property('id');
-  //   })
-  //   it('it should return a 400 error if required fields are missing', async () => {
-  //     const result = await chai
-  //       .request(server)
-  //       .patch(`/api/v1/order/${orderTwoId}/price`)
-  //       .set('Authorization', userToken)
-  //       .send({})
-  //     result.body.should.be.a('object');
-  //     result.status.should.equal(400);
-  //     result.body.should.eql({ status: 400, error: 'please enter new price offered and car ID'});
-  //   });
-  //   it('it should return a 404 error if status is not pending', async () => {
-  //     const result = await chai
-  //       .request(server)
-  //       .patch(`/api/v1/order/${orderOneId}/price`)
-  //       .set('Authorization', userToken)
-  //       .send({ new_price_offered: 800000, })
-  //     result.body.should.be.a('object');
-  //     result.status.should.equal(404);
-  //     result.body.should.eql({ status: 404, error: `cannot update price, status is available` });
-  //   });
-  //   it('it should update an order if status is pending', async () => {
-  //     const result = await chai
-  //       .request(server)
-  //       .patch(`/api/v1/order/${orderTwoId}/price`)
-  //       .set('Authorization', userToken)
-  //       .send({
-  //         new_price_offered: '800000',
-  //       })
-  //     result.status.should.equal(200);
-  //     result.body.modifiedOrder.should.have.property('new_price_offered');
-  //     result.body.modifiedOrder.new_price_offered.should.equal('800000');
-  //   });
-  // });
+  });
+  describe('SIGNIN', function () {
+    it('it should be an object with keys and values',
+    /*#__PURE__*/
+    _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee5() {
+      var result;
+      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return _chai["default"].request(_app["default"]).post('/api/v1/auth/signin').send(userTwo);
+
+            case 2:
+              result = _context5.sent;
+              result.body.should.be.a('object');
+              result.status.should.equal(200);
+              result.body.data.should.have.property('email');
+              result.body.data.should.have.property('password');
+              result.body.data.email.should.equal('testemail4@gmail.com');
+              result.body.data.should.have.property('id');
+
+            case 9:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    })));
+    it('it should return a signin token',
+    /*#__PURE__*/
+    _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee6() {
+      var result;
+      return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.next = 2;
+              return _chai["default"].request(_app["default"]).post('/api/v1/auth/signin').send(userThree);
+
+            case 2:
+              result = _context6.sent;
+              result.body.data.should.be.a('object');
+              result.status.should.equal(200);
+              result.body.data.should.have.property('token');
+
+            case 6:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    })));
+  });
 });
 //# sourceMappingURL=user.js.map

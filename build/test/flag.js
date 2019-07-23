@@ -58,7 +58,7 @@ describe('FLAG', function () {
           case 2:
             result = _context.sent;
             result.status.should.equal(201);
-            userToken = result.body.user.token;
+            userToken = result.body.data.token;
 
           case 5:
           case "end":
@@ -107,7 +107,7 @@ describe('FLAG', function () {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/flag').set('Authorization', userToken).send(flagOne);
+              return _chai["default"].request(_app["default"]).post('/api/v1/flag').set('token', userToken).send(flagOne);
 
             case 2:
               result = _context3.sent;
@@ -131,16 +131,16 @@ describe('FLAG', function () {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/flag').set('Authorization', userToken).send(flagTwo);
+              return _chai["default"].request(_app["default"]).post('/api/v1/flag').set('token', userToken).send(flagTwo);
 
             case 2:
               result = _context4.sent;
               result.body.should.be.a('object');
               result.status.should.equal(201);
-              result.body.flag.should.have.property('reason');
-              result.body.flag.should.have.property('car_id');
-              result.body.flag.reason.should.equal('second reason');
-              result.body.flag.should.have.property('description');
+              result.body.data.should.have.property('reason');
+              result.body.data.should.have.property('car_id');
+              result.body.data.reason.should.equal('second reason');
+              result.body.data.should.have.property('description');
 
             case 9:
             case "end":
@@ -160,7 +160,7 @@ describe('FLAG', function () {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/flag').set('Authorization', userToken).send({});
+              return _chai["default"].request(_app["default"]).post('/api/v1/flag').set('token', userToken).send({});
 
             case 2:
               result = _context5.sent;

@@ -8,7 +8,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var express = require('express');
 
-var router = express.Router();
+var router = express.Router(); // protected route to report a posted Car Ad
+
 router.post('/api/v1/flag', _checkAuth["default"], _flagController["default"].create);
 module.exports = router;
 //# sourceMappingURL=flag_route.js.map

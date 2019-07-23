@@ -23,13 +23,10 @@ if (process.env.NODE_ENV === 'test') {
 
 pool.on('connect', function () {
   console.log('connected to the db');
-});
-/**
- * Create Tables
- */
+}); // create car, user, order and flag tables
 
 var createCarTables = function createCarTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n      cars(\n        id UUID PRIMARY KEY,\n        created_on VARCHAR(128),\n        manufacturer VARCHAR(128) ,\n        price VARCHAR(128) ,\n        owner VARCHAR(128) ,\n        state VARCHAR(128) ,\n        status VARCHAR(128) ,\n        body_type VARCHAR(128) ,\n        model VARCHAR(128) ,\n        created_date TIMESTAMP,\n        modified_date TIMESTAMP\n      )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n      cars(\n        id UUID PRIMARY KEY,\n        created_on VARCHAR(128),\n        manufacturer VARCHAR(128) ,\n        price VARCHAR(128) ,\n        owner VARCHAR(128) ,\n        state VARCHAR(128) ,\n        status VARCHAR(128) ,\n        body_type VARCHAR(128) ,\n        img_url VARCHAR(128),\n        model VARCHAR(128) ,\n        created_date TIMESTAMP,\n        modified_date TIMESTAMP\n      )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();
@@ -51,7 +48,7 @@ var createOrderTables = function createOrderTables() {
 };
 
 var createUserTables = function createUserTables() {
-  var queryText = "CREATE TABLE IF NOT EXISTS\n        users(\n          id UUID PRIMARY KEY,\n          token VARCHAR(128),\n          email VARCHAR(128),\n          firstname VARCHAR(128),\n          lastname VARCHAR(128),\n          password VARCHAR(128),\n          is_admin VARCHAR(128),\n          created_date TIMESTAMP,\n          modified_date TIMESTAMP,\n          resetPasswordToken VARCHAR(128),\n          resetPasswordExpires VARCHAR(128)\n        )";
+  var queryText = "CREATE TABLE IF NOT EXISTS\n        users(\n          id UUID PRIMARY KEY,\n          token VARCHAR(8000),\n          email VARCHAR(128),\n          first_name VARCHAR(128),\n          last_name VARCHAR(128),\n          password VARCHAR(128),\n          is_admin BOOL DEFAULT 'f',\n          address VARCHAR(128),\n          created_date TIMESTAMP,\n          modified_date TIMESTAMP,\n          resetPasswordToken VARCHAR(128),\n          resetPasswordExpires VARCHAR(128)\n        )";
   pool.query(queryText).then(function (res) {
     console.log(res);
     pool.end();
@@ -70,10 +67,7 @@ var createFlagTables = function createFlagTables() {
     console.log(err);
     pool.end();
   });
-};
-/**
- * Drop Tables
- */
+}; // delete Car Tables
 
 
 var dropCarTables = function dropCarTables() {
@@ -85,10 +79,7 @@ var dropCarTables = function dropCarTables() {
     console.log(err);
     pool.end();
   });
-};
-/**
- * Drop Tables
- */
+}; // delete order tables
 
 
 var dropOrderTables = function dropOrderTables() {
@@ -100,10 +91,7 @@ var dropOrderTables = function dropOrderTables() {
     console.log(err);
     pool.end();
   });
-};
-/**
- * Drop Tables
- */
+}; // delete user tables
 
 
 var dropUserTables = function dropUserTables() {
@@ -115,10 +103,7 @@ var dropUserTables = function dropUserTables() {
     console.log(err);
     pool.end();
   });
-};
-/**
- * Drop Tables
- */
+}; // delete flag tables
 
 
 var dropFlagTables = function dropFlagTables() {

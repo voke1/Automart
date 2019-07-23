@@ -14,14 +14,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 _chai["default"].use(_chaiHttp["default"]);
 
-should = _chai["default"].should(); // During the test the env variable is set to test
+should = _chai["default"].should(); //  env variable is set to test for testing
 
-process.env.NODE_ENV = 'test'; // Our parent block
+process.env.NODE_ENV = 'test'; // Parent block
 
 describe('CAR', function () {
   var userOne = {
     email: 'testemail@gmail.com',
-    password: 'password'
+    password: 'password',
+    is_admin: true
   };
   var firstCar = {
     id: 1,
@@ -37,6 +38,7 @@ describe('CAR', function () {
   var secondCar = {
     id: 2,
     car_id: 4,
+    owner: '',
     price: 200000,
     buyer: 'John Williams',
     status: 'pending',
@@ -64,7 +66,7 @@ describe('CAR', function () {
           case 2:
             result = _context.sent;
             result.status.should.equal(201);
-            userToken = result.body.user.token;
+            userToken = result.body.data.token;
 
           case 5:
           case "end":
@@ -84,7 +86,7 @@ describe('CAR', function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _chai["default"].request(_app["default"]).post('/api/v1/car').set('Authorization', userToken).send(firstCar);
+            return _chai["default"].request(_app["default"]).post('/api/v1/car').set('token', userToken).send(firstCar);
 
           case 2:
             result = _context2.sent;
@@ -109,7 +111,7 @@ describe('CAR', function () {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return _chai["default"].request(_app["default"]).post('/api/v1/car').set('Authorization', userToken).send(secondCar);
+            return _chai["default"].request(_app["default"]).post('/api/v1/car').set('token', userToken).send(secondCar);
 
           case 2:
             result = _context3.sent;
@@ -163,7 +165,7 @@ describe('CAR', function () {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/car').set('Authorization', userToken).send(firstCar);
+              return _chai["default"].request(_app["default"]).post('/api/v1/car').set('token', userToken).send(firstCar);
 
             case 2:
               result = _context5.sent;
@@ -187,7 +189,7 @@ describe('CAR', function () {
           switch (_context6.prev = _context6.next) {
             case 0:
               _context6.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/car').set('Authorization', userToken).send(secondCar);
+              return _chai["default"].request(_app["default"]).post('/api/v1/car').set('token', userToken).send(secondCar);
 
             case 2:
               result = _context6.sent;
@@ -217,7 +219,7 @@ describe('CAR', function () {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return _chai["default"].request(_app["default"]).post('/api/v1/car').set('Authorization', userToken).send({});
+              return _chai["default"].request(_app["default"]).post('/api/v1/car').set('token', userToken).send({});
 
             case 2:
               result = _context7.sent;
@@ -276,7 +278,7 @@ describe('CAR', function () {
           switch (_context9.prev = _context9.next) {
             case 0:
               _context9.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('Authorization', userToken).send(firstCar);
+              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('token', userToken).send(firstCar);
 
             case 2:
               result = _context9.sent;
@@ -300,17 +302,17 @@ describe('CAR', function () {
           switch (_context10.prev = _context10.next) {
             case 0:
               _context10.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('Authorization', userToken).send(firstCar);
+              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('token', userToken).send(firstCar);
 
             case 2:
               result = _context10.sent;
               result.body.should.be.a('object');
               result.status.should.equal(200);
-              result.body.updatedAd.should.have.property('price');
-              result.body.updatedAd.price.should.equal('200000');
-              result.body.updatedAd.should.have.property('manufacturer');
-              result.body.updatedAd.should.have.property('state');
-              result.body.updatedAd.should.have.property('status');
+              result.body.data.should.have.property('price');
+              result.body.data.price.should.equal('200000');
+              result.body.data.should.have.property('manufacturer');
+              result.body.data.should.have.property('state');
+              result.body.data.should.have.property('status');
 
             case 10:
             case "end":
@@ -319,7 +321,7 @@ describe('CAR', function () {
         }
       }, _callee10);
     })));
-    it('it should return a 400 error if required fields are missing',
+    it('it should return a 422 error if required fields are missing',
     /*#__PURE__*/
     _asyncToGenerator(
     /*#__PURE__*/
@@ -330,15 +332,15 @@ describe('CAR', function () {
           switch (_context11.prev = _context11.next) {
             case 0:
               _context11.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('Authorization', userToken).send({});
+              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('token', userToken).send({});
 
             case 2:
               result = _context11.sent;
               result.body.should.be.a('object');
-              result.status.should.equal(400);
+              result.status.should.equal(422);
               result.body.should.eql({
-                status: 400,
-                error: 'please enter required fields'
+                status: 422,
+                error: 'please fill in required fields'
               });
 
             case 6:
@@ -359,15 +361,15 @@ describe('CAR', function () {
           switch (_context12.prev = _context12.next) {
             case 0:
               _context12.next = 2;
-              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('Authorization', userToken).send({
+              return _chai["default"].request(_app["default"]).patch("/api/v1/car/".concat(secondCarId, "/price")).set('token', userToken).send({
                 price: '800000'
               });
 
             case 2:
               result = _context12.sent;
               result.status.should.equal(200);
-              result.body.updatedAd.should.have.property('price');
-              result.body.updatedAd.price.should.equal('800000');
+              result.body.data.should.have.property('price');
+              result.body.data.price.should.equal('800000');
 
             case 6:
             case "end":

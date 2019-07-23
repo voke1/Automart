@@ -4,11 +4,12 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// Authentication middleware; check for token
 module.exports = function (req, res, next) {
   try {
-    var token = req.headers.authorization;
+    var auth = req.headers.token;
 
-    var decode = _jsonwebtoken["default"].verify(token, process.env.TOKEN);
+    var decode = _jsonwebtoken["default"].verify(auth, process.env.TOKEN);
 
     req.userData = decode;
     next();
