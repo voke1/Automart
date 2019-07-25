@@ -104,6 +104,7 @@ const Car = {
       SET price=$1, modified_date=$2
       WHERE id=$3 returning *`;
     try {
+      const decode = jwt.verify(req.headers.token, process.env.TOKEN);
       if (!req.body.price) {
         return res.status(422).send({ status: 422, error: 'please fill in required fields' });
       }
@@ -120,6 +121,11 @@ const Car = {
       ];
       const response = await db.query(updateOneQuery, values);
       const data = response.rows[0];
+      console.log(data);
+      console.log(auth.userId);
+      if (data.owner !== decode.id) {
+        return res.status(400).send({ status: 400, error: 'Only owner can update price' });
+      }
       return res.status(200).send({ status: 200, data });
     } catch (error) {
       return res.status(400).send({ status: 400, error });

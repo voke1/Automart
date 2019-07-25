@@ -37,13 +37,14 @@ const User = {
     }
 
     // generate user token
-    const payload = { email: req.body.email, id: uuidv4(), isAdmin: req.body.is_admin };
-    const options = { expiresIn: '2d' };
+    const userId = uuidv4();
+    const payload = { email: req.body.email, id: userId, isAdmin: req.body.is_admin };
+    const options = { expiresIn: '10d' };
     const secret = process.env.TOKEN;
     req.body.token = jwt.sign(payload, secret, options);
 
     const values = [
-      uuidv4(),
+      userId,
       req.body.token,
       req.body.email,
       req.body.first_name,
