@@ -1,6 +1,6 @@
 /* eslint-disable func-names */
 
-async function addUser(e) {
+const addUser = async (e) => {
   e.preventDefault();
 
   const first_name = document.getElementById('firstname').value;
@@ -22,7 +22,8 @@ async function addUser(e) {
   const result = await response.json();
 
   if (result.data) {
-    alert('sign up successful')
+    localStorage.setItem('token', result.data.token);
+    alert('sign up successful');
     window.location.href = '../index.html';
   }
   if (typeof result.error === 'string') {
@@ -43,7 +44,6 @@ async function addUser(e) {
       document.getElementById('signin').appendChild(Info);
     }
   }
-}
+};
 
 document.getElementById('addUsers').addEventListener('submit', addUser);
-

@@ -32,8 +32,12 @@ const User = {
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *`;
     // handling no input value to sign up a user.
-    if (!req.body.email || !req.body.password) {
-      return res.status(400).send({ status: 400, error: 'please fill in required fields' });
+    // if (!req.body.email || !req.body.password) {
+    //   return res.status(400).send({ status: 400, error: 'please fill in required fields' });
+    // }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ error: errors.array() });
     }
 
     // generate user token
@@ -91,7 +95,7 @@ const User = {
         return res.status(401).send({ status: 401, error: 'Authentication information is invalid' });
       });
     } catch (error) {
-      return res.status(401).send({ status: 401, error: 'Please enter valid email and password' });
+      return res.status(401).send({ status: 401, error: 'Please check internet connection' });
     }
     return null;
   },

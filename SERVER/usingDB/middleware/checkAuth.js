@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 // Authentication middleware; check for token
-module.exports = (req, res, next) => {
+const checkAuth = (req, res, next) => {
   try {
     const auth = req.headers.token;
     const decode = jwt.verify(auth, process.env.TOKEN);
@@ -12,3 +12,5 @@ module.exports = (req, res, next) => {
   }
   return null;
 };
+
+export default checkAuth;

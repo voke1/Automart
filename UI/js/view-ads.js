@@ -1,9 +1,8 @@
-
 document.onreadystatechange = () => {
   const state = document.readyState;
-  if (state == 'interactive') {
+  if (state === 'interactive') {
     document.getElementsByClassName('.column').style.visibility = 'hidden';
-  } else if (state == 'complete') {
+  } else if (state === 'complete') {
     setTimeout(() => {
       document.getElementById('interactive');
       document.getElementsByClassName('.load').style.visibility = 'hidden';
@@ -12,7 +11,7 @@ document.onreadystatechange = () => {
   }
 };
 
-function getViewBtn() {
+const getViewBtn = () => {
   const buttons = [...document.querySelectorAll('.view-btn')];
   buttons.forEach((button) => {
     button.addEventListener('click', async () => {
@@ -46,26 +45,25 @@ function getViewBtn() {
             <div class="product--desc">
               <p>${result.data.model}</p>
             </div> 
-                    <div class="add-to-cart">
-                      <button class="btn-car">BUY NOW!</button>
-                      <button class='btn-car' onclick="window.location.href='report-ad.html'">REPORT AD</button>
-                      <button class='btn-car' href='report-ad.html'>DELETE AD</button>
-                    </div>
-        </div>
-      </div>
-      </div>`;
+                <div class="add-to-cart">
+                  <button class="btn-car">BUY NOW!</button>
+                  <button class='btn-car' onclick="window.location.href='report-ad.html'">REPORT AD</button>
+                  <button class='btn-car' href='report-ad.html'>DELETE AD</button>
+                </div>
+            </div>
+          </div>
+        </div>`;
     });
   });
+};
 
-}
-
-function signout() {
+const signout = () => {
   localStorage.removeItem('token');
   window.location.href = '.././index.html';
-}
+};
 
 
-async function viewAds() {
+const viewAds = async () => {
   // e.preventDefault();
   let adTemplate;
   const adList = document.querySelector('.column');
@@ -81,7 +79,6 @@ async function viewAds() {
   });
   const result = await response.json();
   console.log(result.data);
-
   if (result.data.length > 0) {
     for (let i = 0; i < result.data.length; i++) {
       adTemplate += ` <li>
@@ -96,7 +93,6 @@ async function viewAds() {
               <li>&nbsp; PRICE: NGN${result.data[i].price}</li>
           </ul>
           <h3 class="view-btn" dataId=${result.data[i].id}><a href="#">VIEW CAR</a></h3>
-    
       </div>
     </li>`;
     }
@@ -104,5 +100,5 @@ async function viewAds() {
     adList.innerHTML = adTemplate;
     getViewBtn();
   }
-}
+};
 viewAds();

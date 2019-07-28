@@ -1,5 +1,5 @@
 /* eslint-disable func-names */
-async function postAd(e) {
+const postAd = async (e) => {
   e.preventDefault();
   const formData = new FormData();
   formData.append('price', document.getElementById('price').value);
@@ -15,17 +15,12 @@ async function postAd(e) {
   // const submit = document.getElementById('body').value;
   const response = await fetch('https://voke-automart.herokuapp.com/api/v1/car', {
     method: 'POST',
-    
     headers: {
       Accept: 'application/json, text/plain, */*',
       // 'Content-Type': 'application/json',
       token: localStorage.getItem('token'),
     },
-    body: 
-      formData,
-    
-  
-
+    body: formData,
   });
   const result = await response.json();
   console.log(result);
@@ -51,10 +46,10 @@ async function postAd(e) {
       document.getElementById('post-ad').appendChild(Info);
     }
   }
-}
-function signout() {
+};
 
+const signout = async () => {
   localStorage.removeItem('token');
   window.location.href = '.././index.html';
-}
+};
 document.getElementById('post-ad').addEventListener('submit', postAd);

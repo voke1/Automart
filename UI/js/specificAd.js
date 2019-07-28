@@ -1,5 +1,5 @@
 // Get specific Car Ad
-async function getViewBtn() {
+const getViewBtn = async () => {
   const buttons = [...document.querySelectorAll('.view-btn')];
   console.log(buttons);
   buttons.forEach((button) => {
@@ -60,10 +60,9 @@ async function getViewBtn() {
       specificAd.innerHTML = specificAdTemplate;
     });
   });
-}
-function signout() {
-
+};
+const signout = () => {
   localStorage.removeItem('token');
   window.location.href = '.././index.html';
-}
+};
 getViewBtn();
