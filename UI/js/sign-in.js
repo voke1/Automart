@@ -1,16 +1,18 @@
 /* eslint-disable func-names */
 const sendNotifcation = () => {
   const notification = `
-      <div id="notification-panel" class="error"> 
-          <p> sign up sucessful <span id="close-notification"> x close </span></p>
-          
-      </div>
-      `;
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true">×</span></button>
+  <p>sign in successful!</p>
+</div>`;
+
   const body = document.querySelector('.header');
-  body.innerHTML = notification;
-  const closeBtn = document.querySelector('#close-notification');
+  body.insertAdjacentHTML('beforebegin', notification);
+  const closeBtn = document.querySelector('.close');
   closeBtn.addEventListener('click', () => {
-    document.querySelector('#notification-panel').style.top = '-70px';
+    document.querySelector('.header').style.top = '-4px';
+    document.querySelector('.alert').style.opacity = '0';
+    window.location.href = '../index.html';
   });
 };
 const signIn = async (e) => {
@@ -34,7 +36,7 @@ const signIn = async (e) => {
   if (result.data) {
     localStorage.setItem('token', result.data.token);
     sendNotifcation();
-    window.location.href = '../index.html';
+
     // alert('sign in successful');
   }
   if (typeof result.error === 'string') {

@@ -1,3 +1,4 @@
+
 document.onreadystatechange = () => {
   const state = document.readyState;
   if (state === 'interactive') {
@@ -9,6 +10,23 @@ document.onreadystatechange = () => {
       document.getElementsByClassName('.column').style.visibility = 'visible';
     }, 1000);
   }
+};
+
+const deleteAd = async () => {
+  const button = document.querySelector('.delete-ad');
+  button.addEventListener('click', async () => {
+    const carId = button.getAttribute('product-id');
+    console.log(carId);
+    await fetch(`https://voke-automart.herokuapp.com/api/v1/car/${carId}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        token: localStorage.getItem('token'),
+      },
+    });
+  });
+  window.location.href = 'view-all-ads.html';
 };
 
 const getViewBtn = () => {
@@ -23,8 +41,6 @@ const getViewBtn = () => {
           'Content-type': 'application/json',
           token: localStorage.getItem('token'),
         },
-
-
       });
 
       const result = await response.json();
@@ -48,13 +64,14 @@ const getViewBtn = () => {
                 <div class="add-to-cart">
                   <button class="btn-car">BUY NOW!</button>
                   <button class='btn-car' onclick="window.location.href='report-ad.html'">REPORT AD</button>
-                  <button class='btn-car' href='report-ad.html'>DELETE AD</button>
+                  <button class='btn-car delete-ad' product-id='${result.data.id}' href='report-ad.html'>DELETE AD</button>
                 </div>
             </div>
           </div>
         </div>`;
     });
   });
+  deleteAd();
 };
 
 const signout = () => {

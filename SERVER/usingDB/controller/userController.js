@@ -31,15 +31,7 @@ const User = {
       Users(id, token, email, first_name, last_name, password, is_admin, address, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *`;
-    // handling no input value to sign up a user.
-    // if (!req.body.email || !req.body.password) {
-    //   return res.status(400).send({ status: 400, error: 'please fill in required fields' });
-    // }
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ error: errors.array() });
-    }
-
+   
     // generate user token
     const userId = uuidv4();
     const payload = { email: req.body.email, id: userId, isAdmin: req.body.is_admin };
@@ -60,7 +52,7 @@ const User = {
       req.body.is_admin,
       req.body.address,
       moment(new Date()),
-      moment(new Date()),
+      moment(new Date()),``
     ];
 
 
