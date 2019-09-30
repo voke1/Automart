@@ -59,10 +59,6 @@ const Car = {
       moment(new Date()),
     ];
     try {
-      // validation to handle no input values to post a Car Ad.
-      if (!req.body.price || !req.body.state) {
-        return res.status(400).send({ status: 400, error: 'please enter required fields' });
-      }
       // post Car Ad
       const { rows } = await db.query(text, values);
       const data = rows[0];
@@ -121,8 +117,6 @@ const Car = {
       ];
       const response = await db.query(updateOneQuery, values);
       const data = response.rows[0];
-      console.log(data);
-      console.log(auth.userId);
       if (data.owner !== decode.id) {
         return res.status(400).send({ status: 400, error: 'Only owner can update price' });
       }

@@ -26,9 +26,6 @@ const Flag = {
 
     try {
       // handling no input value to flag an Ad.
-      if (!req.body.reason) {
-        return res.status(400).send({ status: 400, error: 'please enter car Id and reason for report' });
-      }
       const { rows } = await db.query(text, values);
       const data = rows[0];
       return res.status(201).send({ status: 201, data });

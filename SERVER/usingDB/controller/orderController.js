@@ -32,9 +32,6 @@ const Order = {
     ];
     try {
       // handling no input for creating a purchase order
-      if (!req.body.price_offered || !req.body.car_id) {
-        return res.status(400).send({ status: 400, error: 'please enter price offered and car ID' });
-      }
       const { rows } = await db.query(text, values);
       const data = (rows[0]);
       return res.status(201).send({ status: 201, data });
@@ -56,9 +53,6 @@ const Order = {
       WHERE id=$7 returning *`;
     try {
       // req.body.new_price_offered = req.body.price;
-      if (!req.body.price) {
-        return res.status(400).send({ status: 400, error: 'please enter new price offered and car ID' });
-      }
       req.params.id = req.params.orderId;
       const { rows } = await db.query(findOneQuery, [req.params.id]);
 

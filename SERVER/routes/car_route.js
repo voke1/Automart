@@ -2,7 +2,7 @@ import express from 'express';
 import multiparty from 'connect-multiparty';
 import Car from '../usingDB/controller/carController';
 import Auth from '../usingDB/middleware/checkAuth';
-
+// import createAdValidation from '../usingDB/validation/createAd';
 
 const multipartyMiddleware = multiparty();
 const router = express.Router();
@@ -16,7 +16,7 @@ router.post('/api/v1/car', Auth, multipartyMiddleware, Car.createAd);
 // protected route to View a specific car Ad
 router.get('/api/v1/car/:carId/', Auth, Car.viewAd);
 
-// protected route to delete a specific car ad only by Admins
+// protected route to delete a specific car ad only by Admins;l
 router.delete('/api/v1/car/:carId', Auth, Car.deleteAd);
 
 // protected route to  update status of a particular ad

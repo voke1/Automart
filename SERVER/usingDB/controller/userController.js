@@ -31,11 +31,7 @@ const User = {
       Users(id, token, email, first_name, last_name, password, is_admin, address, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       returning *`;
-    // handling no input value to sign up a user.
-    if (!req.body.email || !req.body.password) {
-      return res.status(400).send({ status: 400, error: 'please fill in required fields' });
-    }
-
+   
     // generate user token
     const userId = uuidv4();
     const payload = { email: req.body.email, id: userId, isAdmin: req.body.is_admin };
@@ -56,7 +52,7 @@ const User = {
       req.body.is_admin,
       req.body.address,
       moment(new Date()),
-      moment(new Date()),
+      moment(new Date()),``
     ];
 
 
@@ -91,7 +87,7 @@ const User = {
         return res.status(401).send({ status: 401, error: 'Authentication information is invalid' });
       });
     } catch (error) {
-      return res.status(401).send({ status: 401, error: 'Please enter valid email and password' });
+      return res.status(401).send({ status: 401, error: 'Please check internet connection' });
     }
     return null;
   },

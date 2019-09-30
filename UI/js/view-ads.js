@@ -1,9 +1,9 @@
 
 document.onreadystatechange = () => {
   const state = document.readyState;
-  if (state == 'interactive') {
+  if (state === 'interactive') {
     document.getElementsByClassName('.column').style.visibility = 'hidden';
-  } else if (state == 'complete') {
+  } else if (state === 'complete') {
     setTimeout(() => {
       document.getElementById('interactive');
       document.getElementsByClassName('.load').style.visibility = 'hidden';
@@ -12,7 +12,24 @@ document.onreadystatechange = () => {
   }
 };
 
-function getViewBtn() {
+const deleteAd = async () => {
+  const button = document.querySelector('.delete-ad');
+  button.addEventListener('click', async () => {
+    const carId = button.getAttribute('product-id');
+    console.log(carId);
+    await fetch(`https://voke-automart.herokuapp.com/api/v1/car/${carId}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        token: localStorage.getItem('token'),
+      },
+    });
+  });
+  window.location.href = 'view-all-ads.html';
+};
+
+const getViewBtn = () => {
   const buttons = [...document.querySelectorAll('.view-btn')];
   buttons.forEach((button) => {
     button.addEventListener('click', async () => {
@@ -24,8 +41,6 @@ function getViewBtn() {
           'Content-type': 'application/json',
           token: localStorage.getItem('token'),
         },
-
-
       });
 
       const result = await response.json();
@@ -46,26 +61,26 @@ function getViewBtn() {
             <div class="product--desc">
               <p>${result.data.model}</p>
             </div> 
-                    <div class="add-to-cart">
-                      <button class="btn-car">BUY NOW!</button>
-                      <button class='btn-car' onclick="window.location.href='report-ad.html'">REPORT AD</button>
-                      <button class='btn-car' href='report-ad.html'>DELETE AD</button>
-                    </div>
-        </div>
-      </div>
-      </div>`;
+                <div class="add-to-cart">
+                  <button class="btn-car">BUY NOW!</button>
+                  <button class='btn-car' onclick="window.location.href='report-ad.html'">REPORT AD</button>
+                  <button class='btn-car delete-ad' product-id='${result.data.id}' href='report-ad.html'>DELETE AD</button>
+                </div>
+            </div>
+          </div>
+        </div>`;
     });
   });
+  deleteAd();
+};
 
-}
-
-function signout() {
+const signout = () => {
   localStorage.removeItem('token');
   window.location.href = '.././index.html';
-}
+};
 
 
-async function viewAds() {
+const viewAds = async () => {
   // e.preventDefault();
   let adTemplate;
   const adList = document.querySelector('.column');
@@ -81,7 +96,6 @@ async function viewAds() {
   });
   const result = await response.json();
   console.log(result.data);
-
   if (result.data.length > 0) {
     for (let i = 0; i < result.data.length; i++) {
       adTemplate += ` <li>
@@ -96,7 +110,6 @@ async function viewAds() {
               <li>&nbsp; PRICE: NGN${result.data[i].price}</li>
           </ul>
           <h3 class="view-btn" dataId=${result.data[i].id}><a href="#">VIEW CAR</a></h3>
-    
       </div>
     </li>`;
     }
@@ -104,5 +117,5 @@ async function viewAds() {
     adList.innerHTML = adTemplate;
     getViewBtn();
   }
-}
+};
 viewAds();

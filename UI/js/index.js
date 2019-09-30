@@ -22,9 +22,9 @@ const memberNav = `
     <li onclick="signout()"><a>SIGN OUT</a></li>
 </ul>
 `;
-async function getViewBtn() {
+const getViewBtn = async () => {
   const buttons = [...document.querySelectorAll('.btn-cars')];
-    console.log(buttons);
+  console.log(buttons);
   buttons.forEach((buton) => {
     buton.addEventListener('click', async () => {
       if (!localStorage.getItem('token')) {
@@ -34,9 +34,9 @@ async function getViewBtn() {
       }
     });
   });
-}
+};
 
-async function navToggle() {
+const navToggle = async () => {
   const result = document.querySelector('.header');
   if (!localStorage.getItem('token')) {
     result.innerHTML = nonUserNav;
@@ -44,11 +44,11 @@ async function navToggle() {
     result.innerHTML = memberNav;
   }
   getViewBtn();
-}
-function signout() {
+};
 
-    localStorage.removeItem('token');
-    window.location.href = 'index.html';
-  }
+const signout = async () => {
+  localStorage.removeItem('token');
+  window.location.href = 'index.html';
+};
 
 navToggle();
